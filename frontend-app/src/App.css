@@ -1,22 +1,83 @@
 .App {
   text-align: center;
+  font-family: Gotham, Arial, Helvetica Neue, Helvetica, sans-serif;
 }
 
 .App-logo {
   height: 40vmin;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.DomingoHeader {
+  background-color: white;
+  height: 115px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
-}
+  color: black;
 
+
+}
+.DomingoStorePageImgDiv{
+  Display: flex;
+}
+.Domingo_store_page_img {
+  background-position: 50% 50%;
+  background-position-x: 50%;
+  background-position-y: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px;
+  line-height: 16.1px;
+  max-height: 600px;
+  min-height: 400px;
+  width: 1841px;
+
+}
+.DomingoStoreInfoHeaderRG{
+  display: flex;
+  justify-content: space-between;
+}
+.DomingoStoreInfo {
+  margin-bottom: 0px;
+  margin-left: 360.5px;
+
+  margin-top: -80px;
+
+  max-width: 1120px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  position: relative;
+
+  box-sizing: border-box;
+}
+.DomingoStoreInfoHeader{
+  min-width: 781px;
+  border-radius: 10px;
+  background-color: white;
+  height: fit-content;
+}
+.DomingoStoreInfoRegisterCart{
+  display: flex;
+  position: sticky !important;
+  float: right;
+  margin-right: 5%;
+
+}
+.DomingoStoreProductContainer{
+  width: 781px;
+
+
+}
+.DomingoStoreProductContainerItems{
+
+  margin-bottom: 50px;
+}
 .App-link {
   color: #09d3ac;
+}
+.store_header{
+  with: 800px;
+  height: 700px;
+  background-color: white;
 }
