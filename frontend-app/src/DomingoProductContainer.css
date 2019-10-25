@@ -1,0 +1,71 @@
+.DomingoProductContainer{
+    font-family: Gotham, Arial, Helvetica Neue, Helvetica, sans-serif;
+    margin-top: 20px;
+}
+
+.DomingoProductContainerHeader{
+    font-size: 14px;
+    font-weight: 300;
+    justify-content: space-between;
+    line-height: 16.1px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+
+}
+.DomingoProductContainerHeadertxt{
+
+    font-size: 26px;
+    text-align: left;
+
+}
+.DomingoProductContainerHeaderButton{
+    display: inline-block;
+    float: right;
+    margin-top: -15px;
+
+}
+.search-btn-desktop {
+    background: none;
+    color: #2abb9b;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 10px;
+
+}
+
+.search-btn-desktop:hover {
+    opacity: 0.8;
+    transition: .3s;
+}
+.DomingoProductContainerProductItemButtonDiv{
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 20px 0 rgba(0,0,0,.1);
+    margin-top: 15px;
+
+}
+.DomingoProductContainerProductItemButton{
+    align-content: center;
+    background: none;
+    position: center;
+    border:none;
+    cursor: pointer;
+    width: 100%;
+    height: fit-content;
+
+
+}
+.DomingoProductContainerProductItemButton:hover{
+    opacity: 0.8;
+    transition: .3s;
+
+}
+.DomingoProductContainerProductItem{
+    display: inline-block;
+
+}
+DomingoProductItem{
+    display: inline-block;
+    position: center;
+
+}
