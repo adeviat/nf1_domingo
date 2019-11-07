@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/api/stores', 'StoresController@getStores');
+Route::get('/api/store/{id}' , 'StoresController@getStore');
+
+Route::get('/api/user/{id}' , 'UsersController@getUser');
+Route::post('/api/user', 'UsersController@createUser');
+
+
+
