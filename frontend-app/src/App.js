@@ -3,11 +3,13 @@ import './App.css';
 import StoreInfoHeader from './StoreInfoHeader.js'
 import RegisterCart from "./RegisterCart.js";
 import DomingoProductContainer from "./DomingoProductContainer.js";
+import {BrowserRouter, Route} from 'react-router-dom';
+import Modal from './DialogEditUser.js';
+
 
 
 function App() {
-  /*https://res.cloudinary.com/glovoapp/w_200,h_200,c_fill,f_auto,q_auto/Products/xgcr0a30fnru7eccenuo
-      "https://res.cloudinary.com/glovoapp/w_200,h_200,c_fill,f_auto,q_auto/Products/exgqqvu1qlts4ukjrgut"*/
+
   const stores = [{
     name: "KFC",
     description: "Pollo frito"
@@ -58,8 +60,12 @@ function App() {
     }]
   }];
   let bckimg = "https://res.cloudinary.com/glovoapp/w_1200,f_auto,q_auto/Stores/bsuzfftwrffr66zd8h0b";
-  //background-image: url("https://res.cloudinary.com/glovoapp/w_1200,f_auto,q_auto/Stores/bsuzfftwrffr66zd8h0b");
-  return (
+
+    return (
+        /*<BrowserRouter>
+            <Route path{APP_Register} component{RegisterCart}></Route>
+        </BrowserRouter>*/
+
      <div className="App">
        <div className="DomingoHeader"> Domingo Header</div>
        <div className="DomingoStorePageImgDiv">
@@ -95,17 +101,3 @@ function App() {
 }
 
 export default App;
-/*<img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to hola.
-        </p>
-
-        {stores.map(store =>(<StoreInfoHeader store={store}/>))}
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>*/
