@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './DialogEditUser.css';
-import './LoginModalBox.css'
+import './components/LoginModalBox/LoginModalBox.css'
 
 
 
@@ -35,10 +35,10 @@ export default function DialogEditUser() {
     const data = {
         username: userName,
         surname: surname,
-        phonenumber: phoneNumber,
+        //phonenumber: phoneNumber,
         email: email,
-        password: password,
-        current_location:current_location
+        password: password
+       // current_location:current_location
 
     }
 

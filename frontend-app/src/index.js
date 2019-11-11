@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import DomingoSignIn from './DomingoSignIn'
 import TestView from "./TestView";
 import DialogEditUser from './DialogEditUser.js'
+import HomePage from'./components/HomePage/HomePage.js'
 
 
 ReactDOM.render(<App />, document.getElementById('root'));

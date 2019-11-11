@@ -32,7 +32,7 @@ const DomingoSignIn = () => {
     useEffect(() => {
         setSubmit(false);
         const fetchdata = async () => {
-            const url = 'http://127.0.0.1/api/user/login';
+            const url = 'http://127.0.0.1/api/user';
 
             const options = {
                 method: 'POST',
@@ -40,9 +40,7 @@ const DomingoSignIn = () => {
                 headers: new Headers({
                     Accept: 'application/json',
                     'Content-type': 'application/json',
-                    'Access-Control-Allow-Headers': 'Authorization',
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS'
+
                 }),
                 mode: 'cors',
             };
