@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+//use Tymon\JWTAuth\Facades\JWTAuth;
+//use Tymon\JWTAuth\Facades\JWTFactory;
+//use Tymon\JWTAuth\Exceptions\JWTException;
+//use Tymon\JWTAuth\Contracts\JWTSubject;
+//use Tymon\JWTAuth\PayloadFactory;
+//use Tymon\JWTAuth\JWTManager as JWT;
+
 
 class UserController extends Controller
 {
-//    public function pruebas(Request $request)
-//    {
-//        return "Pruebas User";
-//    }
-
     public function register(Request $Request)
     {
         //recoger datos del usuario por post
@@ -75,8 +77,8 @@ class UserController extends Controller
             );
         }
 
-
         return response()->json($data, $data['code']);
+
 
     }
 
@@ -158,7 +160,7 @@ class UserController extends Controller
             //Actualisar el usuario en la base de datos
             $user_update = User::where('id', $user->sub)->update($params_array);
 
-            //Devolver array con resulto
+            //Devolver array con resultado
 
             $data = array(
                 'code' => 200,
@@ -168,12 +170,6 @@ class UserController extends Controller
 
             );
 
-//            $data = array(
-//                'code' => 400,
-//                'status' => 'error',
-//                'massage' => 'El usuario no esta identificado.'
-//
-//            );
 
         }else{
             $data = array(
@@ -185,4 +181,33 @@ class UserController extends Controller
         }
         return response()->json($data, $data['code']);
     }
+    public function show()
+    {
+        $users = User::all();
+       return response()->json($users);
+    }
+    public function showbyid($id)
+    {
+        $users = User::find($id);
+        return response()->json($users);
+    }
+
+
+//   public function getAuthenticatedUser()
+//   {
+//       try {
+//            if (! $user = JWTAuth::parseToken()->authenticate()) {
+//              return response()->json(['user_not_found'], 404);
+//           }
+//           } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+//               return response()->json(['token_expired'], $e->getStatusCode());
+//           } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+//               return response()->json(['token_invalid'], $e->getStatusCode());
+//           } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
+//               return response()->json(['token_absent'], $e->getStatusCode());
+//           }
+//           return response()->json(compact('user'));
+//   }
+
 }
+
