@@ -15,7 +15,7 @@
         "kreait/firebase-php": "^4.0",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
-        "tymon/jwt-auth": "dev-develop"
+        "tymon/jwt-auth": "dev-develop",
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
