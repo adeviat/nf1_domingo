@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import DomingoSignIn from './DomingoSignIn'
-import DialogEditUser from './DialogEditUser.js'
+import DomingoSignIn from './components/DomingoSignIn/DomingoSignIn'
+import DialogEditUser from './components/DialogEditUser/DialogEditUser.js'
 import HomePage from'./components/HomePage/HomePage.js'
 
 

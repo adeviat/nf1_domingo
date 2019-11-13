@@ -18,7 +18,8 @@
     display: flex;
     align-items: center;
 }
-.register-btn-desktop {
+
+/*.register-btn-desktop {
     background-color: #2abb9b;
     color: white;
     border: none;
@@ -30,7 +31,6 @@
     margin-bottom: 15px;
     margin-left: 0px;
     margin-right: 0px;
-    margin-top: 15px;
     max-width: 340px;
     min-width: 120px;
     min-width: 120px;
@@ -41,4 +41,4 @@
 .register-btn-desktop:hover {
     background-color: #00a082;
     transition: .3s;
-}
+}*/

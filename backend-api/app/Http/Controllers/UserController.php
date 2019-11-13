@@ -4,12 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-//use Tymon\JWTAuth\Facades\JWTAuth;
-//use Tymon\JWTAuth\Facades\JWTFactory;
-//use Tymon\JWTAuth\Exceptions\JWTException;
-//use Tymon\JWTAuth\Contracts\JWTSubject;
-//use Tymon\JWTAuth\PayloadFactory;
-//use Tymon\JWTAuth\JWTManager as JWT;
 
 
 class UserController extends Controller
@@ -20,6 +14,8 @@ class UserController extends Controller
         $json = $Request->input('json', null);
         $params = json_decode($json); //sacar un Objeto
         $params_array = json_decode($json, true); //sacar un Array
+//     var_dump($params_array); die();
+
         if(!empty($params) && !empty($params_array)) {
 
             //limpiar datos

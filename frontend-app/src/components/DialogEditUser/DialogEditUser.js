@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './DialogEditUser.css';
-import './components/LoginModalBox/LoginModalBox.css'
+import '../LoginModalBox/LoginModalBox.css'
 
 
 
@@ -33,7 +33,7 @@ export default function DialogEditUser() {
     const [error, setError] = useState('');
 
     const data = {
-        username: userName,
+        name: userName,
         surname: surname,
         //phonenumber: phoneNumber,
         email: email,
@@ -45,7 +45,7 @@ export default function DialogEditUser() {
     const handleOnSubmit = () => {
 
         const fetchdata = async () => {
-            const url = 'http://127.0.0.1:80/api/user';
+            const url = 'http://127.0.0.1:80/api/user/register';
 
             const options = {
                 method: 'POST',
