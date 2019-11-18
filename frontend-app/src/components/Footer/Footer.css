@@ -1,0 +1,106 @@
+footer {
+  background-color: #303030;
+  margin-bottom: 0;
+  height: 770px;
+  border: none
+}
+div.back{
+    background-color: #303030;
+}
+
+#footerarc1{
+  margin: 0;
+  transform: rotate(180deg);
+  border: none
+}
+
+div#containerfooter {
+  margin: 30px auto 0;
+  width: 1120px;
+  height: 204px;
+  padding: 0;
+
+}
+
+div#glovofooter{
+  width: 189px;
+  height: 204px;
+  display: inline-block;
+  margin-top:0
+
+}
+
+div.optionsfooter1{
+  width: 189px;
+  height: 204px;
+  display: inline-table;
+  margin-top:0;
+  padding-top: 0;
+}
+
+.footertext1 {
+  color: #9b9b9b;
+  font-family: Gotham,Arial,Helvetica Neue,Helvetica,sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  margin-top: 15px;
+  margin-bottom: 23px;
+  list-style: none;
+  display:flex
+}
+
+.footertext2 {
+  color: #fff;
+  font-family: Gotham,Arial,Helvetica Neue,Helvetica,sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  margin: 18px 0;
+  list-style: none;
+  text-shadow: 0 1px 1px rgba(0,0,0,.14);
+  line-height: 1.5;
+  display:flex
+}
+
+div.optionsfooter3 {
+  width: 153px;
+  float: right;
+
+}
+
+
+.iphone{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 50px;
+
+}
+
+div#containermenu {
+  margin: 30px auto 0;
+  width: 1120px;
+  height: 46px;
+}
+
+#menu1{
+  background-color:  #303030;
+  border-radius: none;
+  border: 1px solid #dcdfe6;
+  color: blanchedalmond;
+  width: 293px;
+  height: 46px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: inline-block;
+  transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+  font-family: Gotham,Arial,Helvetica Neue,Helvetica,sans-serif;
+  font-weight: 300;
+  list-style: none;
+  word-break: break-all;
+
+}
+.menu2 {
+
+  background-color:  #ffffff;
+}
