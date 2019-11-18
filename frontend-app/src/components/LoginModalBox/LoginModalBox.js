@@ -107,7 +107,7 @@ export default function LoginModalBox() {
                     debugger;
                     setSubmit(false);
                     if(response.status === 200) {
-                        alert(response.body);
+                        alert(response.statusText);
                         return response.json();
                     }
                     return Promise.reject(response.status);
@@ -189,4 +189,3 @@ export default function LoginModalBox() {
         </div>
     );
 }
-

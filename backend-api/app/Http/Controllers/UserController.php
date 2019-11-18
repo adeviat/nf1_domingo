@@ -4,20 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-//use Tymon\JWTAuth\Facades\JWTAuth;
-//use Tymon\JWTAuth\Facades\JWTFactory;
-//use Tymon\JWTAuth\Exceptions\JWTException;
-//use Tymon\JWTAuth\Contracts\JWTSubject;
-//use Tymon\JWTAuth\PayloadFactory;
-//use Tymon\JWTAuth\JWTManager as JWT;
 
 
 class UserController extends Controller
 {
-    public function register(Request $Request)
+    public function register(Request $request)
     {
         //recoger datos del usuario por post
-        $json = $Request->input('json', null);
+
+        $json = $request->input('json', null);
         $params = json_decode($json); //sacar un Objeto
         $params_array = json_decode($json, true); //sacar un Array
         if(!empty($params) && !empty($params_array)) {
@@ -45,7 +40,7 @@ class UserController extends Controller
                 //Validacion pasada correctamente
 
                 //cifrar la contraseña
-                $pwd = hash('sha256', $params->password);
+                $pwd = hash('sha256', $params_array['password']);
 
 
                 //crear el usuario
@@ -60,16 +55,15 @@ class UserController extends Controller
                 $user->save();
 
 
-
                 $data = array(
                     'status' => 'success',
                     'code' => 200,
                     'mensage' => 'El usuario se ha creado correctamente',
-                    'user'=> $user
+                    'user' => $user
                 );
             }
 
-        }else{
+        } else {
             $data = array(
                 'status' => 'error',
                 'code' => 404,
@@ -86,19 +80,15 @@ class UserController extends Controller
     public function login(Request $request)
     {
         $JwtAuth = new \JwtAuth();
-
         //Recibir datos por post
         $json = $request->input('json', null);
         $params = json_decode($json);
         $params_array = json_decode($json, true);
-
         //Validar esos datos
         $validate = \Validator::make($params_array, [
-
             'email' => 'required|email',
             'password' => 'required'
         ]);
-
         if ($validate->fails()) {
             //La validacion ha fallado
             $signup = array(
@@ -107,19 +97,14 @@ class UserController extends Controller
                 'mensage' => 'El usuario no se ha podido identificar',
                 'errors' => $validate->errors()
             );
-
         } else {
-        //Cifrar la password
+            //Cifrar la password
             $pwd = hash('sha256', $params->password);
-
-        //Devolver token o datos
-          $signup = $JwtAuth->signup($params->email, $pwd);
-
-          if(!empty($params->gettoken)){
-              $signup = $JwtAuth->signup($params->email, $pwd, true);
-
-          }
-
+            //Devolver token o datos
+            $signup = $JwtAuth->signup($params->email, $pwd);
+            if(!empty($params->gettoken)){
+                $signup = $JwtAuth->signup($params->email, $pwd, true);
+            }
         }
 
 
@@ -192,22 +177,6 @@ class UserController extends Controller
         return response()->json($users);
     }
 
-
-//   public function getAuthenticatedUser()
-//   {
-//       try {
-//            if (! $user = JWTAuth::parseToken()->authenticate()) {
-//              return response()->json(['user_not_found'], 404);
-//           }
-//           } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
-//               return response()->json(['token_expired'], $e->getStatusCode());
-//           } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
-//               return response()->json(['token_invalid'], $e->getStatusCode());
-//           } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
-//               return response()->json(['token_absent'], $e->getStatusCode());
-//           }
-//           return response()->json(compact('user'));
-//   }
 
 }
 

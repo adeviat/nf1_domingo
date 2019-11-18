@@ -3,9 +3,10 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogEditUser from "../../DialogEditUser";
 import DialogActions from "@material-ui/core/DialogActions";
-import LoginModalBox from "../LoginModalBox/LoginModalBox";
+
+import DialogEditUser from "../DialogEditUser/DialogEditUser.js";
+import LoginModalBox from "../LoginModalBox/LoginModalBox.js";
 
 function HomePageTopmenu() {
     // HOOKS AND FUNCTIONS TO HANDLE DIALOG EVENT
@@ -13,6 +14,7 @@ function HomePageTopmenu() {
     const [openLogin, setOpenLogin] = React.useState(false);
 
 
+    //Register Handle
 
     const handleClickOpenRegister = () =>  {
         setOpenRegister(true);
@@ -21,6 +23,10 @@ function HomePageTopmenu() {
     const handleCloseRegister = () => {
         setOpenRegister(false);
     };
+
+
+    // LogIn Handle
+
     const handleClickOpenLogin = () =>  {
         setOpenLogin(true);
     };
@@ -30,7 +36,6 @@ function HomePageTopmenu() {
     };
 
     return (
-        <div>
         <div>
             {/* header desktop */}
             <div class="container-fluid d-none d-md-flex header-desktop">
@@ -48,47 +53,7 @@ function HomePageTopmenu() {
                     </div>
 
                 </div>
-                {/* Register Dialog*/}
-                <Dialog open={openRegister} onClose={handleCloseRegister} aria-labelledby="form-dialog-title">
-                    <DialogTitle id="form-dialog-title">
-                        Edit User
-                        <img className="CloseImg" onClick={handleCloseRegister} src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/close-icon.svg"/>
-
-                    </DialogTitle>
-                    <DialogContent >
-                        <DialogContentText>
-
-                        </DialogContentText >
-                        <DialogEditUser/>
-                    </DialogContent>
-                    <DialogActions>
-
-
-                    </DialogActions>
-                </Dialog>
-
-                {/*Login Dialog*/}
-                <Dialog open={openLogin} onClose={handleCloseLogin} aria-labelledby="form-dialog-title">
-                    <DialogTitle id="form-dialog-title2">
-                        Login User
-                        <img className="CloseImg" onClick={handleCloseLogin} src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/close-icon.svg"/>
-
-                    </DialogTitle>
-                    <DialogContent>
-                        <DialogContentText>
-
-                        </DialogContentText>
-                        <LoginModalBox/>
-                    </DialogContent>
-                    <DialogActions>
-
-
-                    </DialogActions>
-                </Dialog>
             </div>
-        </div>
-
-
 
             {/* header mobile */}
             <div class="container-fluid d-flex d-md-none header-mobile">
@@ -112,6 +77,48 @@ function HomePageTopmenu() {
                     </div>
                 </div>
             </div>
+
+            {/*Regisater Dialog*/}
+
+            <Dialog open={openRegister} onClose={handleCloseRegister} aria-labelledby="form-dialog-title">
+                <DialogTitle id="form-dialog-title">
+                    Edit User
+                    <img className="CloseImg" onClick={handleCloseRegister} src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/close-icon.svg"/>
+
+                </DialogTitle>
+                <DialogContent >
+                    <DialogContentText>
+
+                    </DialogContentText >
+                    <DialogEditUser/>
+                </DialogContent>
+                <DialogActions>
+
+
+                </DialogActions>
+            </Dialog>
+
+            {/*LogIn Dialog*/}
+
+            <Dialog open={openLogin} onClose={handleCloseLogin} aria-labelledby="form-dialog-title">
+                <DialogTitle id="form-dialog-title">
+                    Login User
+                    <img className="CloseImg" onClick={handleCloseLogin} src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/close-icon.svg"/>
+
+                </DialogTitle>
+                <DialogContent >
+                    <DialogContentText>
+
+                    </DialogContentText >
+
+                    <LoginModalBox/>
+                </DialogContent>
+                <DialogActions>
+
+
+                </DialogActions>
+            </Dialog>
+
         </div>
     );
 }
