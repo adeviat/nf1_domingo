@@ -15,6 +15,8 @@ class UserController extends Controller
         $json = $request->input('json', null);
         $params = json_decode($json); //sacar un Objeto
         $params_array = json_decode($json, true); //sacar un Array
+//     var_dump($params_array); die();
+
         if(!empty($params) && !empty($params_array)) {
 
             //limpiar datos
