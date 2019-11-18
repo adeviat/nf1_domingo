@@ -3,13 +3,13 @@ import './HomePage.css';
 import './bootstrap.min.css';
 import HomePageTopMenu from '../HomePageTopMenu/HomePageTopMenu';
 import HomePageMainBlock from "../HomePageMainBlock/HomePageMainBlock";
+import Viewinfo from "../Profile/View INFO/Viewinfo";
 
 function HomePage() {
     return (
         <div>
             <HomePageTopMenu/>
             <HomePageMainBlock/>
-
             {/* TODO: A PARTIR DE AQUI ES TRABAJO PENDIENTE, LO IRË MEJORANDO Y DIVIDIENDO EN COMPONENTES */}
             <section class="container">
                 <div class="row">
