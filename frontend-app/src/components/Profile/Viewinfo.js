@@ -14,13 +14,13 @@ import DialogActions from "@material-ui/core/DialogActions";
 
 export default function SimplePopper() {
 
-    const user = JSON.parse(localStorage.getItem('user'));
+    //const user = JSON.parse(localStorage.getItem('user'));
 
 
-    const [name, setName] = useState(user.name);
-    const [email, setEmail] = useState(user.email);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
     const [phone_number, setPhone_number] = useState();
-    const [password, setPassword] = useState(user.password);
+    const [password, setPassword] = useState('');
     const [currentLocation, setCurrentLocation] = useState('');
     const [error, setError] = useState("");
     const [responseJson, setResponseJson] = useState("");
