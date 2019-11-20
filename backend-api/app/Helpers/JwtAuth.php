@@ -32,7 +32,7 @@ class JwtAuth {
       if($signup){
 
           $token = array(
-              'sub'     => $user->id,
+              'id'     => $user->id,
               'email'   => $user->email,
               'name'    => $user->name,
               'surname' => $user->surname,

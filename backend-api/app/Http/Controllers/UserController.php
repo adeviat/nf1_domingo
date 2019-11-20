@@ -12,12 +12,11 @@ class UserController extends Controller
     {
         //recoger datos del usuario por post
 
-        $json = $request->input('json', null);
-        $params = json_decode($json); //sacar un Objeto
-        $params_array = json_decode($json, true); //sacar un Array
-//     var_dump($params_array); die();
 
-        if(!empty($params) && !empty($params_array)) {
+        $params_array = $request->all(); //sacar un Array
+
+
+        if(!empty($params_array)) {
 
             //limpiar datos
             $params_array = array_map('trim', $params_array);
@@ -83,9 +82,7 @@ class UserController extends Controller
     {
         $JwtAuth = new \JwtAuth();
         //Recibir datos por post
-        $json = $request->input('json', null);
-        $params = json_decode($json);
-        $params_array = json_decode($json, true);
+        $params_array = $request->all(); //sacar un Array
         //Validar esos datos
         $validate = \Validator::make($params_array, [
             'email' => 'required|email',
@@ -101,40 +98,47 @@ class UserController extends Controller
             );
         } else {
             //Cifrar la password
-            $pwd = hash('sha256', $params->password);
+            $pwd = hash('sha256', $params_array['password']);
             //Devolver token o datos
-            $signup = $JwtAuth->signup($params->email, $pwd);
-            if(!empty($params->gettoken)){
-                $signup = $JwtAuth->signup($params->email, $pwd, true);
+            $signup = $JwtAuth->signup($params_array['email'], $pwd);
+            if(!empty($params_array['gettoken'])){
+                $signup = $JwtAuth->signup($params_array['email'], $pwd, true);
             }
+
+            $data = array(
+                'code' => 200,
+                'token' => $signup,
+                'user' => $JwtAuth->checkToken($signup, true),
+                'message' => 'El usuario se ha podido identificar'
+
+            );
         }
 
 
-        return response()->json($signup, 200);
+        return response()->json($data, $data["code"]);
 
     }
 
     public function update(Request $request){
 
         //Comprobar si el usuario se está identificado
-        $token = $request->header('Authorization');
+       // $token = $request->header('Authorization');
         $jwtAuth = new \JwtAuth();
-        $checkToken = $jwtAuth->checkToken($token);
+       // $checkToken = $jwtAuth->checkToken($token);
 
             //Rcoger los datos por Post
-            $json = $request->input('json', null );
-            $params_array = json_decode($json, true);
-
-        if($checkToken && !empty($params_array)){
+        $params_array = $request->all(); //sacar un Array
+        $checkToken = $jwtAuth->checkToken($params_array['token']);
+        if( !empty($params_array)){
 
             //Sacar usuario identificado
-            $user = $jwtAuth->checkToken($token, true);
+            $user = $jwtAuth->checkToken($params_array['token'], true);
 
             //Validar datos
             $validate = \Validator::make($params_array, [
                 'name' => 'required|alpha',
                 'surname' => 'required|alpha',
-                'email' => 'required|email|unique:users,'. $user->sub
+                'email' => 'required|email|unique:users,'. $user->id
 
             ]);
 
@@ -144,8 +148,17 @@ class UserController extends Controller
             unset($params_array['password']);
             unset($params_array['created_at']);
 
+            $userData = array(
+
+                'name' =>$params_array['name'],
+                'surname' => $params_array['surname'],
+                'email' =>$params_array['email'],
+
+
+            );
+
             //Actualisar el usuario en la base de datos
-            $user_update = User::where('id', $user->sub)->update($params_array);
+            $user_update = User::where('id', $user->id)->update($userData);
 
             //Devolver array con resultado
 

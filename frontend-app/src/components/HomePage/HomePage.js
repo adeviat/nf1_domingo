@@ -3,7 +3,7 @@ import './HomePage.css';
 import './bootstrap.min.css';
 import HomePageTopMenu from '../HomePageTopMenu/HomePageTopMenu';
 import HomePageMainBlock from "../HomePageMainBlock/HomePageMainBlock";
-import Viewinfo from "../Profile/View INFO/Viewinfo";
+
 
 function HomePage() {
     return (
@@ -217,55 +217,8 @@ function HomePage() {
                     </div>
                 </div>
             </section>
-            {/* footer */}
-            <footer class="container-fluid">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <img src="" alt=""/>
-                        </div>
-                        <div class="col">
-                            <p>Join us</p>
-                            <ul>
-                                <li>Careers</li>
-                                <li>Store partners</li>
-                                <li>Couriers</li>
-                                <li>Glovo Business</li>
-                            </ul>
-                        </div>
-                        <div class="col">
-                            <p>Help</p>
-                            <ul>
-                                <li>FAQ</li>
-                                <li>Contact us</li>
-                            </ul>
-                        </div>
-                        <div class="col">
-                            <p>Legal</p>
-                            <ul>
-                                <li>Terms & Conditions</li>
-                                <li>Privacy Policy</li>
-                            </ul>
-                        </div>
-                        <div class="col">
-                            <p>Follow us</p>
-                            <ul>
-                                <li>Facebook</li>
-                                <li>Twitter</li>
-                                <li>Instagram</li>
-                            </ul>
-                        </div>
-                        <div class="col">
-                            <img src="" alt="Download on the App Store"/>
-                            <img src="" alt="Download on Google Play"/>
-                        </div>
-                    </div>
-                    <select>
-                        <option value="english">English</option>
-                        <option value="spanish">Spanish</option>
-                    </select>
-                </div>
-            </footer>
+
+
             {/* bootstrap scripts */}
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
                     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

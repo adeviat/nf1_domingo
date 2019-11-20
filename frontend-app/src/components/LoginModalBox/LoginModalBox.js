@@ -16,7 +16,12 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
 
+
 export default function LoginModalBox() {
+
+    //HOOKS FOR HANDLE LOGIN VISIBILITY
+
+
 
     // HOOKS AND FUNCTIONS TO UPDATE PASSWORD FIELD'S VISIBILITY
     const [password, setPassword] = React.useState({
@@ -40,7 +45,7 @@ export default function LoginModalBox() {
     const [userName, setName] = useState('');
 
     const data = {
-        name: userName,
+        email: userName,
         password: password.password
     };
 
@@ -52,29 +57,31 @@ export default function LoginModalBox() {
         setSubmit(false);
         const fetchdata = async () => {
 
-            const url = 'http://127.0.0.1/api/user/login';
+            const url = 'http://127.0.0.1:80/api/user/login';
             const options = {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: new Headers({
                     Accept: 'application/json',
                     'Content-type': 'application/json',
-                    'Access-Control-Allow-Headers': 'Authorization'
                 }),
                 mode: 'cors',
             };
 
             return fetch(url, options)
                 .then(response => {
-                    debugger;
                     if(response.status === 200) {
-                        alert(response.body);
+
                         return response.json();
                     }
+
                     return Promise.reject(response.status);
-                }).then(data => {
-                    debugger;
-                    // alert("Succesful, codigo 200"); alert("Error.\n\nOptions body:\n" + options.body +"\n\nURL called:\n" + url +
+                }).then(response => {
+                    localStorage.clear();
+                    localStorage.setItem('loginToken',response.token );
+                    localStorage.setItem('user', JSON.stringify(response.user));
+
+
                 }).catch(error => {
                     setError(error);
                     alert("Error.\n\nError type:" + error  );
