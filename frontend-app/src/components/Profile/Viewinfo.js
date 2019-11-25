@@ -10,6 +10,19 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogEditUser from "../DialogEditUser/DialogEditUser";
 import DialogActions from "@material-ui/core/DialogActions";
+import {get,put} from "../Helpers/ServerMethods";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import Input from "@material-ui/core/Input";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import IconButton from "@material-ui/core/IconButton";
+
+// ICON IMPORTATION
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 
 
 export default function SimplePopper() {
@@ -18,14 +31,27 @@ export default function SimplePopper() {
 
 
     const [name, setName] = useState('');
+    const [surname, setSurname] = useState('');
     const [email, setEmail] = useState('');
     const [phone_number, setPhone_number] = useState();
     const [password, setPassword] = useState('');
     const [currentLocation, setCurrentLocation] = useState('');
-    const [error, setError] = useState("");
-    const [responseJson, setResponseJson] = useState("");
 
+    const [responseJson, setResponseJson] = useState("");
+    const [anchorEl, setAnchorEl] = React.useState(null);
     const [openEdit, setOpenEdit] = React.useState(false);
+
+
+
+    const user = {
+        name: name,
+        surname: surname,
+        //phonenumber: phoneNumber,
+        email: email,
+        password: password,
+        token: localStorage.getItem('loginToken')
+
+    }
 
 
     const handleClickOpenEdit = () =>  {
@@ -36,54 +62,28 @@ export default function SimplePopper() {
         setOpenEdit(false);
     };
 
+
+
+
     //TODO: Realizar un POST con el token para recoger el usuario
     // para luego mostrar los datos de usuario
 
- /*   useEffect(() => {
-        const fetchdata = async () => {
+    useEffect(() => {
 
-            const url = 'http://127.0.0.1:80/api/user/3';
-
-            const options = {
-                method: 'GET',
-                body: JSON.stringify(),
-                headers: new Headers({
-                    Accept: 'application/json',
-                    'Content-type': 'application/json'
-                }),
-                mode: 'cors'
-            };
-
-            fetch(url, options)
+        if(anchorEl){
+            get('api/users/'+ localStorage.getItem('loginToken'))
                 .then(response => {
-                    console.log("El status es: " + response.status);
+                    setName (response.name );
+                    setSurname(response.surname);
+                    setEmail(response.email);
 
-                    if (response.status !== 200) {
-                        return Promise.reject(response.status);
-                    }
-
-                    return response.json();
-
-                }).then(response => {
-                console.log("El JSON es:\n" + response);
-                setName(response.name);
-                setEmail(response.email);
-                setPhone_number(response.phone_number);
-                setPassword(response.password);
-
-
-            })
-
-
-                .catch(error => {
-                    setError(error);
-                    alert("Algo va mal: " + error);
                 })
 
-        };
+        }
+    }, [anchorEl]);
 
-        fetchdata();
-    }, []);*/
+
+
     ////TODO Ajustar el estilo del boton
     const useStyles = makeStyles(theme => ({
         paper: {
@@ -102,7 +102,7 @@ export default function SimplePopper() {
 
 
     const classes = useStyles();
-    const [anchorEl, setAnchorEl] = React.useState(null);
+
 
     const handleClick = event => {
         setAnchorEl(anchorEl ? null : event.currentTarget);
@@ -174,8 +174,7 @@ export default function SimplePopper() {
 
                 </DialogTitle>
                     <DialogContent >
-
-                        <DialogEditUser/>
+                        <DialogEditUser setEmail={setEmail} setName={setName} setPassword={setPassword} setOpenEdit={setOpenEdit} setSurname={setSurname} user={user} />
 
                     </DialogContent>
             </Dialog>

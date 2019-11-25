@@ -1,44 +1,20 @@
-import React from 'react';
-import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogActions from "@material-ui/core/DialogActions";
-
-import DialogEditUser from "../DialogEditUser/DialogEditUser.js";
-import LoginModalBox from "../LoginModalBox/LoginModalBox.js";
+import React, {useEffect, useState} from 'react';
+import LoginButton from "../Buttons/LoginButton/LoginButton.js";
 import Viewinfo from "../Profile/Viewinfo.js";
-import RegisterFom from "../RegisterForm/RegisterFom.js";
+import RegisterButton from "../Buttons/RegisterButton/RegisterButton.js";
+
 
 function HomePageTopmenu() {
-    // HOOKS AND FUNCTIONS TO HANDLE DIALOG EVENT
-    const [openRegister, setOpenRegister] = React.useState(false);
-    const [openLogin, setOpenLogin] = React.useState(false);
+    const [visibility,setVisibility] = useState(true);
 
-
-    //TODO ANGEL: aplicar estilos loginmodalbox al resto de modals (makestyles)
-
-
-    //Register Handle
-
-    const handleClickOpenRegister = () =>  {
-        setOpenRegister(true);
-    };
-
-    const handleCloseRegister = () => {
-        setOpenRegister(false);
-    };
-
-
-    // LogIn Handle
-
-    const handleClickOpenLogin = () =>  {
-        setOpenLogin(true);
-    };
-
-    const handleCloseLogin = () => {
-        setOpenLogin(false);
-    };
+    useEffect(() => {
+        if(localStorage.getItem('token')){
+            setVisibility(true);
+        }
+        else{
+            setVisibility(false);
+        }
+    }, [])
 
     return (
         <div>
@@ -53,8 +29,11 @@ function HomePageTopmenu() {
                         </div>
                         {/* TODO Modificar boton del componente ViewInfo para que sea un div con una imagen dentro "cursor:pointer"*/}
                         <div class="col d-flex justify-content-end">
-                            <button class="register-btn-desktop" onClick={handleClickOpenRegister}>Register</button>
-                            <button class="login-btn-desktop" onClick={handleClickOpenLogin}>Login</button>
+                           /* {visibility ? (<Viewinfo/>) :
+                                (<div>
+                                <RegisterButton/>
+                                <LoginButton/>
+                            </div>)}*/
                             <Viewinfo/>
                         </div>
                     </div>
@@ -84,44 +63,6 @@ function HomePageTopmenu() {
                     </div>
                 </div>
             </div>
-
-            {/*Register Dialog*/}
-
-            <Dialog open={openRegister} onClose={handleCloseRegister} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">
-                    Register to Domingo
-                    <img className="CloseImg" onClick={handleCloseRegister} src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/close-icon.svg"/>
-
-                </DialogTitle>
-                <DialogContent >
-
-
-                    <RegisterFom/>
-
-                </DialogContent>
-            </Dialog>
-
-            {/*LogIn Dialog*/}
-
-            <Dialog open={openLogin} onClose={handleCloseLogin} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">
-                    Login User
-                    <img className="CloseImg" onClick={handleCloseLogin} src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/close-icon.svg"/>
-
-                </DialogTitle>
-                <DialogContent >
-                    <DialogContentText>
-
-                    </DialogContentText >
-
-                    <LoginModalBox/>
-                </DialogContent>
-                <DialogActions>
-
-
-                </DialogActions>
-            </Dialog>
-
         </div>
     );
 }

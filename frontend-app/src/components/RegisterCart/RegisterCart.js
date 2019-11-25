@@ -1,14 +1,7 @@
 import React from 'react';
 import './RegisterCart.css'
-import {withRouter} from "react-router-dom";
-import DialogEditUser from './DialogEditUser.js';
-
-
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import RegisterButton from "../Buttons/RegisterButton/RegisterButton";
+import LoginButton from "../Buttons/LoginButton/LoginButton";
 
 
 /* Aqui iniciarem el dialogue i crearem el form en un compoonent apart*/
@@ -46,34 +39,15 @@ function RegisterCart() {
                 {RegistrationCartFill.subtitle}
             </div>
             <div className="DomingoRegisterCartRegisterButton">
-                <button className="register-btn-desktop" onClick={handleClickOpen} >
 
-                    Register</button>
+                <RegisterButton/>
 
             </div>
-            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">
-                    Edit User
-                    <img className="CloseImg" onClick={handleClose} src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/close-icon.svg"/>
 
-                </DialogTitle>
-                <DialogContent >
-                    <DialogContentText>
-
-                    </DialogContentText >
-                    <DialogEditUser/>
-                </DialogContent>
-                <DialogActions>
-
-
-                </DialogActions>
-            </Dialog>
             <div className="DomingoRegisterCartText">
                 <span>{RegistrationCartFill.text}</span>
                 <span className="DomingoRegisterCardTextLogin">
-                <button class="search-btn-desktop">
-                    Login
-                </button>
+                    <LoginButton/>
             </span>
             </div>
             <div  className="DomingoRegisterCardImg" />

@@ -129,7 +129,7 @@ class UserController extends Controller
             //Rcoger los datos por Post
         $params_array = $request->all(); //sacar un Array
         $checkToken = $jwtAuth->checkToken($params_array['token']);
-        if( !empty($params_array)){
+        if($checkToken && !empty($params_array)){
 
             //Sacar usuario identificado
             $user = $jwtAuth->checkToken($params_array['token'], true);
@@ -186,10 +186,12 @@ class UserController extends Controller
         $users = User::all();
        return response()->json($users);
     }
-    public function showbyid($id)
+    public function showbytoken($token)
     {
-        $users = User::find($id);
-        return response()->json($users);
+        $jwtAuth = new \JwtAuth();
+        $user = $jwtAuth->checkToken($token, true);
+
+        return response()->json($user);
     }
 
 
