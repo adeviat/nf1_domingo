@@ -1,20 +1,45 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import LoginButton from "../Buttons/LoginButton/LoginButton.js";
 import Viewinfo from "../Profile/Viewinfo.js";
 import RegisterButton from "../Buttons/RegisterButton/RegisterButton.js";
-
+import {User} from "../Helpers/userReducer";
+import {get} from "../Helpers/ServerMethods";
 
 function HomePageTopmenu() {
-    const [visibility,setVisibility] = useState(true);
+
+    const [visibility,setVisibility] = useState(false);
+
+
+
+
+    const { state, dispatch } = useContext(User);
 
     useEffect(() => {
-        if(localStorage.getItem('token')){
+
+        if (localStorage.getItem('token')) {
+
+
+            get('/api/users/' + localStorage.getItem('token'))
+                .then(response => {
+
+                    return dispatch({
+                        type: 'SET_USER',
+                        payload: response
+                    });
+                });
+        }
+    },[]);
+
+
+    useEffect(() => {
+
+        if(state.token ){
             setVisibility(true);
         }
         else{
             setVisibility(false);
         }
-    }, [])
+    },[state]);
 
     return (
         <div>
@@ -29,12 +54,12 @@ function HomePageTopmenu() {
                         </div>
                         {/* TODO Modificar boton del componente ViewInfo para que sea un div con una imagen dentro "cursor:pointer"*/}
                         <div class="col d-flex justify-content-end">
-                           /* {visibility ? (<Viewinfo/>) :
+                            {visibility ? (<Viewinfo/>) :
                                 (<div>
                                 <RegisterButton/>
                                 <LoginButton/>
-                            </div>)}*/
-                            <Viewinfo/>
+                            </div>)}
+
                         </div>
                     </div>
 

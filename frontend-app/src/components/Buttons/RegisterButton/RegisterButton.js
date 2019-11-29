@@ -1,7 +1,7 @@
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import PermIdentityIcon from "@material-ui/core/SvgIcon/SvgIcon";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -15,6 +15,7 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 import  {post} from "../../Helpers/ServerMethods.js";
+import {User} from "../../Helpers/userReducer";
 
 
 export default function RegisterButton() {
@@ -26,6 +27,7 @@ export default function RegisterButton() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const {state, dispatch} = useContext(User);
 
     const data = {
         name: userName,
@@ -46,7 +48,11 @@ export default function RegisterButton() {
             .then(() =>{
                 post('api/user/login', dataLogin)
                     .then(response => {
-                        localStorage.setItem('loginToken',response.token );
+                        localStorage.setItem('token',response.token );
+                        return dispatch({
+                            type: 'SET_USER',
+                            payload: response
+                        });
                     });
             });
         handleCloseRegister();

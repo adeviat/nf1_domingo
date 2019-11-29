@@ -1,6 +1,7 @@
 
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import './LoginModalBox.css';
+import {User} from "../Helpers/userReducer";
 
 // REQUIRED BY MATERIAL-UI FORMS
 import 'typeface-roboto';
@@ -52,6 +53,7 @@ export default function LoginModalBox({setOpenLogin}) {
     };
 
     const [submit, setSubmit] = useState(false);
+    const {state, dispatch} = useContext(User);
 
 
     useEffect(() => {
@@ -61,8 +63,14 @@ export default function LoginModalBox({setOpenLogin}) {
         if(submit){
             post('api/user/login',data)
                 .then(response => {
-                    localStorage.setItem('loginToken',response.token );
+                    localStorage.setItem('token',response.token );
+
                     setOpenLogin(false);
+                    return dispatch({
+                        type: 'SET_USER',
+                        payload: response
+                    });
+
                 });
 
 

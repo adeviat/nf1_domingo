@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Popper from '@material-ui/core/Popper';
 import './Viewinfo.css';
@@ -11,6 +11,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogEditUser from "../DialogEditUser/DialogEditUser";
 import DialogActions from "@material-ui/core/DialogActions";
 import {get,put} from "../Helpers/ServerMethods";
+import {User} from "../Helpers/userReducer";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Input from "@material-ui/core/Input";
@@ -28,11 +29,11 @@ import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 export default function SimplePopper() {
 
     //const user = JSON.parse(localStorage.getItem('user'));
+    const {state, dispatch} = useContext(User);
 
-
-    const [name, setName] = useState('');
-    const [surname, setSurname] = useState('');
-    const [email, setEmail] = useState('');
+    const [name, setName] = useState( state.User.name);
+    const [surname, setSurname] = useState(state.User.surname);
+    const [email, setEmail] = useState(state.User.email);
     const [phone_number, setPhone_number] = useState();
     const [password, setPassword] = useState('');
     const [currentLocation, setCurrentLocation] = useState('');
@@ -40,6 +41,8 @@ export default function SimplePopper() {
     const [responseJson, setResponseJson] = useState("");
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [openEdit, setOpenEdit] = React.useState(false);
+
+    //HOOK PARA RECOGER EL USUARIO
 
 
 
@@ -63,24 +66,28 @@ export default function SimplePopper() {
     };
 
 
+    const handleLogOut = () =>{
+        dispatch({
+            type: 'LOG_OUT',
+            payload: ''
 
+        })
+    }
 
     //TODO: Realizar un POST con el token para recoger el usuario
     // para luego mostrar los datos de usuario
 
-    useEffect(() => {
+/*    useEffect(() => {
 
         if(anchorEl){
-            get('api/users/'+ localStorage.getItem('loginToken'))
-                .then(response => {
-                    setName (response.name );
-                    setSurname(response.surname);
-                    setEmail(response.email);
+                    setName (state.User.name );
+                    setSurname(state.User.surname);
+                    setEmail(state.User.email);
 
-                })
+
 
         }
-    }, [anchorEl]);
+    }, [anchorEl]);*/
 
 
 
@@ -93,6 +100,11 @@ export default function SimplePopper() {
         },
         fab: {
             margin: theme.spacing(1),
+            backgroundColor: '#ffc244',
+            border:'none',
+            cursor: 'pointer',
+            color: 'white'
+
         },
         extendedIcon: {
             marginRight: theme.spacing(1),
@@ -114,15 +126,16 @@ export default function SimplePopper() {
 
     return (
         <div>
-            <div class={"profilebutton"}>
-                <button aria-describedby={id} type="button" onClick={handleClick}>
-
+            <div className={classes.fab}>
+                <div aria-describedby={id}  onClick={handleClick} >
+                    <div> {state.User.name} {state.User.surname}</div>
+                    <div> {state.User.email}</div>
                     <div>
-                        <Fab color="primary" aria-label="add" className={classes.fab}>
-                            <FaceIcon/>
+                        <Fab color="primary" aria-label="add" >
+                            <PermIdentityIcon/>
                         </Fab>
                     </div>
-                </button>
+                </div>
             </div>
 
             <Popper id={id} open={open} anchorEl={anchorEl}>
@@ -133,11 +146,11 @@ export default function SimplePopper() {
                             <div className="profile_box">
                                 <div className="profile_edit"  onClick={handleClickOpenEdit}>Editar</div>
                                 <div className="profile_names">Nombre</div>
-                                <div className="profile_request">{name}</div>
+                                <div className="profile_request">{name} {state.User.surname}</div>
 
 
                                 <div className="profile_names">E-mail</div>
-                                <div className="profile_request">{email}</div>
+                                <div className="profile_request">{state.User.email}</div>
 
                             </div>
                             <div className="profile_box">
@@ -159,7 +172,7 @@ export default function SimplePopper() {
 
                             </div>
                             <div className="profile_box2">
-                                <div className="profile_logout">Cerrar sesion</div>
+                                <div className="profile_logout" onClick={handleLogOut}>Cerrar sesion</div>
                             </div>
                         </div>
                     </div>
