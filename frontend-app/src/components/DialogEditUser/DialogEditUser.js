@@ -1,9 +1,9 @@
 
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import './DialogEditUser.css';
 import '../LoginModalBox/LoginModalBox.css'
 import '../Helpers/ServerMethods.js'
-
+import {User} from "../Helpers/userReducer";
 
 
 // REQUIRED BY MATERIAL-UI FORMS
@@ -28,6 +28,7 @@ import {put} from "../Helpers/ServerMethods";
 export default function DialogEditUser({setName,setSurname,setEmail,setOpenEdit,setPassword,user}) {
 
     const [submit, setSubmit] = useState(false);
+    const {state, dispatch} = useContext(User);
     /*const [userName, setName] = useState(user.name);
     const [surname, setSurname] = useState(user.surname);
     const [email, setEmail] = useState(user.email);
@@ -41,8 +42,8 @@ export default function DialogEditUser({setName,setSurname,setEmail,setOpenEdit,
         surname: user.surname,
         //phonenumber: phoneNumber,
         email: user.email,
-        password: user.password,
-        token: localStorage.getItem('loginToken')
+        password: '',
+        token: localStorage.getItem('token')
 
     }
 
@@ -55,6 +56,10 @@ export default function DialogEditUser({setName,setSurname,setEmail,setOpenEdit,
                     setSurname(response.change.surname);
                     setEmail(response.change.email);
                     setOpenEdit(false);
+                    return dispatch({
+                        type:'SET_USER',
+                        payload: response.change
+                    })
                 })
         }
 

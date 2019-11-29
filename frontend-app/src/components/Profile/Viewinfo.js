@@ -31,9 +31,9 @@ export default function SimplePopper() {
     //const user = JSON.parse(localStorage.getItem('user'));
     const {state, dispatch} = useContext(User);
 
-    const [name, setName] = useState( state.User.name);
-    const [surname, setSurname] = useState(state.User.surname);
-    const [email, setEmail] = useState(state.User.email);
+    const [name, setName] = useState( '');
+    const [surname, setSurname] = useState('');
+    const [email, setEmail] = useState('');
     const [phone_number, setPhone_number] = useState();
     const [password, setPassword] = useState('');
     const [currentLocation, setCurrentLocation] = useState('');
@@ -42,20 +42,19 @@ export default function SimplePopper() {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [openEdit, setOpenEdit] = React.useState(false);
 
-    //HOOK PARA RECOGER EL USUARIO
-
-
+    useEffect(() => {
+        if(state.User){
+            setName(state.User.name);
+            setSurname(state.User.surname);
+            setEmail(state.User.email);
+        }
+    });
 
     const user = {
         name: name,
         surname: surname,
-        //phonenumber: phoneNumber,
-        email: email,
-        password: password,
-        token: localStorage.getItem('loginToken')
-
+        email: email
     }
-
 
     const handleClickOpenEdit = () =>  {
         setOpenEdit(true);
@@ -77,17 +76,6 @@ export default function SimplePopper() {
     //TODO: Realizar un POST con el token para recoger el usuario
     // para luego mostrar los datos de usuario
 
-/*    useEffect(() => {
-
-        if(anchorEl){
-                    setName (state.User.name );
-                    setSurname(state.User.surname);
-                    setEmail(state.User.email);
-
-
-
-        }
-    }, [anchorEl]);*/
 
 
 
@@ -128,10 +116,10 @@ export default function SimplePopper() {
         <div>
             <div className={classes.fab}>
                 <div aria-describedby={id}  onClick={handleClick} >
-                    <div> {state.User.name} {state.User.surname}</div>
-                    <div> {state.User.email}</div>
+                    <div> {name} {surname}</div>
+                    <div> {email}</div>
                     <div>
-                        <Fab color="primary" aria-label="add" >
+                        <Fab color="#ffc244" aria-label="add" >
                             <PermIdentityIcon/>
                         </Fab>
                     </div>
@@ -146,11 +134,11 @@ export default function SimplePopper() {
                             <div className="profile_box">
                                 <div className="profile_edit"  onClick={handleClickOpenEdit}>Editar</div>
                                 <div className="profile_names">Nombre</div>
-                                <div className="profile_request">{name} {state.User.surname}</div>
+                                <div className="profile_request">{name} {surname}</div>
 
 
                                 <div className="profile_names">E-mail</div>
-                                <div className="profile_request">{state.User.email}</div>
+                                <div className="profile_request">{email}</div>
 
                             </div>
                             <div className="profile_box">
@@ -187,7 +175,7 @@ export default function SimplePopper() {
 
                 </DialogTitle>
                     <DialogContent >
-                        <DialogEditUser setEmail={setEmail} setName={setName} setPassword={setPassword} setOpenEdit={setOpenEdit} setSurname={setSurname} user={user} />
+                        <DialogEditUser setEmail={setEmail} setName={setName} setPassword={setPassword} setOpenEdit={setOpenEdit} setSurname={setSurname}  user={user}/>
 
                     </DialogContent>
             </Dialog>
