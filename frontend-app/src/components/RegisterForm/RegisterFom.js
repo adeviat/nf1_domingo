@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import '../DialogEditUser/DialogEditUser.css';
-import '../LoginModalBox/LoginModalBox.css'
+import '../Buttons/LoginButton/LoginModalBox.css'
 
 
 
@@ -64,10 +64,8 @@ export default function RegisterFrom() {
                     }
                     return Promise.reject(response.status);
                 }).catch(error => {
-
                     setError(error);
-                    alert("sdf " + error);
-
+                    alert(+ error);
                 });
         };
 

@@ -1,7 +1,7 @@
 
 import React, {useEffect, useState} from 'react';
 import './DialogEditUser.css';
-import '../LoginModalBox/LoginModalBox.css'
+import '../Buttons/LoginButton/LoginModalBox.css'
 import '../Helpers/ServerMethods.js'
 
 
