@@ -1,4 +1,3 @@
-
 import React, {useEffect, useState} from 'react';
 import './LoginModalBox.css';
 
@@ -21,10 +20,6 @@ import {post} from "../Helpers/ServerMethods";
 
 export default function LoginModalBox({setOpenLogin}) {
 
-    //HOOKS FOR HANDLE LOGIN VISIBILITY
-
-
-
     // HOOKS AND FUNCTIONS TO UPDATE PASSWORD FIELD'S VISIBILITY
     const [password, setPassword] = React.useState({
         password: '',
@@ -32,11 +27,11 @@ export default function LoginModalBox({setOpenLogin}) {
     });
 
     const handleChange = prop => event => {
-        setPassword({ ...password, [prop]: event.target.value });
+        setPassword({...password, [prop]: event.target.value});
     };
 
     const handleClickShowPassword = () => {
-        setPassword({ ...password, showPassword: !password.showPassword });
+        setPassword({...password, showPassword: !password.showPassword});
     };
 
     const handleMouseDownPassword = event => {
@@ -53,21 +48,26 @@ export default function LoginModalBox({setOpenLogin}) {
 
     const [submit, setSubmit] = useState(false);
 
+    // HOOKS PARA MOSTRAR MENSAJE DE ERROR AL LOGUEARSE O NO
+    const [errorLogin, setErrorLogin] = useState(false);
 
+    // EFFECT PARA GUARDAR EL TOKEN Y CERRAR LA VENTANA
     useEffect(() => {
 
         setSubmit(false);
+        setErrorLogin(false);
 
-        if(submit){
-            post('api/user/login',data)
+        if (submit) {
+            post('api/user/login', data)
                 .then(response => {
-                    localStorage.setItem('loginToken',response.token );
-                    setOpenLogin(false);
-                });
-
-
+                    if (response === 200) {
+                        localStorage.setItem('loginToken', response.token);
+                        setOpenLogin(false);
+                    }
+                }).catch(err => {
+                    setErrorLogin(true);
+            });
         }
-
     }, [submit]);
 
 
@@ -88,7 +88,8 @@ export default function LoginModalBox({setOpenLogin}) {
                         <div className="field-input">
                             <FormControl fullWidth>
                                 <InputLabel htmlFor="email">Email</InputLabel>
-                                <Input id="email" type="email" value={userName} onChange={e => setName(e.target.value)}/>
+                                <Input id="email" type="email" value={userName}
+                                       onChange={e => setName(e.target.value)}/>
                             </FormControl>
                         </div>
                     </div>
@@ -111,7 +112,7 @@ export default function LoginModalBox({setOpenLogin}) {
                                                    onClick={handleClickShowPassword}
                                                    onMouseDown={handleMouseDownPassword}
                                                >
-                                                   {password.showPassword ? <Visibility /> : <VisibilityOff />}
+                                                   {password.showPassword ? <Visibility/> : <VisibilityOff/>}
                                                </IconButton>
                                            </InputAdornment>
                                        }
@@ -125,13 +126,18 @@ export default function LoginModalBox({setOpenLogin}) {
                         <a href="#">¿Has olvidado la contraseña?</a>
                     </p>
                 </div>
+                {errorLogin && <div className="margin-10 mt-4 errorLoginBox">
+                    <p>El usuario y/o la contraseña no son correctos.</p>
+                </div>
+                }
                 <div className="loginbtnbox">
                     <button className="loginbtn"
                             type='submit'
                             value="Sign in"
-                            onClick={() => setSubmit(true)}>Iniciar sesión con e-mail</button>
+                            onClick={() => setSubmit(true)}>Iniciar sesión con e-mail
+                    </button>
                 </div>
-                <div className="registerbtn" >
+                <div className="registerbtn">
                     <p>¿Eres nuevo usuario de Glovo? <a href="#">Regístrate</a></p>
                 </div>
             </div>
