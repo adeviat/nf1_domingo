@@ -1,9 +1,9 @@
 
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import './DialogEditUser.css';
 import '../Buttons/LoginButton/LoginModalBox.css'
 import '../Helpers/ServerMethods.js'
-
+import {User} from "../Helpers/userReducer";
 
 
 // REQUIRED BY MATERIAL-UI FORMS
@@ -25,29 +25,40 @@ import {put} from "../Helpers/ServerMethods";
 
 
 
-export default function DialogEditUser({setName,setSurname,setEmail,setOpenEdit,setPassword,user}) {
+export default function DialogEditUser({setOpenEdit, user}) {
 
     const [submit, setSubmit] = useState(false);
-    /*const [userName, setName] = useState(user.name);
+    const {state, dispatch} = useContext(User);
+    const [name, setName] = useState( user.name);
     const [surname, setSurname] = useState(user.surname);
     const [email, setEmail] = useState(user.email);
+    const [phone_number, setPhone_number] = useState();
     const [password, setPassword] = useState('');
-   //const [phoneNumber, setPhoneNumber] = useState(0);
-   //const [current_location, setCurrent_location] = useState('Barcelona');*!/
-*/
+    const [currentLocation, setCurrentLocation] = useState('');
 
-    const data = {
-        name: user.name,
-        surname: user.surname,
-        //phonenumber: phoneNumber,
-        email: user.email,
-        password: user.password,
-        token: localStorage.getItem('loginToken')
+   /* useEffect(()=>{
+        if(state.User){
+            setName(state.User.name);
+            setSurname(state.User.surname);
+            setEmail(state.User.email);
+        }
+    });*/
 
-    }
+
 
 
     useEffect(() =>{
+
+        const data = {
+            name: name,
+            surname: surname,
+            //phonenumber: phoneNumber,
+            email: email,
+            password: '',
+            token: localStorage.getItem('token')
+
+        }
+
         if(submit){
             put('api/user/update', data)
                 .then(response =>{
@@ -55,6 +66,10 @@ export default function DialogEditUser({setName,setSurname,setEmail,setOpenEdit,
                     setSurname(response.change.surname);
                     setEmail(response.change.email);
                     setOpenEdit(false);
+                    return dispatch({
+                        type:'UPDATE_USER',
+                        payload: response
+                    })
                 })
         }
 
@@ -92,7 +107,7 @@ export default function DialogEditUser({setName,setSurname,setEmail,setOpenEdit,
                             <div className="field-input">
                                 <FormControl fullWidth>
                                     <InputLabel htmlFor="text">Name</InputLabel>
-                                    <Input  id="text" type="text"value={user.name}
+                                    <Input  id="text" type="text"value={name}
                                            onChange={e => setName(e.target.value)}/>
                                 </FormControl>
                             </div>
@@ -104,7 +119,7 @@ export default function DialogEditUser({setName,setSurname,setEmail,setOpenEdit,
                             <div className="field-input">
                                 <FormControl fullWidth>
                                     <InputLabel htmlFor="text">Surame</InputLabel>
-                                    <Input  id="text" type="text"value={user.surname}
+                                    <Input  id="text" type="text"value={surname}
                                            onChange={e => setSurname(e.target.value)}/>
                                 </FormControl>
                             </div>
@@ -116,7 +131,7 @@ export default function DialogEditUser({setName,setSurname,setEmail,setOpenEdit,
                             <div className="field-input">
                                 <FormControl fullWidth>
                                     <InputLabel htmlFor="email">Email</InputLabel>
-                                    <Input  id="email" type="email"value={user.email}
+                                    <Input  id="email" type="email"value={email}
                                            onChange={e => setEmail(e.target.value)}/>
                                 </FormControl>
                             </div>

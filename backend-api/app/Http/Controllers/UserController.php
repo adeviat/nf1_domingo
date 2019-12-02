@@ -189,9 +189,16 @@ class UserController extends Controller
     public function showbytoken($token)
     {
         $jwtAuth = new \JwtAuth();
-        $user = $jwtAuth->checkToken($token, true);
+        $data = array(
+            'code' => 200,
+            'token' => $token,
+            'user' => $jwtAuth->checkToken($token, true)
 
-        return response()->json($user);
+
+        );
+
+
+        return response()->json($data);
     }
 
 
