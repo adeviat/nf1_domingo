@@ -74,17 +74,20 @@ export const get = async (url) => {
         mode: 'cors',
     };
 
-    return fetch('http://127.0.0.1/'+url, options)
-        .then(response => {
+    const data =   await fetch('http://127.0.0.1/'+url, options)
+                            .then(  response => {
 
-            if(response.status === 200) {
-                console.log(response.statusText);
-                return response.json();
-            }
+                                if(response.status === 200) {
+                                    console.log(response.statusText);
+                                    return response;
+                                }
 
-            console.log(response.statusText);
-            return Promise.reject(response.status);
-        })
+                                console.log(response.statusText);
+                                Promise.reject(response.status);
+                            });
+    const dataJSON = await data.json();
+
+    return dataJSON;
 
 };
 
