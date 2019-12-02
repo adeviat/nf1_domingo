@@ -9,16 +9,11 @@ function HomePageTopmenu() {
 
     const [visibility,setVisibility] = useState(false);
 
-
-
-
     const { state, dispatch } = useContext(User);
 
     useEffect(() => {
 
         if (localStorage.getItem('token')) {
-
-
             get('/api/users/' + localStorage.getItem('token'))
                 .then(response => {
 
@@ -44,44 +39,44 @@ function HomePageTopmenu() {
     return (
         <div>
             {/* header desktop */}
-            <div class="container-fluid d-none d-md-flex header-desktop">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <button class="search-btn-desktop"><img
+            <div className="container-fluid d-none d-md-flex header-desktop">
+                <div className="container">
+                    <div className="row">
+                        <div className="col">
+                            <button className="search-btn-desktop"><img
                                 src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/search.svg"
                                 alt="Lupa"/>What do you need?</button>
                         </div>
                         {/* TODO Modificar boton del componente ViewInfo para que sea un div con una imagen dentro "cursor:pointer"*/}
-                        <div class="col d-flex justify-content-end">
-                            {visibility ? (<Viewinfo/>) :
-                                (<div>
+
+                        {visibility ? (<Viewinfo/>) :
+                                (<div className="col d-flex justify-content-end">
                                 <RegisterButton/>
                                 <LoginButton/>
                             </div>)}
 
-                        </div>
+
                     </div>
 
                 </div>
             </div>
 
             {/* header mobile */}
-            <div class="container-fluid d-flex d-md-none header-mobile">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-2 d-flex align-items-center">
-                            <button class="login-btn-mobile"><img
+            <div className="container-fluid d-flex d-md-none header-mobile">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-2 d-flex align-items-center">
+                            <button className="login-btn-mobile"><img
                                 src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/svg/menu.svg"
                                 alt="Login"/></button>
                         </div>
-                        <div class="col-8 d-flex justify-content-center align-items-center">
-                            <button class="city-selector-mobile">Barcelona <img
+                        <div className="col-8 d-flex justify-content-center align-items-center">
+                            <button className="city-selector-mobile">Barcelona <img
                                 src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/landing/dropdown.svg"
                                 alt="Escoger ciudad" width="14px"/></button>
                         </div>
-                        <div class="col-2 d-flex justify-content-end align-items-center">
-                            <button class="search-btn-mobile"><img
+                        <div className="col-2 d-flex justify-content-end align-items-center">
+                            <button className="search-btn-mobile"><img
                                 src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/search_mint.svg"
                                 alt="Buscar" width="22px"/></button>
                         </div>

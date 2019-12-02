@@ -164,9 +164,9 @@ export default function DialogEditUser({setOpenEdit, user}) {
                             </div>
                         </div>
                     </form>
-                    <div className="SubmitButton">
-                        <button onClick={() => setSubmit(true)} className="register-btn-desktop">
-                                Submit
+                    <div className="loginbtnbox">
+                        <button onClick={() => setSubmit(true)} className="SubmitButton">
+                            Submit
                         </button>
                     </div>
         </div>

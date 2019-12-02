@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import '../../HomePage/bootstrap.min.css';
 import './LoginModalBox.css';
 
@@ -23,12 +23,19 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import {post} from "../../Helpers/ServerMethods";
+import {User} from "../../Helpers/userReducer";
+
 
 
 export default function LoginButton() {
 
+    //HOOK PARA RECOGER EL USUARIO
+    const {state, dispatch} = useContext(User);
+
     // HOOK PARA CONTROLAR LA VISIBILIDAD DEL DIALOG
     const [openLogin, setOpenLogin] = React.useState(false);
+
+
 
     // HOOKS AND FUNCTIONS TO UPDATE PASSWORD FIELD'S VISIBILITY
     const [password, setPassword] = React.useState({
@@ -73,7 +80,11 @@ export default function LoginButton() {
                 .then(response => {
                     if (response.code === 200) {
                         setOpenLogin(false);
-                        localStorage.setItem('loginToken', response.token);
+                        localStorage.setItem('token', response.token);
+                        return dispatch({
+                            type: 'SET_USER',
+                            payload: response
+                        });
                     }
                 }).catch(err => {
                 setErrorLogin(true);

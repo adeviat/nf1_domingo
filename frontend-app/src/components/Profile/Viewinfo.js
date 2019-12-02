@@ -9,6 +9,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogEditUser from "../DialogEditUser/DialogEditUser";
+import 'typeface-roboto';
 import DialogActions from "@material-ui/core/DialogActions";
 import {get,put} from "../Helpers/ServerMethods";
 import {User} from "../Helpers/userReducer";
@@ -89,11 +90,14 @@ export default function SimplePopper() {
             border:'none',
             cursor: 'pointer',
             color: 'white',
-            display: 'flex'
+            textAlign: 'right',
+            fontWeight: '600'
+
+
 
         },
         extendedIcon: {
-            marginRight: theme.spacing(1),
+            marginLeft: theme.spacing(1),
         },
 
     }));
@@ -114,12 +118,16 @@ export default function SimplePopper() {
         <div>
             <div className={classes.fab}>
                 <div aria-describedby={id}  onClick={handleClick} >
-                    <div> {name} {surname}</div>
-                    <div> {email}</div>
-                    <div>
-                        <Fab color="#ffc244" aria-label="add" >
-                            <PermIdentityIcon/>
-                        </Fab>
+                    <div className="col d-flex justify-content-end">
+                        <div>
+                            <div> {name} {surname}</div>
+                            <div> {email}</div>
+                        </div>
+                        <div className={classes.extendedIcon} >
+                            <Fab color={'secondary'} aria-label="add" >
+                                <PermIdentityIcon/>
+                            </Fab>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -169,7 +177,11 @@ export default function SimplePopper() {
             <Dialog open={openEdit} onClose={handleCloseEdit} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">
                     Edit User
-                    <img className="CloseImg" onClick={handleCloseEdit} src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/close-icon.svg"/>
+                    <div className="closebtnbox">
+                        <button className="closebtn" onClick={handleCloseEdit}>
+                            <img src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/close-icon.svg"/>
+                        </button>
+                    </div>
 
                 </DialogTitle>
                     <DialogContent >

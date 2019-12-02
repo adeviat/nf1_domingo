@@ -64,7 +64,7 @@ export default function LoginModalBox({setOpenLogin}) {
             post('api/user/login',data)
                 .then(response => {
                     localStorage.setItem('token',response.token );
-
+                    debugger;
                     setOpenLogin(false);
                     return dispatch({
                         type: 'SET_USER',
