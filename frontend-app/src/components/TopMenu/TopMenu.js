@@ -46,24 +46,24 @@ export default function TopMenu() {
                             src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/svg/menu.svg"
                             alt="Orders"
                             className="orders-img-mobile" />
-                        </div>
-                        <div className="col-6 d-flex justify-content-center align-items-center">
-                            <img src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/logo_auth.svg"
-                                 alt="Glovo logo" className="logo-img-mobile"/>
-                        </div>
-                        <div className="col-3 d-flex justify-content-end align-items-center">
-                            <img
-                                src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/search_mint.svg"
-                                alt="Buscar"
-                                className="search-img-mobile"/>
-                        </div>
-                        </div>
                     </div>
-
-
+                    <div className="col-6 d-flex justify-content-center align-items-center">
+                        <img src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/logo_auth.svg"
+                             alt="Glovo logo" className="logo-img-mobile"/>
+                    </div>
+                    <div className="col-3 d-flex justify-content-end align-items-center">
+                        <img
+                            src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/search_mint.svg"
+                            alt="Buscar"
+                            className="search-img-mobile"/>
+                    </div>
                 </div>
+            </div>
 
 
-                );
+        </div>
+
+
+    );
 }
 

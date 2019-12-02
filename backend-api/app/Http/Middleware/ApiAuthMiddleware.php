@@ -19,6 +19,7 @@ class ApiAuthMiddleware
         $token = $request->header('Authorization');
         $jwtAuth = new \JwtAuth();
         $checkToken = $jwtAuth->checkToken($token);
+
         if ($checkToken) {
 
             return $next($request);

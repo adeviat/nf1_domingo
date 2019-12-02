@@ -46,7 +46,7 @@ class User extends Authenticatable
      */
 //Relacion de uno a muchos
     public function orders(){
-        return $this->hasMany('App\Order');
+        return $this->hasMany('App\Product');
     }
 
     protected $casts = [

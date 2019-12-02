@@ -2,10 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import DomingoSignIn from './components/DomingoSignIn/DomingoSignIn'
-import DialogEditUser from './components/DialogEditUser/DialogEditUser.js'
-import HomePage from'./components/HomePage/HomePage.js'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter} from "react-router-dom";
 import App from "./App";
 

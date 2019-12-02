@@ -7,11 +7,16 @@ import DialogActions from "@material-ui/core/DialogActions";
 
 import DialogEditUser from "../DialogEditUser/DialogEditUser.js";
 import LoginModalBox from "../LoginModalBox/LoginModalBox.js";
+import Viewinfo from "../Profile/View INFO/Viewinfo";
+import RegisterFom from "../RegisterForm/RegisterFom";
 
 function HomePageTopmenu() {
     // HOOKS AND FUNCTIONS TO HANDLE DIALOG EVENT
     const [openRegister, setOpenRegister] = React.useState(false);
     const [openLogin, setOpenLogin] = React.useState(false);
+
+
+    //TODO ANGEL: aplicar estilos loginmodalbox al resto de modals (makestyles)
 
 
     //Register Handle
@@ -46,9 +51,11 @@ function HomePageTopmenu() {
                                 src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/search.svg"
                                 alt="Lupa"/>What do you need?</button>
                         </div>
+                        {/* TODO Modificar boton del componente ViewInfo para que sea un div con una imagen dentro "cursor:pointer"*/}
                         <div class="col d-flex justify-content-end">
                             <button class="register-btn-desktop" onClick={handleClickOpenRegister}>Register</button>
                             <button class="login-btn-desktop" onClick={handleClickOpenLogin}>Login</button>
+                            <Viewinfo/>
                         </div>
                     </div>
 
@@ -78,24 +85,17 @@ function HomePageTopmenu() {
                 </div>
             </div>
 
-            {/*Regisater Dialog*/}
+            {/*Register Dialog*/}
 
             <Dialog open={openRegister} onClose={handleCloseRegister} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">
-                    Edit User
+                    Register to Domingo
                     <img className="CloseImg" onClick={handleCloseRegister} src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/close-icon.svg"/>
 
                 </DialogTitle>
                 <DialogContent >
-                    <DialogContentText>
-
-                    </DialogContentText >
-                    <DialogEditUser/>
+                <RegisterFom/>
                 </DialogContent>
-                <DialogActions>
-
-
-                </DialogActions>
             </Dialog>
 
             {/*LogIn Dialog*/}

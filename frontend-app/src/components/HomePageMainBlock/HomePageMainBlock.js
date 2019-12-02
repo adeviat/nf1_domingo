@@ -30,10 +30,12 @@ function HomePageMainBlock() {
                                 src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/caydhj0ofggm5hybmdnf"
                                 alt="Pharmacy" width="65px"/><p>Pharmacy</p>
                         </div>
+
                         <div class="d-flex flex-column justify-content-center align-items-center category-btn">
-                            <img
+                            <a href='Restaurant'><img
                                 src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/prj0mlcuvmymzfh8pqjz"
                                 alt="Food" width="65px"/><p>Food</p>
+                        </a>
                         </div>
                         <div class="d-flex flex-column justify-content-center align-items-center category-btn">
                             <img

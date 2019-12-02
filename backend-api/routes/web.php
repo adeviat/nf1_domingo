@@ -11,6 +11,9 @@
 |
 */
 
+//cargando clases
+use App\Http\Middleware\ApiAuthMiddleware;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,9 +26,11 @@ Route::post('/api/user/register', 'UserController@register');
 Route::post('/api/user/login', 'UserController@login');
 Route::put('/api/user/update', 'UserController@update');
 Route::get('/api/users', 'UserController@show');
-Route::get('/api/users/{id}', 'UserController@showbyid');
-//Route::get('profile', 'UserController@getAuthenticatedUser');
+//Route::get('/api/users/{id}', 'UserController@showbyid');
+Route::get('/api/user/profile/{id}', 'UserController@profile');
+Route::post('api/user/uploade', 'UserController@upload')->middleware(ApiAuthMiddleware::class);
+//Ctegories
 
+Route::resource('/api/category', 'CategoryController');
 
-Route::get('/test-orm', 'PruebasController@testOrm');
 

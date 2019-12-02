@@ -14,6 +14,7 @@ import Twitter from "./Twitter";
 import Instagram from "./Instagram";
 import HomePage from "../../HomePage/HomePage";
 import App from "../../../App";
+import Restaurant from "../../ProductsContainer/components/Restaurant";
 
 const Routes = () =>{
    return(
@@ -34,6 +35,8 @@ const Routes = () =>{
             <Route path= '/HomePage' component={HomePage} />
             <Route path= '/HeaderLogo' component={HomePage} />
             <Route path= '/App' component={App} />
+            <Route path= '/Restaurant' component={Restaurant} />
+
 
            <Switch>
              <Redirect from= "/" to= "/HomePage"/>

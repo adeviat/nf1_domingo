@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "name": "Pizza Super Papa Grande",
+    "image": "img/436572527.jpeg",
+    "extraInfo": "Salsa de tomate natural, pepperoni, carne de cerdo especiada, jamón cocido, champiñone",
+    "price": 16.2
+  },
+  {
+    "id": 2,
+    "name": "Pizza Seis Quesos Grande",
+    "image": "img/436572536.jpeg",
+    "extraInfo": "Salsa de tomate natural, mezcla de seis quesos (provolone, parmesano, romano, fontina, asiago y mozzarella) y un toque de especias italianas.",
+    "price": 16.55
+  },
+  {
+    "id": 3,
+    "name": "Personalizar Pizza Barbacoa Crema Grande",
+    "image": "img/436572551.jpeg",
+    "extraInfo": "Mezcla de nuestra salsas barbacoa y carbonara con rodajas de tomate fresco, bacon, pollo a la parrilla, cebolla fresca y queso mozzarella.",
+    "price": 16.55
+  },
+  {
+    "id": 4,
+    "name": "Personalizar Pizza Vegetariana Grande",
+    "image": "img/436572571.jpeg",
+    "extraInfo": "Salsa de tomate natural, cebolla fresca, pimiento verde, champiñones portobello, aceitunas negras, rodajas de tomate fresco y queso mozzarella.",
+    "price": 16.99
+  },
+  {
+    "id": 5,
+    "name": "Personalizar Pizza por mitades, Mediana (Masa Fina)",
+    "image": "img/436572591.jpeg",
+    "extraInfo": "Crea tu pizza eligiendo dos de nuestras especialidades.",
+    "price": 13.65
+  },
+  {
+    "id": 6,
+    "name": "Personalizar Pizza por mitades, Mediana (Masa Original)",
+    "image": "img/436572607.jpeg",
+    "extraInfo": "Crea tu pizza eligiendo dos de nuestras especialidades.",
+    "price": 13.7
+  },
+  {
+    "id": 7,
+    "name": "Personalizar Pizza Pollo BBQ Mediana\n",
+    "image": "img/436572620.jpeg",
+    "extraInfo": "Deliciosa salsa barbacoa con bacon, pollo, cebolla fresca y queso mozzarella",
+    "price": 13.55
+  },
+  {
+    "id": 8,
+    "name": "Personalizar Combo Mediano",
+    "image": "img/436572626.jpeg",
+    "extraInfo": "1 pizza mediana + 1 entrante + 2 bebidas (50cl)",
+    "price": 20.05
+  },
+  {
+    "id": 9,
+    "name": "Personalizar Pizza Cabra Balsámica Mediana",
+    "image": "img/436572656.jpeg",
+    "extraInfo": "Cremosa salsa carbonara, pollo, queso de cabra, cebolla caramelizada, champiñones, salsa de vinagre balsámico y queso mozzarella",
+    "price": 14.05
+  },
+  {
+    "id": 10,
+    "name": "Personalizar Combo Grande Premium\n",
+    "image": "img/436572660.jpeg",
+    "extraInfo": "1 pizza grande + 1 entrante + 1 bebidas (1 L)",
+    "price": 23.05
+  },
+  {
+    "id": 11,
+    "name": "Personalizar Pizza Blue Cheese & Pulled Beef Grande",
+    "image": "img/carbonara.png",
+    "extraInfo": "Salsa barbacoa, pulled beef, cebolla caramelizada, queso azul y queso mozzarella",
+    "price": 17.95
+  },
+  {
+    "id": 12,
+    "name": "Personalizar Pizza Pollo Caprese Mediana",
+    "image": "img/bbq.png",
+    "extraInfo": "Salsa de tomate natural, pollo, tomate cherry, salsa pesto italiano y queso mozzarella",
+    "price": 14.05
+  }
+]
