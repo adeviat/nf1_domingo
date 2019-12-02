@@ -39,6 +39,9 @@ export const User = React.createContext();
 
 function reducer(state = initialState, action) {
     switch (action.type) {
+        case 'UPDATE_USER':
+
+            return { state, User: action.payload.change, token: action.payload.change.token };
         case 'SET_USER':
 
             return { state, User: action.payload.user, token: action.payload.token };

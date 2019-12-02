@@ -19,10 +19,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
 
 // ICON IMPORTATION
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import MailOutlineIcon from '@material-ui/icons/MailOutline';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 
 
@@ -91,7 +88,8 @@ export default function SimplePopper() {
             backgroundColor: '#ffc244',
             border:'none',
             cursor: 'pointer',
-            color: 'white'
+            color: 'white',
+            display: 'flex'
 
         },
         extendedIcon: {
@@ -175,7 +173,7 @@ export default function SimplePopper() {
 
                 </DialogTitle>
                     <DialogContent >
-                        <DialogEditUser setEmail={setEmail} setName={setName} setPassword={setPassword} setOpenEdit={setOpenEdit} setSurname={setSurname}  user={user}/>
+                        <DialogEditUser setOpenEdit={setOpenEdit} user={user}/>
 
                     </DialogContent>
             </Dialog>
