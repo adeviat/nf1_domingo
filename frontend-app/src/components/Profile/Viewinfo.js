@@ -22,6 +22,7 @@ import IconButton from "@material-ui/core/IconButton";
 // ICON IMPORTATION
 
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+import DialogEditPassword from "../DialogEditPassword/DialogEditPassword";
 
 
 export default function SimplePopper() {
@@ -38,7 +39,9 @@ export default function SimplePopper() {
 
     const [responseJson, setResponseJson] = useState("");
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [openEdit, setOpenEdit] = React.useState(false);
+    const [openEdit, setOpenEdit] = React.useState(false)
+    const [openEditPass, setOpenEditPass] = React.useState(false);
+
 
     useEffect(() => {
         if(state.User){
@@ -57,11 +60,16 @@ export default function SimplePopper() {
     const handleClickOpenEdit = () =>  {
         setOpenEdit(true);
     };
+    const handleClickOpenEditPass = () =>  {
+        setOpenEditPass(true);
+    };
 
     const handleCloseEdit = () => {
         setOpenEdit(false);
     };
-
+    const handleCloseEditPass = () => {
+        setOpenEditPass(false);
+    };
 
     const handleLogOut = () =>{
         dispatch({
@@ -154,7 +162,7 @@ export default function SimplePopper() {
 
                             </div>
                             <div className="profile_box">
-
+                                <div className="profile_edit"  onClick={handleClickOpenEditPass}>Editar</div>
                                 <div className="profile_names">Contraseña</div>
                                 <div className="profile_request">{password}</div>
 
@@ -188,6 +196,22 @@ export default function SimplePopper() {
                         <DialogEditUser setOpenEdit={setOpenEdit} user={user}/>
 
                     </DialogContent>
+            </Dialog>
+            {/* Edit Pass Dialog */}
+            <Dialog open={openEditPass} onClose={handleCloseEditPass} aria-labelledby="form-dialog-title">
+                <DialogTitle id="form-dialog-title">
+                    Edit User
+                    <div className="closebtnbox">
+                        <button className="closebtn" onClick={handleCloseEditPass}>
+                            <img src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/close-icon.svg"/>
+                        </button>
+                    </div>
+
+                </DialogTitle>
+                <DialogContent >
+                    <DialogEditPassword setOpenEditPass={setOpenEditPass} />
+
+                </DialogContent>
             </Dialog>
         </div>
     );

@@ -160,12 +160,13 @@ class UserController extends Controller
             //Actualisar el usuario en la base de datos
             $user_update = User::where('id', $user->id)->update($userData);
 
+
             //Devolver array con resultado
 
             $data = array(
                 'code' => 200,
                 'status' => 'succes',
-                'user' => $user,
+                'user' => $new_user,
                 'change' => $params_array
 
             );
@@ -201,6 +202,65 @@ class UserController extends Controller
         return response()->json($data);
     }
 
+    public function updatePassword(Request $request){
 
+        //Comprobar si el usuario se está identificado
+        // $token = $request->header('Authorization');
+        $jwtAuth = new \JwtAuth();
+        // $checkToken = $jwtAuth->checkToken($token);
+
+        //Rcoger los datos por Post
+        $params_array = $request->all(); //sacar un Array
+        $checkToken = $jwtAuth->checkToken($params_array['token']);
+        if($checkToken && !empty($params_array)){
+
+            //Sacar usuario identificado
+            $user = $jwtAuth->checkToken($params_array['token'], true);
+
+            //Validar datos
+            $validate = \Validator::make($params_array, [
+                'password' => 'required|confirmed',
+                'password_confirmation' => 'required|same:password'
+            ]);
+
+            //Quitar campos que no quiero actualisar
+
+            unset($params_array['id']);
+            unset($params_array['created_at']);
+            unset($params_array['name']);
+            unset($params_array['surname']);
+            //unset($params_array['email']);
+
+            $userData = array(
+
+                'password' => hash('sha256', $params_array['password']),
+
+            );
+
+            //Actualisar el usuario en la base de datos
+            $user_update = User::where('id', $user->id)->update($userData);
+            $new_user = $jwtAuth->checkToken($params_array['token'], true);
+            //Devolver array con resultado
+            $signup = $jwtAuth->signup($user->email, $userData);
+            $params_array['token'] = $signup;
+            $data = array(
+                'code' => 200,
+                'status' => 'succes',
+                'user' => $new_user,
+                'change' => $params_array
+
+            );
+
+
+        }else{
+            $data = array(
+                'code' => 400,
+                'status' => 'error',
+                'massage' => 'El usuario no esta identificado.'
+
+            );
+        }
+        return response()->json($data, $data['code']);
+    }
 }
 
