@@ -17,6 +17,10 @@ import {User} from "../Helpers/userReducer";
 
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import DialogEditPassword from "../DialogEditPassword/DialogEditPassword";
+import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import {green} from "@material-ui/core/colors";
+import {ThemeProvider} from "@material-ui/styles";
+
 
 
 export default function SimplePopper() {
@@ -104,6 +108,13 @@ export default function SimplePopper() {
         },
 
     }));
+    const theme = createMuiTheme({
+        palette: {
+            secondary: {
+                main:'#00a082'
+            }
+        },
+    });
 
 
     const classes = useStyles();
@@ -127,9 +138,11 @@ export default function SimplePopper() {
                             <div> {email}</div>
                         </div>
                         <div className={classes.extendedIcon} >
-                            <Fab color={'secondary'} aria-label="add" >
-                                <PermIdentityIcon/>
-                            </Fab>
+                            <ThemeProvider theme={theme}>
+                                <Fab color={'secondary'} aria-label="add" >
+                                    <PermIdentityIcon/>
+                                </Fab>
+                            </ThemeProvider>
                         </div>
                     </div>
                 </div>
