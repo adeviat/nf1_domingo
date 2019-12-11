@@ -66,7 +66,7 @@ export default function RegisterButton() {
                     post('api/user/login', dataLogin)
                         .then(response => {
 
-                            localStorage.setItem('token',response.token );
+                            //localStorage.setItem('token',response.token );
                             setOpenRegister(false);
                             return dispatch({
                                 type: 'SET_USER',

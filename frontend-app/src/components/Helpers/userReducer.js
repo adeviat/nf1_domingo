@@ -4,33 +4,11 @@ import{get} from "./ServerMethods";
 
 
 
-//
- /*const getinitialState =  () => {
 
-     if(localStorage.getItem('token')){
-
-
-         get('/api/users/' +localStorage.getItem('token'))
-             .then(response => {
-
-             return {
-                 User: response.user,
-                 token:localStorage.getItem('token')
-             }
-         });
-
-
-     }
-     else {
-         return{
-             User: {},
-             token: ''
-         }
-     }
- };*/
 const initialState =  {
     User: {},
-    token: ''
+    token: localStorage.getItem('token') || '',
+
 };
 
 export const User = React.createContext();
@@ -40,14 +18,15 @@ export const User = React.createContext();
 function reducer(state = initialState, action) {
     switch (action.type) {
         case 'UPDATE_USER':
+            localStorage.setItem('token', action.payload.change.token);
 
-            return { state, User: action.payload.change, token: action.payload.change.token };
+            return { ...state, User: action.payload.change, token: action.payload.change.token };
         case 'SET_USER':
-
-            return { state, User: action.payload.user, token: action.payload.token };
+            localStorage.setItem('token', action.payload.token);
+            return { ...state, User: action.payload.user, token: action.payload.token };
         case 'LOG_OUT':
             localStorage.clear();
-            return { state, User: {}, token: '' };
+            return { ...state, User: {}, token: '' };
 
         default:
             return state;
@@ -65,6 +44,3 @@ export function UserProvider(props) {
     );
 }
 
-//Acciones Get y Set
-
-//

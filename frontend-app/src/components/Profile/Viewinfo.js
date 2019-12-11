@@ -10,14 +10,8 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogEditUser from "../DialogEditUser/DialogEditUser";
 import 'typeface-roboto';
-import DialogActions from "@material-ui/core/DialogActions";
-import {get,put} from "../Helpers/ServerMethods";
 import {User} from "../Helpers/userReducer";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-import Input from "@material-ui/core/Input";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import IconButton from "@material-ui/core/IconButton";
+
 
 // ICON IMPORTATION
 
@@ -48,6 +42,7 @@ export default function SimplePopper() {
             setName(state.User.name);
             setSurname(state.User.surname);
             setEmail(state.User.email);
+
         }
     });
 
@@ -164,7 +159,7 @@ export default function SimplePopper() {
                             <div className="profile_box">
                                 <div className="profile_edit"  onClick={handleClickOpenEditPass}>Editar</div>
                                 <div className="profile_names">Contraseña</div>
-                                <div className="profile_request">{password}</div>
+                                <div className="profile_request" >{password}</div>
 
                             </div>
                             <div className="profile_box">

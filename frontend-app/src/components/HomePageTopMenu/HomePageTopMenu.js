@@ -14,7 +14,7 @@ function HomePageTopmenu() {
     useEffect(() => {
 
         if (localStorage.getItem('token')) {
-            get('/api/users/' + localStorage.getItem('token'))
+            get('/api/users/' + state.token)
                 .then(response => {
 
                     return dispatch({

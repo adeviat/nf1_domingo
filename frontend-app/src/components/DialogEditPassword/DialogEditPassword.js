@@ -66,7 +66,7 @@ export default function DialogEditPassword({setOpenEditPass}){
                     setPassword(response.change.password);
                     setOpenEditPass(false);
                     return dispatch({
-                        type: 'UPDATE_USER',
+                        type: 'SET_USER',
                         payload: response
                     })
                 })

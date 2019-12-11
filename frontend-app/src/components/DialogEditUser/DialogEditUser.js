@@ -54,20 +54,20 @@ export default function DialogEditUser({setOpenEdit, user}) {
             //phonenumber: phoneNumber,
             email: email,
             password: '',
-            token: localStorage.getItem('token')
+            token: state.token
 
         }
 
         if(submit){
             put('api/user/update', data)
                 .then(response =>{
-                    setName(response.change.name);
-                    setSurname(response.change.surname);
-                    setEmail(response.change.email);
+                    setName(response.user.name);
+                    setSurname(response.user.surname);
+                    setEmail(response.user.email);
                     //setPassword(response.change.password);
                     setOpenEdit(false);
                     return dispatch({
-                        type:'UPDATE_USER',
+                        type:'SET_USER',
                         payload: response
                     })
                 })
