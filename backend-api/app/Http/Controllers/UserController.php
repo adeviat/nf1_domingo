@@ -33,7 +33,7 @@ class UserController extends Controller
                 $data = array(
                     'status' => 'error',
                     'code' => 404,
-                    'mensage' => 'El usuario no se ha creado',
+                    'message' => 'El usuario no se ha creado',
                     'errors' => $validate->errors()
                 );
 
@@ -126,7 +126,7 @@ class UserController extends Controller
         $jwtAuth = new \JwtAuth();
        // $checkToken = $jwtAuth->checkToken($token);
 
-            //Rcoger los datos por Post
+            //Recoger los datos por Post
         $params_array = $request->all(); //sacar un Array
         $checkToken = $jwtAuth->checkToken($params_array['token']);
         if($checkToken && !empty($params_array)){
@@ -142,7 +142,7 @@ class UserController extends Controller
 
             ]);
 
-            //Quitar campos que no quiero actualisar
+            //Quitar campos que no quiero actualizar
 
             unset($params_array['id']);
             unset($params_array['password']);
@@ -157,14 +157,14 @@ class UserController extends Controller
 
             );
 
-            //Actualisar el usuario en la base de datos
+            //Actualizar el usuario en la base de datos
             $user_update = User::where('id', $user->id)->update($userData);
 
             //Devolver array con resultado
 
             $data = array(
                 'code' => 200,
-                'status' => 'succes',
+                'status' => 'success',
                 'user' => $user,
                 'change' => $params_array
 

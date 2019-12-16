@@ -27,6 +27,12 @@ Route::get('/api/users', 'UserController@show');
 Route::get('/api/users/{token}', 'UserController@showbytoken');
 //Route::get('profile', 'UserController@getAuthenticatedUser');
 
+Route::post('/api/product/register', 'ProductController@register');
+Route::get('/api/products', 'ProductController@show');
+Route::get('/api/product/{id}', 'ProductController@showProductById');
+Route::put('/api/product/update', 'ProductController@update');
+Route::delete('/api/product/{id}', 'ProductController@deleteProductById');
+
 
 Route::get('/test-orm', 'PruebasController@testOrm');
 
