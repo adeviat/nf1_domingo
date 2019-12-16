@@ -101,7 +101,7 @@ class UserController extends Controller
             $pwd = hash('sha256', $params_array['password']);
             //Devolver token o datos
             $signup = $JwtAuth->signup($params_array['email'], $pwd);
-            if(!empty($params_array['token'])){
+            if(!empty($params_array['gettoken'])){
                 $signup = $JwtAuth->signup($params_array['email'], $pwd, true);
             }
 
@@ -157,6 +157,8 @@ class UserController extends Controller
 
             );
 
+            //Actualizar el usuario en la base de datos
+            $user_update = User::where('id', $user->id)->update($userData);
             //Actualisar el usuario en la base de datos
             User::where('id', $user->id)->update($userData);
             //Crear un token nuevo
@@ -169,6 +171,8 @@ class UserController extends Controller
 
             $data = array(
                 'code' => 200,
+                'status' => 'success',
+                'user' => $user,
                 'status' => 'succes',
                 'user' => $user_update,
                 'token' => $token_update,

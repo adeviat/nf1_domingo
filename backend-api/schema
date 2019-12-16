@@ -1,0 +1,84 @@
+create database domingo;
+use domingo;
+drop table if exists users;
+create table users
+(
+   id               integer      not null primary key auto_increment,
+   name             varchar(255) not null,
+   surname          varchar(255) not null,
+   phonenumber      integer default null,
+   email            varchar(255) not null,
+   password         varchar(255) not null,
+   current_location varchar(255) default null,
+   updated_at      timestamp not null default now() on update now(),
+   created_at      timestamp not null default now()
+);
+drop table if exists orders;
+create table orders
+(
+   id               integer      not null primary key auto_increment,
+   timestamp        timestamp  not null,
+   order_status     boolean not null,
+   is_paid          boolean not null,
+   user_raiting     integer not null,
+   user_id          integer      not null,
+   CONSTRAINT FOREIGN KEY (user_id) REFERENCES user (id)
+);
+drop table if exists payment_methods;
+create table payment_methods
+(
+   id               integer      not null primary key auto_increment,
+   payment_method   varchar(255)  not null,
+   user_rating      integer not null,
+   user_id          integer not null,
+   CONSTRAINT FOREIGN KEY (user_id) REFERENCES user (id)
+);
+drop table if exists store;
+create table store
+(
+   id                  integer      not null primary key auto_increment,
+   name                varchar(255)  not null,
+   location          varchar(16) not null,
+   category                  varchar(255) not null,
+   subcategory_id                 varchar(255) not null
+);
+drop table if exists products;
+create table products
+(
+   id                  integer      not null primary key auto_increment,
+   name                varchar(255)  not null,
+   description          varchar(16) not null,
+   price                  varchar(255) not null,
+   photo                   varchar(255) not null,
+   store_id              integer not null,
+   updated_at      timestamp not null default now() on update now(),
+   created_at      timestamp not null default now()
+   CONSTRAINT FOREIGN KEY (store_id) REFERENCES stores (id)
+);
+drop table if exists orders_products;
+create table orders_products
+(
+   payment_methods_id    integer      not null primary key auto_increment,
+   products_id           integer not null,
+   CONSTRAINT FOREIGN KEY (products_id) REFERENCES products (id),
+   CONSTRAINT FOREIGN KEY (payment_methods_id) REFERENCES payment_methods (id)
+);
+show tables;
+describe users;
+create table categories
+(
+   id                  integer      not null primary key auto_increment,
+   name                varchar(255)  not null,
+   icon                varchar(255)
+);
+create table subcategories
+(
+   id                  integer      not null primary key auto_increment,
+   name                varchar(255)  not null,
+   icon                varchar(255),
+   categories_id       integer not null,
+   CONSTRAINT FOREIGN KEY (categories_id) REFERENCES categories (id)
+);
+
+
+
