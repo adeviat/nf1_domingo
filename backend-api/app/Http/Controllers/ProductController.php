@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
 
-    public function register(Request $request)
+    public function create(Request $request)
     {
         //recoger datos del usuario por post
 
@@ -23,7 +23,7 @@ class ProductController extends Controller
 
             //validar datos
             $validate = \Validator::make($params_array, [
-                'name' => 'required|alpha',
+                'name' => 'required',
                 'description' => 'required',
                 'price' => 'required',
                 'photo' => 'required|url'
@@ -78,8 +78,8 @@ class ProductController extends Controller
 
     }
 
-public function show()
-{
+    public function show()
+    {
     $products = Product::all();
     $data= array(
     'products'=> $products,
@@ -104,7 +104,7 @@ public function show()
         $params_array = $request->all();
 
         $validate = \Validator::make($params_array, [
-            'name' => 'required|alpha',
+            'name' => 'required',
             'description' => 'required',
             'price' => 'required',
             'photo' => 'required|url'
