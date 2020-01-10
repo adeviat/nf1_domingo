@@ -28,7 +28,7 @@ Route::get('/api/users', 'UserController@show');
 Route::get('/api/users/{token}', 'UserController@showbytoken');
 //Route::get('profile', 'UserController@getAuthenticatedUser');
 
-Route::post('/api/product/register', 'ProductController@register');
+Route::post('/api/product/create', 'ProductController@create');
 Route::get('/api/products', 'ProductController@show');
 Route::get('/api/product/{id}', 'ProductController@showProductById');
 Route::put('/api/product/update', 'ProductController@update');
