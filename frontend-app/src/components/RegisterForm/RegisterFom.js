@@ -22,82 +22,15 @@ import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 
 
 
-export default function RegisterFrom() {
-    const [userName, setName] = useState('');
-    const [surname, setSurname] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+/*export default function RegisterFrom() {
+
     /* const [phoneNumber, setPhoneNumber] = useState(0);
      const [current_location, setCurrent_location] = useState('Barcelona');*/
-    const [error, setError] = useState('');
 
-    const data = {
-        name: userName,
-        surname: surname,
-        email: email,
-        password: password,
-        token: localStorage.getItem('loginToken')
-
-    }
-
-    const handleOnSubmit = () => {
-
-        const fetchdata = async () => {
-            const url = 'http://127.0.0.1/api/user/register';
-
-            const options = {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: new Headers({
-                    Accept: 'application/json',
-                    'Content-type': 'application/json',
-
-                }),
-                mode: 'cors',
-            };
-            return fetch(url, options)
-                .then(response => {
-                    //debugger;
-                    if(response.status === 200) {
-                        alert(response.statusText);
-                        return response.json();
-                    }
-                    return Promise.reject(response.status);
-                }).catch(error => {
-
-                    setError(error);
-                    alert("sdf " + error);
-
-                });
-        };
-
-        fetchdata();
-
-    }
-
-
-    // HOOKS AND FUNCTIONS TO UPDATE PASSWORD FIELD'S VISIBILITY
-    const [values, setValues] = React.useState({
-        password: '',
-        showPassword: false,
-    });
-
-    const handleChange = prop => event => {
-        setValues({ ...values, [prop]: event.target.value });
-        setPassword(event.target.value);
-    };
-
-    const handleClickShowPassword = () => {
-        setValues({ ...values, showPassword: !values.showPassword });
-    };
-
-    const handleMouseDownPassword = event => {
-        event.preventDefault();
-    };
 
 // TODO: Actualizar form de registro: añadir campos tlf, direccion y estilos, etc..
 
-    return (
+  /*  return (
         <div className="DialogEditUser">
 
             <form noValidate autoComplete="off">
@@ -171,5 +104,5 @@ export default function RegisterFrom() {
                 </button>
             </div>
         </div>
-    );
-}
+    );*
+}*/

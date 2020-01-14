@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
-import './DialogEditUser.css';
-import '../LoginModalBox/LoginModalBox.css'
-import '../Helpers/ServerMethods.js'
 
+import React, {useContext, useEffect, useState} from 'react';
+import './DialogEditUser.css';
+import '../Buttons/LoginButton/LoginModalBox.css'
+import '../Helpers/ServerMethods.js'
+import {User} from "../Helpers/userReducer";
 
 
 // REQUIRED BY MATERIAL-UI FORMS
@@ -19,95 +20,67 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
-import put from "../Helpers/ServerMethods";
+import {put} from "../Helpers/ServerMethods";
 
 
 
 
-export default function DialogEditUser() {
-    const user = JSON.parse(localStorage.getItem('user'));
-    const [userName, setName] = useState(user.name);
+export default function DialogEditUser({setOpenEdit, user}) {
+
+    const [submit, setSubmit] = useState(false);
+    const {state, dispatch} = useContext(User);
+    const [name, setName] = useState( user.name);
     const [surname, setSurname] = useState(user.surname);
     const [email, setEmail] = useState(user.email);
-    const [password, setPassword] = useState('');
-   /* const [phoneNumber, setPhoneNumber] = useState(0);
-    const [current_location, setCurrent_location] = useState('Barcelona');*/
-    const [error, setError] = useState('');
+    const [phone_number, setPhone_number] = useState();
+    const [currentLocation, setCurrentLocation] = useState('');
 
-    const data = {
-        name: userName,
-        surname: surname,
-        //phonenumber: phoneNumber,
-        email: email,
-        password: password,
-        token: localStorage.getItem('loginToken')
+   /* useEffect(()=>{
+        if(state.User){
+            setName(state.User.name);
+            setSurname(state.User.surname);
+            setEmail(state.User.email);
+        }
+    });*/
 
-    }
 
-    const handleOnSubmit = () => {
 
-        const fetchdata = async () => {
-            const url = 'http://127.0.0.1/api/user/update';
 
-            const options = {
-                method: 'PUT',
-                body: JSON.stringify(data),
-                headers: new Headers({
-                    Accept: 'application/json',
-                    'Content-type': 'application/json',
+    useEffect(() =>{
 
-                }),
-                mode: 'cors',
-            };
-            return fetch(url, options)
-                .then(response => {
+        const data = {
+            name: name,
+            surname: surname,
+            //phonenumber: phoneNumber,
+            email: email,
+            password: '',
+            token: state.token
 
-                    if(response.status === 200) {
-                        alert(response.statusText);
-                        return response.json();
-                    }
-                    return Promise.reject(response.status);
-                }).then(response => {
-                    //TODO: Recoger Usuario correctamente
-                    //localStorage.removeItem('user');
-                    //localStorage.setItem('user', JSON.stringify(response.user));
-                }).catch(error => {
+        }
 
-                    setError(error);
-                    alert("sdf " + error);
+        if(submit){
+            put('api/user/update', data)
+                .then(response =>{
+                    setName(response.user.name);
+                    setSurname(response.user.surname);
+                    setEmail(response.user.email);
+                    //setPassword(response.change.password);
+                    setOpenEdit(false);
+                    return dispatch({
+                        type:'SET_USER',
+                        payload: response
+                    })
+                })
+        }
 
-                });
-        };
-
-            fetchdata();
-
-    }
+    },[submit]);
 
 
     // HOOKS AND FUNCTIONS TO UPDATE PASSWORD FIELD'S VISIBILITY
-    const [values, setValues] = React.useState({
-        password: '',
-        showPassword: false,
-    });
-
-    const handleChange = prop => event => {
-        setValues({ ...values, [prop]: event.target.value });
-        setPassword(event.target.value);
-    };
-
-    const handleClickShowPassword = () => {
-        setValues({ ...values, showPassword: !values.showPassword });
-    };
-
-    const handleMouseDownPassword = event => {
-        event.preventDefault();
-    };
-
 
 
     return (
-        <div className="DialogEditUser">
-
+        <div>
               <form noValidate autoComplete="off">
                         <div className="field-row">
                             <div className="field-icon">
@@ -116,7 +89,7 @@ export default function DialogEditUser() {
                             <div className="field-input">
                                 <FormControl fullWidth>
                                     <InputLabel htmlFor="text">Name</InputLabel>
-                                    <Input  id="text" type="text"value={userName}
+                                    <Input  id="text" type="text"value={name}
                                            onChange={e => setName(e.target.value)}/>
                                 </FormControl>
                             </div>
@@ -145,39 +118,13 @@ export default function DialogEditUser() {
                                 </FormControl>
                             </div>
                         </div>
-                        <div className="field-row">
-                            <div className="field-icon">
-                                <LockOutlinedIcon/>
-                            </div>
-                            <div className="field-input">
-                                <FormControl fullWidth>
-                                    <InputLabel htmlFor="password">Contraseña</InputLabel>
-                                    <Input fullWidth
-                                           id="password"
-                                           type={values.showPassword ? 'text' : 'password'}
-                                           value={values.password}
-                                           onChange={handleChange('password')}
-                                           endAdornment={
-                                               <InputAdornment position="end">
-                                                   <IconButton
-                                                       aria-label="toggle password visibility"
-                                                       onClick={handleClickShowPassword}
-                                                       onMouseDown={handleMouseDownPassword}
-                                                   >
-                                                       {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                                                   </IconButton>
-                                               </InputAdornment>
-                                           }
-                                    />
-                                </FormControl>
-                            </div>
-                        </div>
                     </form>
-            <div className="SubmitButton">
-                <button onClick={handleOnSubmit} className="register-btn-desktop">
-                        Submit
-                </button>
-            </div>
+                    <div className="loginbtnbox">
+                        <button onClick={() => setSubmit(true)} className="SubmitButton">
+                            Submit
+                        </button>
+                    </div>
         </div>
     );
 }
+

@@ -1,5 +1,7 @@
-import React, {useEffect, useState} from 'react';
+
+import React, {useContext, useEffect, useState} from 'react';
 import './LoginModalBox.css';
+import {User} from "../Helpers/userReducer";
 
 // REQUIRED BY MATERIAL-UI FORMS
 import 'typeface-roboto';
@@ -15,9 +17,10 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
+import {post} from "../Helpers/ServerMethods";
 
 
-export default function LoginModalBox() {
+export default function LoginModalBox({setOpenLogin}) {
 
     //HOOKS FOR HANDLE LOGIN VISIBILITY
 
@@ -49,85 +52,32 @@ export default function LoginModalBox() {
         password: password.password
     };
 
-    const [error, setError] = useState('');
     const [submit, setSubmit] = useState(false);
+    const {state, dispatch} = useContext(User);
+
 
     useEffect(() => {
 
         setSubmit(false);
-        const fetchdata = async () => {
 
-            const url = 'http://127.0.0.1:80/api/user/login';
-            const options = {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: new Headers({
-                    Accept: 'application/json',
-                    'Content-type': 'application/json',
-                }),
-                mode: 'cors',
-            };
-
-            return fetch(url, options)
+        if(submit){
+            post('api/user/login',data)
                 .then(response => {
-                    if(response.status === 200) {
+                    localStorage.setItem('token',response.token );
+                    debugger;
+                    setOpenLogin(false);
+                    return dispatch({
+                        type: 'SET_USER',
+                        payload: response
+                    });
 
-                        return response.json();
-                    }
-
-                    return Promise.reject(response.status);
-                }).then(response => {
-                    localStorage.clear();
-                    localStorage.setItem('loginToken',response.token );
-                    localStorage.setItem('user', JSON.stringify(response.user));
-
-
-                }).catch(error => {
-                    setError(error);
-                    alert("Error.\n\nError type:" + error  );
                 });
-        };
 
-        if (submit) {
 
-            fetchdata();
         }
+
     }, [submit]);
 
-    const handleSubmit = () => {
-
-        const fetchdata = async () => {
-
-            const url = 'http://127.0.0.1/api/user/login';
-            const options = {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: new Headers({
-                    Accept: 'application/json',
-                    'Content-type': 'application/json',
-                }),
-                mode: 'cors',
-            };
-
-            return fetch(url, options)
-                .then(response => {
-                    debugger;
-                    setSubmit(false);
-                    if(response.status === 200) {
-                        alert(response.statusText);
-                        return response.json();
-                    }
-                    return Promise.reject(response.status);
-                }).then(data => {
-                    // alert("Succesful, codigo 200");
-                }).catch(error => {
-                    setError(error);
-                    alert("Error.\n\nOptions body:\n" + options.body +"\n\nURL called:\n" + url + "sdf " + error);
-                });
-        };
-
-        fetchdata();
-    }
 
     return (
         <div className="loginmodalbox">

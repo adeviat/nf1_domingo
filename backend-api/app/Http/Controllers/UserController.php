@@ -129,7 +129,7 @@ class UserController extends Controller
             //Rcoger los datos por Post
         $params_array = $request->all(); //sacar un Array
         $checkToken = $jwtAuth->checkToken($params_array['token']);
-        if( !empty($params_array)){
+        if($checkToken && !empty($params_array)){
 
             //Sacar usuario identificado
             $user = $jwtAuth->checkToken($params_array['token'], true);
@@ -157,15 +157,25 @@ class UserController extends Controller
 
             );
 
-            //Actualisar el usuario en la base de datos
+            //Actualizar el usuario en la base de datos
             $user_update = User::where('id', $user->id)->update($userData);
+            //Actualisar el usuario en la base de datos
+            User::where('id', $user->id)->update($userData);
+            //Crear un token nuevo
+            $token_update = $jwtAuth->signup($params_array['email'], $user->password);
+            //Usuario
+            $user_update = $jwtAuth->checkToken($token_update, true);
 
-            //Devolver array con resultado
+
+                //Devolver array con resultado
 
             $data = array(
                 'code' => 200,
-                'status' => 'succes',
+                'status' => 'success',
                 'user' => $user,
+                'status' => 'succes',
+                'user' => $user_update,
+                'token' => $token_update,
                 'change' => $params_array
 
             );
@@ -186,12 +196,82 @@ class UserController extends Controller
         $users = User::all();
        return response()->json($users);
     }
-    public function showbyid($id)
+    public function showbytoken($token)
     {
-        $users = User::find($id);
-        return response()->json($users);
+        $jwtAuth = new \JwtAuth();
+        $data = array(
+            'code' => 200,
+            'token' => $token,
+            'user' => $jwtAuth->checkToken($token, true)
+
+
+        );
+
+
+        return response()->json($data);
     }
 
+    public function updatePassword(Request $request){
 
+        //Comprobar si el usuario se está identificado
+        // $token = $request->header('Authorization');
+        $jwtAuth = new \JwtAuth();
+        // $checkToken = $jwtAuth->checkToken($token);
+
+        //Rcoger los datos por Post
+        $params_array = $request->all(); //sacar un Array
+        $checkToken = $jwtAuth->checkToken($params_array['token']);
+        if($checkToken && !empty($params_array)){
+
+            //Sacar usuario identificado
+            $user = $jwtAuth->checkToken($params_array['token'], true);
+
+            //Validar datos
+            $validate = \Validator::make($params_array, [
+                'password' => 'required|confirmed',
+                'password_confirmation' => 'required|same:password'
+            ]);
+
+            //Quitar campos que no quiero actualisar
+
+            unset($params_array['id']);
+            unset($params_array['created_at']);
+            unset($params_array['name']);
+            unset($params_array['surname']);
+            //unset($params_array['email']);
+
+            $userData = array(
+
+                'password' => hash('sha256', $params_array['password']),
+
+            );
+
+            //Actualisar el usuario en la base de datos
+            $user_update = User::where('id', $user->id)->update($userData);
+
+            //Devolver array con resultado
+            $signup = $jwtAuth->signup($user->email, $userData);
+            $new_user = $jwtAuth->checkToken($signup, true);
+            $params_array['token'] = $signup;
+            $data = array(
+                'code' => 200,
+                'status' => 'succes',
+                'user' => $new_user,
+                'token' => $signup,
+                'change' => $params_array
+
+            );
+
+
+        }else{
+            $data = array(
+                'code' => 400,
+                'status' => 'error',
+                'massage' => 'El usuario no esta identificado.'
+
+            );
+        }
+        return response()->json($data, $data['code']);
+    }
 }
 
