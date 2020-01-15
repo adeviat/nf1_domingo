@@ -2,12 +2,12 @@
 
 
 namespace App\Http\Controllers;
-use App\Product;
+
+use App\Store;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class StoreController extends Controller
 {
-
     public function create(Request $request)
     {
         //recoger datos del usuario por post
@@ -24,9 +24,9 @@ class ProductController extends Controller
             //validar datos
             $validate = \Validator::make($params_array, [
                 'name' => 'required',
-                'description' => 'required',
-                'price' => 'required',
-                'photo' => 'required|url'
+                'address' => 'required',
+                'postcode' => 'required',
+
             ]);
             if ($validate->fails()) {
                 //La validacion ha fallado
@@ -43,25 +43,24 @@ class ProductController extends Controller
 
 
 
-                //crear el producto
-                $product = new Product();
-                $product->name = $params_array['name'];
-                $product->description = $params_array['description'];
-                $product->price = $params_array['price'];
-                $product->photo = $params_array['photo'];
-                $product->store_id = $params_array['store_id'];
+                //crear el productos
+                $store = new Store();
+                $store->name = $params_array['name'];
+                $store->address = $params_array['address'];
+                $store->postcode = $params_array['postcode'];
+
 
 
 
                 //Guardar el producto
-                $product->save();
+                $store->save();
 
 
                 $data = array(
                     'status' => 'success',
                     'code' => 200,
-                    'mensaje' => 'El producto se ha creado correctamente',
-                    'newproduct' => $product
+                    'mensaje' => 'El Store se ha creado correctamente',
+                    'newstore' => $store
                 );
             }
 
@@ -78,43 +77,21 @@ class ProductController extends Controller
 
     }
 
-    public function show()
-    {
-        $products = Product::all();
-        $data= array(
-            'products'=> $products,
-            'numOfProducts'=>sizeof($products)
-
-        );
-
-    return response()->json($data);
-}
-    public function showProductById ($id)
-    {
-        $product = Product::where('id', $id) -> get();
-        $data = array(
-            'code' => 200,
-            'product' => $product,
-        );
-
-        return response()->json($data);
-    }
-
     public function update(Request $request){
         $params_array = $request->all();
 
         $validate = \Validator::make($params_array, [
             'name' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-            'photo' => 'required|url'
+            'address' => 'required',
+            'postcode' => 'required',
+
         ]);
         if ($validate->fails()) {
             //La validacion ha fallado
             $data = array(
                 'status' => 'error',
                 'code' => 404,
-                'message' => 'El producto no se ha actualizado',
+                'message' => 'El Store no se ha actualizado',
                 'errors' => $validate->errors()
             );
 
@@ -124,25 +101,25 @@ class ProductController extends Controller
 
             unset($params_array['created_at']);
 
-            $productData = array(
+            $storeData = array(
 
                 'name' =>$params_array['name'],
-                'description' => $params_array['description'],
-                'price' =>$params_array['price'],
-                'photo' =>$params_array['photo'],
+                'address' => $params_array['address'],
+                'postcode' =>$params_array['postcode'],
+
 
 
             );
 
             //Actualizar el usuario en la base de datos
-            $product_update = Product::where('id', $params_array['id'])->update($productData);
+            $store_update = Store::where('id', $params_array['id'])->update($storeData);
 
             //Devolver array con resultado
 
             $data = array(
                 'code' => 200,
                 'status' => 'success',
-                'product' => $params_array
+                'Store' => $params_array
 
             );
 
@@ -150,12 +127,23 @@ class ProductController extends Controller
         }
         return response()->json($data,$data['code']);
     }
-    public function deleteProductById($id)
+
+    public function showStoreById ($id)
     {
-        $product = Product::where('id', $id) -> delete();
+        $store = Store::where('id', $id) -> get();
         $data = array(
             'code' => 200,
-            'product' => sprintf("El producto %d ha sido eliminado",$id)
+            'store' => $store,
+        );
+
+        return response()->json($data);
+    }
+    public function deleteProductById($id)
+    {
+        $store = Store::where('id', $id) -> delete();
+        $data = array(
+            'code' => 200,
+            'store' => sprintf("El store %d ha sido eliminado",$id)
         );
 
         return response()->json($data);
