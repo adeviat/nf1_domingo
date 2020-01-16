@@ -5,6 +5,7 @@ namespace App\Helpers;
 use Firebase\JWT\JWT;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use App\Store;
 
 class JwtAuth {
 
@@ -59,6 +60,53 @@ class JwtAuth {
 
           );
       }
+
+        return $data;
+
+    }
+    public function signupStore($email, $password, $getToken = null){
+
+        // Buscar si existe el usuario con sus credenciales
+        $store = Store::where([
+            'email' => $email,
+            'password' => $password
+        ])->first();
+
+        //Comprobar si son correctas
+        $signup = false;
+        if(is_object($store)){
+            $store = true;
+        }
+        //Generar el token con los datos de usuario identificado
+        if($signup){
+
+            $token = array(
+                'id'     => $store->id,
+                'email'   => $store->email,
+                'name'    => $store->name,
+                'location' => $store->location,
+                'iat'     =>  time(),
+                'exp'     =>  time() + (7 * 24 * 60 * 60),
+            );
+
+            $jwt = JWT::encode($token, $this->key, 'HS256');
+            $decoded = JWT::decode($jwt, $this->key, ['HS256']);
+
+            //Devolcer los datos decodificados o el token, en funcion de un parametro
+            if(is_null($getToken)){
+                $data = $jwt;
+            }else{
+                $data = $decoded;
+
+            }
+
+        }else{
+            $data = array(
+                'status' => 'error',
+                'message' => 'Login incorrecto.'
+
+            );
+        }
 
         return $data;
 
