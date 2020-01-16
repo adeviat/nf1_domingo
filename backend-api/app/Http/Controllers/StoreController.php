@@ -133,7 +133,8 @@ class StoreController extends Controller
         $store = Store::where('id', $id) -> get();
         $data = array(
             'code' => 200,
-            'store' => $store,
+            'stores' => $store,
+            'totalStores' => 1
         );
 
         return response()->json($data);
