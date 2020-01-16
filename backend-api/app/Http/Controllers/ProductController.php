@@ -80,12 +80,12 @@ class ProductController extends Controller
 
     public function show()
     {
-    $products = Product::all();
-    $data= array(
-    'products'=> $products,
-        'numOfProducts'=>sizeof($products)
+        $products = Product::all();
+        $data= array(
+            'products'=> $products,
+            'numOfProducts'=>sizeof($products)
 
-    );
+        );
 
     return response()->json($data);
 }

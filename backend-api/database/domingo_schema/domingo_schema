@@ -1,4 +1,24 @@
-
+drop database domingo;
+create database domingo;
+use domingo;
+drop table if exists stores;
+create table stores
+(
+    id                integer not null primary key auto_increment,
+    name              varchar(255) not null,
+    address           varchar(255) not null,
+    postcode          varchar(10) not null,
+    updated_at        timestamp not null default now() on update now(),
+    created_at        timestamp not null default now()
+);
+drop table if exists roles;
+create table roles
+(
+    id              integer not null primary key auto_increment,
+    role            varchar(255),
+    updated_at      timestamp not null default now() on update now(),
+    created_at      timestamp not null default now()
+);
 
 drop table if exists users;
 create table users
@@ -11,30 +31,16 @@ create table users
     password         varchar(255) not null,
     address          varchar(255) not null,
     postcode         varchar(10) not null,
+    role_id          integer not null,
+    store_id          integer not null,
     updated_at       timestamp not null default now() on update now(),
-    created_at       timestamp not null default now()
+    created_at       timestamp not null default now(),
+    CONSTRAINT FOREIGN KEY (role_id) REFERENCES roles(id),
+    CONSTRAINT FOREIGN KEY (store_id) REFERENCES stores(id)
 );
-drop table if exists globaladmin;
-create table globaladmin
-(
-    user_id         integer not null,
-    role            varchar(255),
-    updated_at      timestamp not null default now() on update now(),
-    created_at      timestamp not null default now(),
-    CONSTRAINT FOREIGN KEY (user_id) REFERENCES users(id)
-);
-drop table if exists stores;
-create table stores
-(
-    id                integer not null primary key auto_increment,
-    name              varchar(255) not null,
-    address           varchar(255) not null,
-    postcode          varchar(10) not null,
-    updated_at        timestamp not null default now() on update now(),
-    created_at        timestamp not null default now()
-);
-drop table if exists admin;
-create table admin
+
+/*
+create table users_stores
 (
     user_id         integer not null,
     store_id   integer not null,
@@ -44,6 +50,8 @@ create table admin
     CONSTRAINT FOREIGN KEY (user_id) REFERENCES users(id),
     CONSTRAINT FOREIGN KEY (store_id) REFERENCES stores(id)
 );
+
+ */
 
 drop table if exists products;
 create table products
