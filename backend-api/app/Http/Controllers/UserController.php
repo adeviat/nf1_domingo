@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Store;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -271,6 +272,18 @@ class UserController extends Controller
 
             );
         }
+        return response()->json($data, $data['code']);
+    }
+    public function getStore($token){
+        $jwtAuth = new \JwtAuth();
+        $user = $jwtAuth->checkToken($token, true);
+        $store = Store::where('id', $user->store_id)->get();
+
+        $data = array(
+            'code' => 200,
+            'store' => $store,
+            'status' => 'success'
+        );
         return response()->json($data, $data['code']);
     }
 }

@@ -29,7 +29,7 @@ create table users
     phonenumber      integer default null,
     email            varchar(255) not null,
     password         varchar(255) not null,
-    address          varchar(255) not null,
+    address          varchar(255) default null,
     postcode         varchar(10) not null,
     role_id          integer not null,
     store_id          integer not null,
