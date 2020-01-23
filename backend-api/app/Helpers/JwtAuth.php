@@ -37,6 +37,7 @@ class JwtAuth {
               'email'   => $user->email,
               'name'    => $user->name,
               'surname' => $user->surname,
+              'postcode' => $user->postcode,
               'store_id' => $user->store_id,
               'password' => $password,
               'iat'     =>  time(),

@@ -25,11 +25,11 @@ Route::post('/api/user/register', 'UserController@register');
 Route::post('/api/user/login', 'UserController@login');
 Route::put('/api/user/update', 'UserController@update');
 Route::put('/api/user/updatepass', 'UserController@updatepassword');
+Route::put('/api/user/updateAddress', 'UserController@updateAddress');
 Route::get('/api/users', 'UserController@show');
 Route::get('/api/users/getStore/{token}', 'UserController@getStore');
-
 Route::get('/api/users/{token}', 'UserController@showbytoken');
-//Route::get('profile', 'UserController@getAuthenticatedUser');
+
 
 Route::post('/api/product/create', 'ProductController@create');
 Route::get('/api/products', 'ProductController@show');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\JwtAuth;
 use App\Store;
 use Illuminate\Http\Request;
 use App\User;
@@ -233,7 +234,7 @@ class UserController extends Controller
                 'password_confirmation' => 'required|same:password'
             ]);
 
-            //Quitar campos que no quiero actualisar
+            //Quitar campos que no quiero actualizar
 
             unset($params_array['id']);
             unset($params_array['created_at']);
@@ -285,6 +286,50 @@ class UserController extends Controller
             'status' => 'success'
         );
         return response()->json($data, $data['code']);
+    }
+
+    public function updateAddress(Request $request){
+
+        $params_array = $request->all();
+
+        $jwtAuth = new \JwtAuth();
+        $checkToken = $jwtAuth->checkToken($params_array['token']);
+
+        if($checkToken && !empty($params_array)){
+            \Validator::make($params_array, [
+                'address' => 'required',
+                'postalcode' => 'required|max:5'
+
+            ]);
+
+            $user = $jwtAuth->signup($params_array['token'], true);
+
+            $dataToUpdate = array(
+                'address' => $params_array['address'],
+                'postalcode' => $params_array['postalcode']
+            );
+
+            User::where('id', $user->id)->update($dataToUpdate);
+
+            $token_update = $jwtAuth->signup($user->email, $user->password);
+            $user_update = $jwtAuth->checktoken($token_update, true);
+
+            $data = array(
+                'code' => 200,
+                'token' => $token_update,
+                'user' => $user_update,
+                'message' => 'Dirección y cp añadidos correctamente'
+            );
+
+            return response()->json($data);
+        }
+        else {
+            $data = array(
+                'code' => 400,
+                'message' => 'Token no valido'
+            );
+            return response()->json($data);
+        }
     }
 }
 
