@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Store;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StoreController extends Controller
 {
@@ -26,6 +27,7 @@ class StoreController extends Controller
                 'name' => 'required',
                 'address' => 'required',
                 'postcode' => 'required',
+                'image_url' => 'required'
 
             ]);
             if ($validate->fails()) {
@@ -41,13 +43,15 @@ class StoreController extends Controller
                 //Validacion pasada correctamente
 
 
-
+                $deliveryArea = DB::table('delivery_areas')->where('postcode',$params_array['postcode'])->value('delivery_areas');
 
                 //crear el productos
                 $store = new Store();
                 $store->name = $params_array['name'];
                 $store->address = $params_array['address'];
                 $store->postcode = $params_array['postcode'];
+                $store->delivery_area_id = $deliveryArea;
+                $store->image_url = $params_array['image_url'];
 
 
 
@@ -60,7 +64,7 @@ class StoreController extends Controller
                     'status' => 'success',
                     'code' => 200,
                     'mensaje' => 'El Store se ha creado correctamente',
-                    'newstore' => $store
+                    'newStore' => $store
                 );
             }
 
@@ -149,4 +153,15 @@ class StoreController extends Controller
 
         return response()->json($data);
     }
+    public function storesByCategoryZone($category,$zone)
+    {
+         $stores = Store::where('category',$category and 'zone', $zone)->get();
+
+         $data = array (
+             'code' => 200,
+             'stores' => $stores
+         );
+        return response()->json($data);
+    }
+
 }

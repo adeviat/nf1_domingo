@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import StoreInfoHeader from "../StoreInfoHeader/StoreInfoHeader";
 import RegisterCart from "../RegisterCart/RegisterCart";
 import Viewinfo from "../Profile/Viewinfo";
@@ -11,6 +11,11 @@ export default function  StoreView () {
 
     const { state, dispatch } = useContext(User);
 
+    useEffect(() => {
+
+
+    });
+
     return(
         <div className="StoreView">
             <div className="container-fluid d-none d-md-flex header-desktop">
@@ -19,7 +24,9 @@ export default function  StoreView () {
                         <div className="col">
                             <span>Domingo logo</span>
                         </div>
+                        <div>
 
+                        </div>
 
                     </div>
 

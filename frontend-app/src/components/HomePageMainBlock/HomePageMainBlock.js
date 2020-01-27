@@ -20,7 +20,7 @@ function HomePageMainBlock() {
 
 
     useEffect(() => {
-        if(state.User.postcode)
+        if(state.User.postcode != null)
             setPostalCode(true);
     },[state]);
 
@@ -33,7 +33,7 @@ function HomePageMainBlock() {
     useEffect(() => {
         if(onClickCategory.onClick){
 
-            postalcode ? console.log("yeah") : setOpenAddressModal(true);
+            postalcode ? console.log(onClickCategory.category) : setOpenAddressModal(true);
             onClickCategory.onClick = false;
 
         }
@@ -57,8 +57,8 @@ function HomePageMainBlock() {
                     <div className="row d-flex justify-content-center">
                         <h2 className="main-subtitle">Delivered in minutes</h2>
                     </div>
-                    <div className="row d-flex justify-content-center" onClick={() => setOnClickCategory({onClick:true, category:"Courier"})}>
-                        <div className="d-flex flex-column justify-content-center align-items-center category-btn">
+                    <div className="row d-flex justify-content-center" >
+                        <div className="d-flex flex-column justify-content-center align-items-center category-btn" onClick={() => setOnClickCategory({onClick:true, category:"Courier"})}>
                             <img
                                 src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/mw7p9b345wc9ochmgfwz"
                                 alt="Courier" width="65px"/><p>Courier</p>
