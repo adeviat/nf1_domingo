@@ -14,6 +14,7 @@ import Twitter from "./Twitter";
 import Instagram from "./Instagram";
 import HomePage from "../../HomePage/HomePage";
 import App from "../../../App";
+import StoreView from "../../StoreView/StoreView";
 
 const Routes = () =>{
    return(
@@ -33,6 +34,7 @@ const Routes = () =>{
             <Route path= '/Instagram' component={Instagram} />
             <Route path= '/HomePage' component={HomePage} />
             <Route path= '/HeaderLogo' component={HomePage} />
+            <Route path= '/StoreView' component={StoreView} />
             <Route path= '/App' component={App} />
 
            <Switch>

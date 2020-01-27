@@ -69,45 +69,6 @@ const DomingoSignIn = () => {
 
 
 
-   /* const handleSubmit = () => {
-
-        const fetchdata = async () => {
-            debugger;
-            const url = 'http://127.0.0.1/api/user';
-            const options = {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: new Headers({
-                    Accept: 'application/json',
-                    'Content-type': 'application/json',
-                    'Access-Control-Allow-Headers': 'Authorization'
-
-                }),
-                mode: 'cors',
-
-            };
-            //const data = new FormData(event.target);
-
-            debugger;
-            return fetch(url, options)
-                .then(response => {
-                    debugger;
-                    if(response.status === 200) {
-                        return response.json();
-                    }
-                    return Promise.reject(response.status);
-                }).then(data => {
-                    debugger;
-                }).catch(error => {
-                    debugger;
-                });
-
-            //alert("response:" +"You are submitting: " + this.state.username +"\n" + this.state.surname+"\n" +this.state.phonenumber+"\n" +this.state.email+"\n" +this.state.password+"\n" +this.state.current_location);
-
-
-        };
-        fetchdata();
-    }*/
 
         return (
                 <div className= "DomingoSignIn">

@@ -298,15 +298,15 @@ class UserController extends Controller
         if($checkToken && !empty($params_array)){
             \Validator::make($params_array, [
                 'address' => 'required',
-                'postalcode' => 'required|max:5'
+                'postcode' => 'required|max:5'
 
             ]);
 
-            $user = $jwtAuth->signup($params_array['token'], true);
+            $user = $jwtAuth->checktoken($params_array['token'], true);
 
             $dataToUpdate = array(
                 'address' => $params_array['address'],
-                'postalcode' => $params_array['postalcode']
+                'postcode' => $params_array['postcode']
             );
 
             User::where('id', $user->id)->update($dataToUpdate);
