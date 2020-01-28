@@ -5,6 +5,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogEditUser from "../DialogEditUser/DialogEditUser";
 import {User} from "../Helpers/userReducer";
 import AddressModal from "../AddressModal";
+import {get} from "../Helpers/ServerMethods";
 
 function HomePageMainBlock() {
 
@@ -17,6 +18,7 @@ function HomePageMainBlock() {
     });
     const [postalcode, setPostalCode] = useState(false);
     const {state,dispatch} = useContext(User);
+
 
 
     useEffect(() => {
@@ -32,7 +34,9 @@ function HomePageMainBlock() {
 
     useEffect(() => {
         if(onClickCategory.onClick){
-
+            if(state.equals(null || undefined)) {
+                get
+            }
             postalcode ? console.log(onClickCategory.category) : setOpenAddressModal(true);
             onClickCategory.onClick = false;
 

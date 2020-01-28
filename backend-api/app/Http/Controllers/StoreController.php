@@ -154,17 +154,67 @@ class StoreController extends Controller
 
         return response()->json($data);
     }
+    public function storesByCategory($category) {
+
+        $category_id = DB::table('store_categories')->where('name', $category)->value('id');
+
+        if($category_id  ==  null) {
+            $data = array (
+                'code' => 404,
+                'message' => 'Wrong Category'
+            );
+            return response()->json($data);
+        }
+        else {
+            $stores = DB::table('stores')->where('category_id' ,$category_id)->get();
+
+            if(empty($stores)) {
+                $data = array (
+                    'code' => 404,
+                    'message' => 'There are no Stores for this Category '
+                );
+                return response()->json($data);
+            }
+            else {
+
+                $data = array(
+                    'code' => 200,
+                    'stores' => $stores
+                );
+
+                return response()->json($data);
+            }
+        }
+    }
+
     public function storesByCategoryDeliveryArea($category,$postcode)
     {
         $category_id = DB::table('store_categories')->where('name', $category)->value('id');
         $deliveryArea = DB::table('delivery_areas')->where('postcode',$postcode)->value('delivery_areas');
 
+        if($category_id || $deliveryArea ==  null){
+            $data = array (
+                'code' => 404,
+                'message' => 'Wrong Category or PostCode'
+            );
+            return response()->json($data);
+        }
+
         $stores = DB::table('stores')->where([['category_id',$category_id], ['delivery_area_id' ,$deliveryArea]])->get();
+
+        if($stores ==  null){
+            $data = array (
+                'code' => 404,
+                'message' => 'There are no Stores for this Category or Postcode'
+            );
+            return response()->json($data);
+        }
 
          $data = array (
              'code' => 200,
              'stores' => $stores
          );
+
         return response()->json($data);
     }
 
