@@ -2,7 +2,6 @@ import React, {useContext, useEffect,useState} from 'react';
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogEditUser from "../DialogEditUser/DialogEditUser";
 import {User} from "../Helpers/userReducer";
 import AddressModal from "../AddressModal";
 import {get} from "../Helpers/ServerMethods";
@@ -34,14 +33,15 @@ function HomePageMainBlock() {
 
     useEffect(() => {
         if(onClickCategory.onClick){
-            if(state.equals(null || undefined)) {
-                get
-            }
+           /* if(state.equals(null || undefined)) {
+                get('api/store/category' + onClickCategory.category)
+                    .then()
+            }*/
             postalcode ? console.log(onClickCategory.category) : setOpenAddressModal(true);
             onClickCategory.onClick = false;
 
         }
-    },[onClickCategory.onClick] );
+    },[onClickCategory.onClick]);
 
     return (
         <div>
