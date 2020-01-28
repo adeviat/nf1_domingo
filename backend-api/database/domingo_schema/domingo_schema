@@ -1,25 +1,5 @@
-drop database domingo;
 create database domingo;
 use domingo;
-drop table if exists stores;
-create table stores
-(
-    id                integer not null primary key auto_increment,
-    name              varchar(255) not null,
-    address           varchar(255) not null,
-    postcode          varchar(10) not null,
-    updated_at        timestamp not null default now() on update now(),
-    created_at        timestamp not null default now()
-);
-drop table if exists roles;
-create table roles
-(
-    id              integer not null primary key auto_increment,
-    role            varchar(255),
-    updated_at      timestamp not null default now() on update now(),
-    created_at      timestamp not null default now()
-);
-
 drop table if exists users;
 create table users
 (
@@ -30,98 +10,140 @@ create table users
     email            varchar(255) not null,
     password         varchar(255) not null,
     address          varchar(255) default null,
-    postcode         varchar(10) not null,
-    role_id          integer not null,
-    store_id          integer not null,
+    postcode         varchar(255) default null,
+    delivery_area_id integer not null,
+    store_id         integer default null,
     updated_at       timestamp not null default now() on update now(),
     created_at       timestamp not null default now(),
-    CONSTRAINT FOREIGN KEY (role_id) REFERENCES roles(id),
-    CONSTRAINT FOREIGN KEY (store_id) REFERENCES stores(id)
+    CONSTRAINT FOREIGN KEY (store_id) REFERENCES stores(id),
+    CONSTRAINT FOREIGN KEY (postcode) REFERENCES deliveryareas(postcode)
 );
-
-/*
-create table users_stores
+drop table if exists categories;
+create table categories
 (
-    user_id         integer not null,
-    store_id   integer not null,
-    updated_at      timestamp not null default now() on update now(),
-    created_at      timestamp not null default now(),
-    PRIMARY KEY (user_id,store_id),
-    CONSTRAINT FOREIGN KEY (user_id) REFERENCES users(id),
-    CONSTRAINT FOREIGN KEY (store_id) REFERENCES stores(id)
+    id               integer      not null primary key auto_increment,
+    name             varchar(255) not null,
+    icon             varchar(255)
+);
+/*
+alter table stores
+    add column logo varchar(2064) not null after id;
+alter table stores
+    add column postcode varchar(255) not null after address;
+alter table users
+    add column delivery_area_id integer not null after postcode;
+alter table stores
+    add column delivery_area_id integer not null after postcode;
+alter table users
+    add CONSTRAINT FOREIGN KEY (delivery_area) REFERENCES deliveryareas(postcode);
+alter table stores
+    add CONSTRAINT FOREIGN KEY (postcode) REFERENCES deliveryareas(postcode);
+*/
+
+drop table if exists stores;
+create table stores
+(
+    id               integer not null primary key auto_increment,
+    logo             varchar(2064) not null,
+    name             varchar(255) not null,
+    address          varchar(255) not null,
+    postcode         varchar(255) not null,
+    delivery_area_id integer not null,
+    category_id      integer default null,
+    updated_at       timestamp not null default now() on update now(),
+    created_at       timestamp not null default now(),
+    CONSTRAINT FOREIGN KEY (category_id) REFERENCES categories(id),
+    CONSTRAINT FOREIGN KEY (postcode) REFERENCES deliveryareas(postcode)
 );
 
- */
 
+drop table if exists orders;
+create table orders
+(
+    id               integer      not null primary key auto_increment,
+    user_id          integer      not null,
+    store_id         integer      not null,
+    CONSTRAINT FOREIGN KEY (user_id) REFERENCES users (id),
+    CONSTRAINT FOREIGN KEY (store_id) REFERENCES stores(id)
+);
 drop table if exists products;
 create table products
 (
-    id               integer not null primary key auto_increment,
+    id               integer      not null primary key auto_increment,
     name             varchar(255)  not null,
-    description      varchar(16) not null,
+    description      varchar(255) not null,
     price            varchar(255) not null,
     photo            varchar(255) not null,
-    store_id         integer not null,
-    updated_at       timestamp not null default now() on update now(),
-    created_at       timestamp not null default now(),
+    store_id         integer default null,
     CONSTRAINT FOREIGN KEY (store_id) REFERENCES stores(id)
 );
 
-drop table if exists delivery_addresses;
-create table delivery_addresses
+drop table if exists orders_products;
+create table orders_products
 (
-    id   integer      not null primary key auto_increment,
-    address varchar(255) not null,
-    postcode varchar(10) not null,
-    updated_at       timestamp not null default now() on update now(),
-    created_at       timestamp not null default now(),
-    CONSTRAINT FOREIGN KEY (id) REFERENCES users(id)
-);
-drop table if exists store_delivery_addresses;
-create table store_delivery_addresses
-(
-    id   integer      not null primary key auto_increment,
-    address varchar(255) not null,
-    postcode varchar(10) not null,
-    updated_at       timestamp not null default now() on update now(),
-    created_at       timestamp not null default now(),
-    CONSTRAINT FOREIGN KEY (id) REFERENCES stores(id)
+    order_id         integer not null,
+    product_id       integer not null,
+    CONSTRAINT FOREIGN KEY (product_id) REFERENCES products (id),
+    CONSTRAINT FOREIGN KEY (order_id) REFERENCES orders (id)
 );
 
-drop table if exists store_types;
-create table store_types
+/*
+1 buscar zonas de ese CP select from
+2 buscar todos los CP de join
+3 buscar todos las tiendas de join
+ */
+drop table if exists deliveryareas;
+create table deliveryareas
 (
-    id   integer      not null primary key auto_increment,
-    type varchar(255) not null,
-    updated_at       timestamp not null default now() on update now(),
-    created_at       timestamp not null default now(),
-    CONSTRAINT FOREIGN KEY (id) REFERENCES stores(id)
-);
-drop table if exists store_categories;
-create table store_categories
-(
-    id   integer      not null primary key auto_increment,
-    category varchar(255) not null,
-    updated_at       timestamp not null default now() on update now(),
-    created_at       timestamp not null default now(),
-    CONSTRAINT FOREIGN KEY (id) REFERENCES stores(id)
-);
-drop table if exists product_categories;
-create table product_categories
-(
-    id   integer      not null primary key auto_increment,
-    category varchar(255) not null,
-    updated_at       timestamp not null default now() on update now(),
-    created_at       timestamp not null default now(),
-    CONSTRAINT FOREIGN KEY (id) REFERENCES products(id)
-);
-create table store_storedeliveryaddresses
-(
-    store_id         integer not null,
-    storedeliveryaddresses_id   integer not null,
+    id              integer  not null primary key auto_increment,
+    deliveryareas   integer  not null,
+    postcode        varchar(255) not null,
     updated_at      timestamp not null default now() on update now(),
-    created_at      timestamp not null default now(),
-    PRIMARY KEY (store_id,storedeliveryaddresses_id),
-    CONSTRAINT FOREIGN KEY (storedeliveryaddresses_id) REFERENCES store_delivery_addresses(id),
-    CONSTRAINT FOREIGN KEY (store_id) REFERENCES stores(id)
+    created_at      timestamp not null default now()
 );
+
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08001', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (2,'08002', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (3,'08003', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (4,'08004', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08005', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (2,'08006', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (3,'08007', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (4,'08008', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08009', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (2,'08010', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (3,'08011', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (4,'08012', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08013', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (2,'08014', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (3,'08015', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (4,'08016', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08017', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (2,'08018', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (3,'08019', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (4,'08020', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08021', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (2,'08022', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (3,'08023', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (4,'08024', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08025', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (2,'08026', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (3,'08027', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (4,'08028', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08029', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (2,'08030', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (3,'08031', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (4,'08032', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08033', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (2,'08034', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (3,'08035', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (4,'08036', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08037', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (2,'08038', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (3,'08039', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (4,'08040', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08041', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (2,'08042', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (3,'08070', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (4,'08071', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08080', DEFAULT, DEFAULT);
