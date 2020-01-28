@@ -52,6 +52,7 @@ class StoreController extends Controller
                 $store->postcode = $params_array['postcode'];
                 $store->delivery_area_id = $deliveryArea;
                 $store->image_url = $params_array['image_url'];
+                $store->category_id = $params_array['category_id'];
 
 
 
@@ -153,9 +154,12 @@ class StoreController extends Controller
 
         return response()->json($data);
     }
-    public function storesByCategoryZone($category,$zone)
+    public function storesByCategoryDeliveryArea($category,$postcode)
     {
-         $stores = Store::where('category',$category and 'zone', $zone)->get();
+        $category_id = DB::table('store_categories')->where('name', $category)->value('id');
+        $deliveryArea = DB::table('delivery_areas')->where('postcode',$postcode)->value('delivery_areas');
+
+        $stores = DB::table('stores')->where([['category_id',$category_id], ['delivery_area_id' ,$deliveryArea]])->get();
 
          $data = array (
              'code' => 200,

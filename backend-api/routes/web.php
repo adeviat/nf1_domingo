@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('api/store/{id}', 'StoreController@showStoreById');
+Route::get('api/store/{category}/postcode/{postcode}', 'StoreController@storesByCategoryDeliveryArea');
 Route::post('api/store/create', 'StoreController@create');
 Route::put('api/store/update', 'StoreController@update');
 //Route::get('api/stores', 'StoreController@getStores');
