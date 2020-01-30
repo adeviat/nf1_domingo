@@ -2,9 +2,10 @@ import React, {useContext, useEffect,useState} from 'react';
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
-import {User} from "../Helpers/userReducer";
-import AddressModal from "../AddressModal";
-import {get} from "../Helpers/ServerMethods";
+import {User} from "../../../components/Helpers/userReducer";
+import AddressModal from "../../../components/AddressModal";
+import {get} from "../../../components/Helpers/ServerMethods";
+import { useHistory,Link } from "react-router-dom";
 
 function HomePageMainBlock() {
 
@@ -16,7 +17,9 @@ function HomePageMainBlock() {
         category: ""
     });
     const [postalcode, setPostalCode] = useState(false);
+    const [storesResponse, setStoresResponse] = useState([]);
     const {state,dispatch} = useContext(User);
+    let history = useHistory();
 
 
 
@@ -32,13 +35,22 @@ function HomePageMainBlock() {
     };
 
     useEffect(() => {
-        if(onClickCategory.onClick){
-           /* if(state.equals(null || undefined)) {
-                get('api/store/category' + onClickCategory.category)
-                    .then()
-            }*/
-            postalcode ? console.log(onClickCategory.category) : setOpenAddressModal(true);
-            onClickCategory.onClick = false;
+        ;
+        if(onClickCategory.onClick) {
+
+            if(!localStorage.getItem('token')) {
+                get('api/store/category/' + onClickCategory.category)
+                    .then(response => {
+
+                        history.push({pathname:'/StoresView',state:{detail: response.stores}});
+                    })
+            }
+            else {
+                postalcode ? console.log(onClickCategory.category) : setOpenAddressModal(true);
+                onClickCategory.onClick = false;
+            }
+
+
 
         }
     },[onClickCategory.onClick]);
@@ -62,6 +74,15 @@ function HomePageMainBlock() {
                         <h2 className="main-subtitle">Delivered in minutes</h2>
                     </div>
                     <div className="row d-flex justify-content-center" >
+
+                        <Link to="/stores/Courier">
+                            <div className="d-flex flex-column justify-content-center align-items-center category-btn">
+                                <img
+                                    src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/mw7p9b345wc9ochmgfwz"
+                                    alt="Courier" width="65px"/><p>Courier</p>
+                            </div>
+                        </Link>
+
                         <div className="d-flex flex-column justify-content-center align-items-center category-btn" onClick={() => setOnClickCategory({onClick:true, category:"Courier"})}>
                             <img
                                 src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/mw7p9b345wc9ochmgfwz"
@@ -72,11 +93,13 @@ function HomePageMainBlock() {
                                 src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/caydhj0ofggm5hybmdnf"
                                 alt="Pharmacy" width="65px"/><p>Pharmacy</p>
                         </div>
-                        <div className="d-flex flex-column justify-content-center align-items-center category-btn" onClick={() => setOnClickCategory({onClick:true, category:"Food"})}>
-                            <img
-                                src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/prj0mlcuvmymzfh8pqjz"
-                                alt="Food" width="65px"/><p>Food</p>
-                        </div>
+                        <Link to="/stores/Food">
+                            <div className="d-flex flex-column justify-content-center align-items-center category-btn" onClick={() => setOnClickCategory({onClick:true, category:"Food"})}>
+                                <img
+                                    src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/prj0mlcuvmymzfh8pqjz"
+                                    alt="Food" width="65px"/><p>Food</p>
+                            </div>
+                        </Link>
                         <div className="d-flex flex-column justify-content-center align-items-center category-btn" onClick={() => setOnClickCategory({onClick:true, category:"Anything"})}>
                             <img
                                 src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/hhxw0ckf1kqpxuzo4eio"

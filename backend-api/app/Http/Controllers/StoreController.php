@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
 
 class StoreController extends Controller
 {
@@ -163,17 +164,17 @@ class StoreController extends Controller
                 'code' => 404,
                 'message' => 'Wrong Category'
             );
-            return response()->json($data);
+            return response()->json($data, \Illuminate\Http\Response::HTTP_NOT_FOUND);
         }
         else {
             $stores = DB::table('stores')->where('category_id' ,$category_id)->get();
 
-            if(empty($stores)) {
+            if($stores->isEmpty()) {
                 $data = array (
                     'code' => 404,
                     'message' => 'There are no Stores for this Category '
                 );
-                return response()->json($data);
+                return response()->json($data, \Illuminate\Http\Response::HTTP_NOT_FOUND);
             }
             else {
 

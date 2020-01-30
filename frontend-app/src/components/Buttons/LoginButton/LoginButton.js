@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import '../../HomePage/bootstrap.min.css';
+import '../../../Views/HomePage/bootstrap.min.css';
 import './LoginModalBox.css';
 
 
