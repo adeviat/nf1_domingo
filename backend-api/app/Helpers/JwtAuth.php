@@ -37,6 +37,7 @@ class JwtAuth {
               'email'   => $user->email,
               'name'    => $user->name,
               'surname' => $user->surname,
+              'postcode' => $user->postcode,
               'store_id' => $user->store_id,
               'password' => $password,
               'iat'     =>  time(),
@@ -46,7 +47,7 @@ class JwtAuth {
           $jwt = JWT::encode($token, $this->key, 'HS256');
           $decoded = JWT::decode($jwt, $this->key, ['HS256']);
 
-          //Devolcer los datos decodificados o el token, en funcion de un parametro
+          //Devolver los datos decodificados o el token, en funcion de un parametro
           if(is_null($getToken)){
               $data = $jwt;
           }else{
@@ -65,53 +66,7 @@ class JwtAuth {
         return $data;
 
     }
-    public function signupStore($email, $password, $getToken = null){
 
-        // Buscar si existe el usuario con sus credenciales
-        $store = Store::where([
-            'email' => $email,
-            'password' => $password
-        ])->first();
-
-        //Comprobar si son correctas
-        $signup = false;
-        if(is_object($store)){
-            $store = true;
-        }
-        //Generar el token con los datos de usuario identificado
-        if($signup){
-
-            $token = array(
-                'id'     => $store->id,
-                'email'   => $store->email,
-                'name'    => $store->name,
-                'location' => $store->location,
-                'iat'     =>  time(),
-                'exp'     =>  time() + (7 * 24 * 60 * 60),
-            );
-
-            $jwt = JWT::encode($token, $this->key, 'HS256');
-            $decoded = JWT::decode($jwt, $this->key, ['HS256']);
-
-            //Devolcer los datos decodificados o el token, en funcion de un parametro
-            if(is_null($getToken)){
-                $data = $jwt;
-            }else{
-                $data = $decoded;
-
-            }
-
-        }else{
-            $data = array(
-                'status' => 'error',
-                'message' => 'Login incorrecto.'
-
-            );
-        }
-
-        return $data;
-
-    }
       public function checkToken($jwt, $getIdentity = false){
         $auth = false;
 

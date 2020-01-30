@@ -147,3 +147,5 @@ INSERT INTO `domingo`.`store_categories` (`name`, `updated_at`, `created_at`) VA
 INSERT INTO `domingo`.`store_categories` (`name`, `updated_at`, `created_at`) VALUES ('Shop', DEFAULT, DEFAULT);
 INSERT INTO `domingo`.`store_categories` (`name`, `updated_at`, `created_at`) VALUES ('Supermarket', DEFAULT, DEFAULT);
 INSERT INTO `domingo`.`store_categories` (`name`, `updated_at`, `created_at`) VALUES ('Breakfast', DEFAULT, DEFAULT);
+
+
