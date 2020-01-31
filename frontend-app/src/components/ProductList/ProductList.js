@@ -30,7 +30,7 @@ const SET_PRODUCT_DATA = 'SET_PRODUCT_DATA';
 const SET_ERROR = 'SET_ERROR';
 
 const initialState = {
-    productData: undefined,
+    productData: [],
     error: false,
 };
 
@@ -61,6 +61,9 @@ function ProductList(props) {
 
     useEffect(() => {
         const fetchData = async () => {
+            if (!storeId) {
+                return;
+            }
             const url = 'http://127.0.0.1:80/api/products/store/'+storeId;
             const options = {
                 method: 'GET',
