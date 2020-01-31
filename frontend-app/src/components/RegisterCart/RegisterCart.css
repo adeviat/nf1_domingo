@@ -5,6 +5,11 @@
     border-radius: 10px;
     box-shadow: 3px 3px 5px 0 rgba(0,0,0,.1);
     padding: 15px;
+    margin-top: 5px;
+    margin-right: 5px;
+    width: 250px ;
+
+
 }
 .DomingoRegisterCardHeader{
     font-size: 30px;

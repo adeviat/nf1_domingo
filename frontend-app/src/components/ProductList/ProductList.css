@@ -1,0 +1,34 @@
+.DomingoProductContainers{
+
+    width: 70%;
+    padding: 5px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.DomingoProductContainer{
+    float: left;
+    padding: 10px 20px 30px;
+
+
+}
+
+
+.DomingoContainer{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+
+
+
+}
+
+.DomingoRegisterCard{
+    margin-right: 10px;
+    margin-top: 10px;
+
+
+}
