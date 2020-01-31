@@ -101,41 +101,42 @@ function ProductList(props) {
                 </div>
 
                 <div className="DomingoContainer">
-                    <div>
+                    <div className="DomingoProductSection">
                         <StoreInfoHeader/>
-                    </div>
-                    <div className="DomingoProductContainers" >{state.productData.map(p =>
-                        <div className="DomingoProductContainer">
-                            <Card className={classes.card}>
-                                <CardActionArea>
-                                    <CardMedia
-                                        className={classes.media}
-                                        image={p.photo}
-                                        title="Contemplative Reptile"
-                                    />
-                                    <CardContent>
-                                        <Typography gutterBottom variant="h6" component="h2">
-                                            {p.name}
-                                        </Typography>
-                                        <Typography variant="body2" color="textSecondary" component="p">
-                                            {p.description}
-                                        </Typography>
-                                    </CardContent>
-                                </CardActionArea>
-                                <CardActions>
-                                    <Button size="small" color="primary">
-                                        Añadir a cesta
-                                    </Button>
-                                    <Button size="small" color="primary">
-                                        {p.price} euros
-                                    </Button>
-                                </CardActions>
-                            </Card>
-                        </div>)}
-
-                    </div>
-                    <div className="DomingoRegisterCard">
-                        <RegisterCart/>
+                        <div className="DomingoProductContainers" >{state.productData.map(p =>
+                            <div className="DomingoProductContainer">
+                                <Card className={classes.card}>
+                                    <CardActionArea>
+                                        <CardMedia
+                                            className={classes.media}
+                                            image={p.photo}
+                                            title="Contemplative Reptile"
+                                        />
+                                        <CardContent>
+                                            <Typography gutterBottom variant="h6" component="h2">
+                                                {p.name}
+                                            </Typography>
+                                            <Typography variant="body2" color="textSecondary" component="p">
+                                                {p.description}
+                                            </Typography>
+                                        </CardContent>
+                                    </CardActionArea>
+                                    <CardActions>
+                                        <Button size="small" color="primary">
+                                            Añadir a cesta
+                                        </Button>
+                                        <Button size="small" color="primary">
+                                            {p.price} euros
+                                        </Button>
+                                    </CardActions>
+                                </Card>
+                            </div>)}
+                        </div>
+                        </div>
+                    <div className="DomingoRegisterSection">
+                        <div className="DomingoRegisterCard">
+                            <RegisterCart/>
+                        </div>
                     </div>
                 </div>
 

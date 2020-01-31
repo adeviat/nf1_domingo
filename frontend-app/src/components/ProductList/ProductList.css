@@ -5,22 +5,22 @@
     margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
-
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .DomingoProductContainer{
-    float: left;
-    padding: 10px 20px 30px;
-
-
+    padding: 10px;
 }
 
 
 .DomingoContainer{
-    width: 60%;
+    width: 65%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
+    display: flex;
 
 
 
