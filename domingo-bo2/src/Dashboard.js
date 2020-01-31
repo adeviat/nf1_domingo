@@ -5,7 +5,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 
 export default () => (
     <Card>
-    <CardHeader title="Welcome to the administration" />
-    <CardContent>Lorem ipsum sic dolor amet...</CardContent>
+    <CardHeader title="Welcome to Domingo Store Managment" />
+        <CardContent>On this platform, you can manage your store </CardContent>
 </Card>
 );

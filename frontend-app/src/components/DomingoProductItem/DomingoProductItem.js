@@ -2,15 +2,19 @@ import React from 'react';
 import './DomingoProductItem.css';
 
 function DomingoProductItem(props) {
-    const {desc} = {...props};
+
+    const  {image_url,name} = props.store;
+    //const name = props.name;
+
+    //const {desc} = {...props};
 
     return(
       <div className="DomingoProductItem">
-          <div className="DomingoProductItemImg" style={{backgroundImage: "url(" + desc.imgUrl + ")"}}>
+          <div className="DomingoProductItemImg" style={{backgroundImage: "url(" + image_url + ")"}}>
 
           </div>
 
-          <div className="DomingoProdutItemHeaderText">{desc.desc}</div>
+          <div className="DomingoProdutItemHeaderText">{name}</div>
       </div>
 
     );

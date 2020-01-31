@@ -21,8 +21,9 @@ function HomePageMainBlock() {
             <div className="container-fluid d-none d-md-flex main-desktop">
                 <div className="container">
                     <div className="row d-flex justify-content-center">
-
-                        <img src={logo} alt="Logo de Domingo"/>
+                        <img
+                            src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/logo_green.svg"
+                            alt="Logo de Glovo"/>
                     </div>
                     <div className="row d-flex justify-content-center mt-4">
                         <h1>Lo que quieras en&nbsp;<span className="select-city">Barcelona <img

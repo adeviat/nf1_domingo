@@ -80,5 +80,59 @@ create table subcategories
    CONSTRAINT FOREIGN KEY (categories_id) REFERENCES categories (id)
 );
 
+create table zones
+(
+   id               integer      not null primary key auto_increment,
+   zone             integer  not null,
+   postcode         varchar(255) not null,
+   updated_at      timestamp not null default now() on update now(),
+   created_at      timestamp not null default now()
+);
+
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08001', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (2,'08002', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (3,'08003', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (4,'08004', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08005', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (2,'08006', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (3,'08007', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (4,'08008', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08009', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (2,'08010', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (3,'08011', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (4,'08012', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08013', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (2,'08014', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (3,'08015', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (4,'08016', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08017', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (2,'08018', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (3,'08019', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (4,'08020', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08021', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (2,'08022', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (3,'08023', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (4,'08024', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08025', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (2,'08026', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (3,'08027', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (4,'08028', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08029', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (2,'08030', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (3,'08031', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (4,'08032', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08033', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (2,'08034', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (3,'08035', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (4,'08036', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08037', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (2,'08038', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (3,'08039', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (4,'08040', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08041', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (2,'08042', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (3,'08070', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (4,'08071', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`deliveryareas` (`deliveryareas`, `postcode`, `updated_at`, `created_at`) VALUES (1,'08080', DEFAULT, DEFAULT);
 
 

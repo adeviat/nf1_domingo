@@ -3,7 +3,6 @@ import './HomePage.css';
 import './bootstrap.min.css';
 import HomePageTopMenu from '../HomePageTopMenu/HomePageTopMenu';
 import HomePageMainBlock from "../HomePageMainBlock/HomePageMainBlock";
-import ProductList from "../ProductList/ProductList";
 
 
 function HomePage() {

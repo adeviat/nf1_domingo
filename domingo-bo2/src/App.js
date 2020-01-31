@@ -9,8 +9,9 @@ import { ProductList, ProductCreate,ProductEdit } from './ProductList';
 
 const App = () => (
     <Admin dashboard={Dashboard} authProvider={authProvider} dataProvider={dataProvider}>
-      <Resource name="products" list={ProductList} create={ProductCreate}  edit={ProductEdit} />
         <Resource name="stores" list={StoreList} edit={StoreEdit} show={StoreShow} />
+        <Resource name="products" list={ProductList} create={ProductCreate}  edit={ProductEdit} />
+
     </Admin>
 );
 

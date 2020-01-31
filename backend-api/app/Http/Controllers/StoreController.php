@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 use App\Store;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
 
 class StoreController extends Controller
 {
@@ -26,6 +28,7 @@ class StoreController extends Controller
                 'name' => 'required',
                 'address' => 'required',
                 'postcode' => 'required',
+                'image_url' => 'required'
 
             ]);
             if ($validate->fails()) {
@@ -41,13 +44,16 @@ class StoreController extends Controller
                 //Validacion pasada correctamente
 
 
-
+                $deliveryArea = DB::table('delivery_areas')->where('postcode',$params_array['postcode'])->value('delivery_areas');
 
                 //crear el productos
                 $store = new Store();
                 $store->name = $params_array['name'];
                 $store->address = $params_array['address'];
                 $store->postcode = $params_array['postcode'];
+                $store->delivery_area_id = $deliveryArea;
+                $store->image_url = $params_array['image_url'];
+                $store->category_id = $params_array['category_id'];
 
 
 
@@ -60,7 +66,7 @@ class StoreController extends Controller
                     'status' => 'success',
                     'code' => 200,
                     'mensaje' => 'El Store se ha creado correctamente',
-                    'newstore' => $store
+                    'newStore' => $store
                 );
             }
 
@@ -149,4 +155,68 @@ class StoreController extends Controller
 
         return response()->json($data);
     }
+    public function storesByCategory($category) {
+
+        $category_id = DB::table('store_categories')->where('name', $category)->value('id');
+
+        if($category_id  ==  null) {
+            $data = array (
+                'code' => 404,
+                'message' => 'Wrong Category'
+            );
+            return response()->json($data, \Illuminate\Http\Response::HTTP_NOT_FOUND);
+        }
+        else {
+            $stores = DB::table('stores')->where('category_id' ,$category_id)->get();
+
+            if($stores->isEmpty()) {
+                $data = array (
+                    'code' => 404,
+                    'message' => 'There are no Stores for this Category '
+                );
+                return response()->json($data, \Illuminate\Http\Response::HTTP_NOT_FOUND);
+            }
+            else {
+
+                $data = array(
+                    'code' => 200,
+                    'stores' => $stores
+                );
+
+                return response()->json($data);
+            }
+        }
+    }
+
+    public function storesByCategoryDeliveryArea($category,$postcode)
+    {
+        $category_id = DB::table('store_categories')->where('name', $category)->value('id');
+        $deliveryArea = DB::table('delivery_areas')->where('postcode',$postcode)->value('delivery_areas');
+
+        if($category_id || $deliveryArea ==  null){
+            $data = array (
+                'code' => 404,
+                'message' => 'Wrong Category or PostCode'
+            );
+            return response()->json($data);
+        }
+
+        $stores = DB::table('stores')->where([['category_id',$category_id], ['delivery_area_id' ,$deliveryArea]])->get();
+
+        if($stores ==  null){
+            $data = array (
+                'code' => 404,
+                'message' => 'There are no Stores for this Category or Postcode'
+            );
+            return response()->json($data);
+        }
+
+         $data = array (
+             'code' => 200,
+             'stores' => $stores
+         );
+
+        return response()->json($data);
+    }
+
 }
