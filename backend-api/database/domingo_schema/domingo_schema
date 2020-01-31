@@ -8,7 +8,6 @@ create table store_categories
 (
     id               integer      not null primary key auto_increment,
     name             varchar(255)  not null,
-    icon             varchar(255) default null,
     updated_at       timestamp not null default now() on update now(),
     created_at       timestamp not null default now()
 
@@ -73,8 +72,8 @@ create table products
     CONSTRAINT FOREIGN KEY (store_id) REFERENCES stores(id)
 );
 
-drop table if exists orders_products;
-create table orders_products
+drop table if exists order_product;
+create table order_product
 (
     order_id       integer not null,
     product_id     integer not null,

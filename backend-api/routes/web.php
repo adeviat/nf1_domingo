@@ -28,6 +28,8 @@ Route::put('/api/user/updatepass', 'UserController@updatepassword');
 Route::get('/api/users', 'UserController@show');
 Route::get('/api/users/getStore/{token}', 'UserController@getStore');
 
+Route::post('/api/order/new', 'OrderController@create');
+
 Route::get('/api/users/{token}', 'UserController@showbytoken');
 //Route::get('profile', 'UserController@getAuthenticatedUser');
 
