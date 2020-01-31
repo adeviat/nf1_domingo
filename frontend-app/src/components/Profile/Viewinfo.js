@@ -2,6 +2,8 @@ import React, {useState, useEffect, useContext} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Popper from '@material-ui/core/Popper';
 import './Viewinfo.css';
+
+
 import FaceIcon from '@material-ui/icons/Face';
 import Fab from '@material-ui/core/Fab';
 import Dialog from "@material-ui/core/Dialog";
@@ -16,10 +18,12 @@ import {User} from "../Helpers/userReducer";
 // ICON IMPORTATION
 
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import DialogEditPassword from "../DialogEditPassword/DialogEditPassword";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import {green} from "@material-ui/core/colors";
 import {ThemeProvider} from "@material-ui/styles";
+import Cartp from "../Cart/Cartp";
 
 
 
@@ -94,7 +98,7 @@ export default function SimplePopper() {
         },
         fab: {
             margin: theme.spacing(1),
-            backgroundColor: '#ffc244',
+            backgroundColor: '#00659c',
             border:'none',
             cursor: 'pointer',
             color: 'white',
@@ -112,10 +116,11 @@ export default function SimplePopper() {
     const theme = createMuiTheme({
         palette: {
             secondary: {
-                main:'#00a082'
+                main:'#f7c143'
             }
         },
     });
+
 
 
     const classes = useStyles();
@@ -141,7 +146,7 @@ export default function SimplePopper() {
                         <div className={classes.extendedIcon} >
                             <ThemeProvider theme={theme}>
                                 <Fab color={'secondary'} aria-label="add" >
-                                    <PermIdentityIcon/>
+                                    <FaceIcon style={{ color: "primary" }}/>
                                 </Fab>
                             </ThemeProvider>
                         </div>

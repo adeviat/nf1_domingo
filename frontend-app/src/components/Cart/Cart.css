@@ -6,7 +6,7 @@ div.profilebutton {
     margin-right: 200px;
 
 }
-div.container_profile {
+div.container_cart {
     z-index: 10 ;
     border-radius: 12px;
     padding: 0;
@@ -28,7 +28,7 @@ div.container_profile {
 
 }
 
-div.profile_body{
+div.cart_body{
     color:#606266;
     font-family: Gotham,Arial,Helvetica Neue,Helvetica,sans-serif;
     font-weight: 300;
@@ -39,7 +39,7 @@ div.profile_body{
     overflow-x: hidden;
 }
 
-div.profile_title {
+div.cart_title {
     font-family: Gotham, Arial, Helvetica Neue, Helvetica, sans-serif;
     padding-left: 0 !important;
     font-size: 14px;
@@ -99,7 +99,7 @@ div.profile_request{
 
 div.profile_logout {
     position: absolute;
-    color: #00659c;
+    color: #2abb9b;
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;

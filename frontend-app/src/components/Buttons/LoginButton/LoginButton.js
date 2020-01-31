@@ -168,7 +168,7 @@ export default function LoginButton() {
                                 </button>
                             </div>
                             <div className="registerbtn">
-                                <p>¿Eres nuevo usuario de Glovo? <a href="#">Regístrate</a></p>
+                                <p>¿Eres nuevo usuario en Domingo? <a href="#">Regístrate</a></p>
                             </div>
 
 
