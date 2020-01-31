@@ -1,6 +1,7 @@
 import React from 'react';
 import './Footer.css';
 import { Link } from 'react-router-dom';
+import logo from "../../Img/logo.png";
 
 function Footer() {
     return (
@@ -9,7 +10,7 @@ function Footer() {
 
                 <div className="container_divs">
                 <div className="title_links_footer logo">
-                        <img src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/glovo-white.svg" alt="Glovo" className="footer_logo"/>
+                    <img src={logo} width='80px'/>
                 </div>
                 <div className="title_links_footer">TRABAJA CON NOSOTROS
                                 <a href="empleo" className="subtitle_title_links_footer">Empleo</a>

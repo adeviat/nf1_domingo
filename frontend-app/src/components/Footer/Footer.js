@@ -2,6 +2,8 @@ import React from 'react';
 import './Footer.css';
 import RestaurantList from "./components/ComponentList/ComponentList";
 
+import logo from '../Img/logo.png';
+
 function Footer() {
 
     const restaurant = [{
@@ -33,7 +35,7 @@ function Footer() {
             <div id="containerfooter">
                 <div id="glovofooter">
                     <img
-                        src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/glovo-white.svg"/>
+                        src={"https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/glovo-white.svg"}/>
                 </div>
                 <div className="optionsfooter1">
                     <ul>
