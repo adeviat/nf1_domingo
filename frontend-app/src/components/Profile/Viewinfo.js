@@ -23,6 +23,7 @@ import DialogEditPassword from "../DialogEditPassword/DialogEditPassword";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import {green} from "@material-ui/core/colors";
 import {ThemeProvider} from "@material-ui/styles";
+import Cartp from "../Cart/Cartp";
 
 
 
@@ -145,13 +146,10 @@ export default function SimplePopper() {
                         <div className={classes.extendedIcon} >
                             <ThemeProvider theme={theme}>
                                 <Fab color={'secondary'} aria-label="add" >
-                                    <ShoppingCartIcon style={{ color: "primary" }}/>
+                                    <FaceIcon style={{ color: "primary" }}/>
                                 </Fab>
                             </ThemeProvider>
                         </div>
-
-
-
                     </div>
                 </div>
             </div>

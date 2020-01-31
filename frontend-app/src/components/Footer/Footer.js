@@ -2,7 +2,7 @@ import React from 'react';
 import './Footer.css';
 import RestaurantList from "./components/ComponentList/ComponentList";
 
-import logo from '../Img/logo.png';
+import logo from '../../Views/HomePage/HomePageMainBlock/Img/logo.png';
 
 function Footer() {
 

@@ -1,34 +1,102 @@
-import React, {useState} from "react";
+import React, {useState, useEffect, useContext} from 'react';
+import {makeStyles} from '@material-ui/core/styles';
+import Popper from '@material-ui/core/Popper';
+import './Cart.css';
+
+
+import Fab from '@material-ui/core/Fab';
 import Button from '@material-ui/core/Button';
-import {ReactComponent as CartEmpty} from '../Img/Iconos/cart-empty.svg';
+import 'typeface-roboto';
 
-import "./Cart.css";
 
-export default function Cart() {
+// ICON IMPORTATION
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import {ThemeProvider} from "@material-ui/styles";
 
-    const [cartOpen, setCartOpen] = useState(true);
-    const widthCartContent = cartOpen ? 400 : 0;
 
-    const openCart = () => {
-        setCartOpen(true);
-        document.body.style.overflow = "hidden";
+
+
+export default function SimplePopper() {
+
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+
+
+    ////TODO Ajustar el estilo del boton
+
+    const useStyles = makeStyles(theme => ({
+
+
+        fab: {
+            margin: theme.spacing(1),
+            backgroundColor: '#00659c',
+            border:'none',
+            cursor: 'pointer',
+            color: 'white',
+            textAlign: 'right',
+            fontWeight: '600'
+        },
+
+        extendedIcon: {
+            marginLeft: theme.spacing(1),
+        },
+
+    }));
+    const theme = createMuiTheme({
+        palette: {
+            secondary: {
+                main:'#f7c143'
+            }
+        },
+    });
+
+
+
+    const classes = useStyles();
+
+
+    const handleClick = event => {
+        setAnchorEl(anchorEl ? null : event.currentTarget);
     };
 
-    const closeCart = () => {
-        setCartOpen(false);
-        document.body.style.overflow = "scroll";
-    }
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popper' : undefined;
 
-    return(
+
+    return (
         <div>
-            <Button variant="link" className="cart">
-                <CartEmpty onClick={openCart}/>
-            </Button>
-            <div className="cart-content" style={{width: widthCartContent}}>Todos mis productos</div>
+            <div className={classes.fab}>
+                <div aria-describedby={id}  onClick={handleClick} >
+                    <div className="col d-flex justify-content-end">
+                        <div className={classes.extendedIcon} >
+                            <ThemeProvider theme={theme}>
+                                <Fab color={'secondary'} aria-label="add" >
+                                    <ShoppingCartIcon style={{ color: "primary" }}/>
+                                </Fab>
+                            </ThemeProvider>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <Popper id={id} open={open} anchorEl={anchorEl}>
+                <div className="infocart">
+                    <div className="container_cart">
+                        <div className="cart_body">
+                            <div className="cart_title">CARRITO</div>
+                        </div>
+                        <div>
+                            <Button variant="outlined" color="primary">
+                                Pagar
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+            </Popper>
+
         </div>
-    )
-
-
-
-
+    );
 }
+

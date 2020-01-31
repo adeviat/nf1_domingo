@@ -1,13 +1,13 @@
 import React from 'react';
-import logo from '../Img/logo.png';
-import courier from '../Img/courier.png';
-import farmacia from '../Img/farmacia.png';
-import everything from '../Img/everything.png';
-import food from '../Img/food.png';
-import shop from '../Img/shop.png';
-import supermarket from '../Img/supermarket.png';
-import snacks from '../Img/snacks.png';
-import expand from '../Img/expand.png';
+import logo from '../HomePageMainBlock/Img/logo.png';
+import courier from '../HomePageMainBlock/Img/courier.png';
+import farmacia from '../HomePageMainBlock/Img/farmacia.png';
+import everything from '../HomePageMainBlock/Img/everything.png';
+import food from '../HomePageMainBlock/Img/food.png';
+import shop from '../HomePageMainBlock/Img/shop.png';
+import supermarket from '../HomePageMainBlock/Img/supermarket.png';
+import snacks from '../HomePageMainBlock/Img/snacks.png';
+import expand from '../HomePageMainBlock/Img/expand.png';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
@@ -22,7 +22,7 @@ function HomePageMainBlock() {
                 <div className="container">
                     <div className="row d-flex justify-content-center">
                         <img
-                            src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/logo_green.svg"
+                            src={logo}
                             alt="Logo de Glovo"/>
                     </div>
                     <div className="row d-flex justify-content-center mt-4">

@@ -2,11 +2,12 @@ import React, {useContext, useEffect, useState} from 'react';
 import LoginButton from "../Buttons/LoginButton/LoginButton.js";
 import Viewinfo from "../Profile/Viewinfo.js";
 import RegisterButton from "../Buttons/RegisterButton/RegisterButton.js";
-import Cart from "../Cart/Cart";
+import Cartp from "../Cart/Cartp";
+import UserCart from "../UserCart";
 import {User} from "../Helpers/userReducer";
 import {get} from "../Helpers/ServerMethods";
 
-import  expand from "../Img/expand.png";
+import  expand from "../../Views/HomePage/HomePageMainBlock/Img/expand.png";
 
 
 
@@ -54,13 +55,11 @@ function HomePageTopmenu() {
                         </div>
                         {/* TODO Modificar boton del componente ViewInfo para que sea un div con una imagen dentro "cursor:pointer"*/}
 
-                        {visibility ? (<Viewinfo/>) :
+                        {visibility ? (<UserCart/>) :
                                 (<div className="col d-flex justify-content-end">
                                 <RegisterButton/>
                                 <LoginButton/>
                             </div>)}
-
-
                     </div>
 
                 </div>
