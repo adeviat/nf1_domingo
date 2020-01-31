@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import '../../HomePage/bootstrap.min.css';
+import '../../../Views/HomePage/bootstrap.min.css';
 import './LoginModalBox.css';
 
 
@@ -80,7 +80,6 @@ export default function LoginButton() {
                 .then(response => {
                     if (response.code === 200) {
                         setOpenLogin(false);
-                        //localStorage.setItem('token', response.token);
                         return dispatch({
                             type: 'SET_USER',
                             payload: response

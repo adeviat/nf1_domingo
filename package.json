@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "jscpd": "^2.0.16"
+    "jscpd": "^2.0.16",
+    "react-scripts": "^3.3.0"
   }
 }
