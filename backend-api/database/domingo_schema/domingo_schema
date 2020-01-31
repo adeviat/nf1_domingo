@@ -689,3 +689,357 @@ VALUES ('Tienda 182', 'Calle 182', '08071', 'https://picsum.photos/378', '4', '1
 INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
                                 `updated_at`, `created_at`)
 VALUES ('Tienda 183', 'Calle 183', '08080', 'https://picsum.photos/379', '1', '3', DEFAULT, DEFAULT)
+
+
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 1', 'Veneno', '4', 'https://picsum.photos/200', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 2', 'Veneno', '6', 'https://picsum.photos/201', '11', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 3', 'Veneno', '3', 'https://picsum.photos/202', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 4', 'Veneno', '5', 'https://picsum.photos/203', '11', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 5', 'Veneno', '8', 'https://picsum.photos/204', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 6', 'Veneno', '9', 'https://picsum.photos/205', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 7', 'Veneno', '7', 'https://picsum.photos/206', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 8', 'Veneno', '3', 'https://picsum.photos/207', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 9', 'Veneno', '10', 'https://picsum.photos/208', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 10', 'Veneno', '6', 'https://picsum.photos/209', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 11', 'Veneno', '7', 'https://picsum.photos/210', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 12', 'Veneno', '5', 'https://picsum.photos/211', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 13', 'Veneno', '6', 'https://picsum.photos/212', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 14', 'Veneno', '6', 'https://picsum.photos/213', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 15', 'Veneno', '9', 'https://picsum.photos/214', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 16', 'Veneno', '3', 'https://picsum.photos/215', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 17', 'Veneno', '3', 'https://picsum.photos/216', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 18', 'Veneno', '3', 'https://picsum.photos/217', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 19', 'Veneno', '5', 'https://picsum.photos/218', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 20', 'Veneno', '10', 'https://picsum.photos/219', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 21', 'Veneno', '1', 'https://picsum.photos/220', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 22', 'Veneno', '8', 'https://picsum.photos/221', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 23', 'Veneno', '8', 'https://picsum.photos/222', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 24', 'Veneno', '3', 'https://picsum.photos/223', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 25', 'Veneno', '5', 'https://picsum.photos/224', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 26', 'Veneno', '1', 'https://picsum.photos/225', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 27', 'Veneno', '5', 'https://picsum.photos/226', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 28', 'Veneno', '11', 'https://picsum.photos/227', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 29', 'Veneno', '6', 'https://picsum.photos/228', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 30', 'Veneno', '5', 'https://picsum.photos/229', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 31', 'Veneno', '3', 'https://picsum.photos/230', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 32', 'Veneno', '4', 'https://picsum.photos/231', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 33', 'Veneno', '3', 'https://picsum.photos/232', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 34', 'Veneno', '5', 'https://picsum.photos/233', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 35', 'Veneno', '5', 'https://picsum.photos/234', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 36', 'Veneno', '8', 'https://picsum.photos/235', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 37', 'Veneno', '4', 'https://picsum.photos/236', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 38', 'Veneno', '1', 'https://picsum.photos/237', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 39', 'Veneno', '7', 'https://picsum.photos/238', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 40', 'Veneno', '5', 'https://picsum.photos/239', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 41', 'Veneno', '8', 'https://picsum.photos/240', '11', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 42', 'Veneno', '7', 'https://picsum.photos/241', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 43', 'Veneno', '7', 'https://picsum.photos/242', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 44', 'Veneno', '2', 'https://picsum.photos/243', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 45', 'Veneno', '3', 'https://picsum.photos/244', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 46', 'Veneno', '7', 'https://picsum.photos/245', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 47', 'Veneno', '2', 'https://picsum.photos/246', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 48', 'Veneno', '10', 'https://picsum.photos/247', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 49', 'Veneno', '8', 'https://picsum.photos/248', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 50', 'Veneno', '4', 'https://picsum.photos/249', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 51', 'Veneno', '4', 'https://picsum.photos/250', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 52', 'Veneno', '4', 'https://picsum.photos/251', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 53', 'Veneno', '6', 'https://picsum.photos/252', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 54', 'Veneno', '3', 'https://picsum.photos/253', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 55', 'Veneno', '6', 'https://picsum.photos/254', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 56', 'Veneno', '5', 'https://picsum.photos/255', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 57', 'Veneno', '8', 'https://picsum.photos/256', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 58', 'Veneno', '4', 'https://picsum.photos/257', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 59', 'Veneno', '7', 'https://picsum.photos/258', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 60', 'Veneno', '5', 'https://picsum.photos/259', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 61', 'Veneno', '8', 'https://picsum.photos/260', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 62', 'Veneno', '4', 'https://picsum.photos/261', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 63', 'Veneno', '8', 'https://picsum.photos/262', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 64', 'Veneno', '3', 'https://picsum.photos/263', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 65', 'Veneno', '3', 'https://picsum.photos/264', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 66', 'Veneno', '1', 'https://picsum.photos/265', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 67', 'Veneno', '7', 'https://picsum.photos/266', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 68', 'Veneno', '5', 'https://picsum.photos/267', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 69', 'Veneno', '7', 'https://picsum.photos/268', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 70', 'Veneno', '4', 'https://picsum.photos/269', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 71', 'Veneno', '9', 'https://picsum.photos/270', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 72', 'Veneno', '6', 'https://picsum.photos/271', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 73', 'Veneno', '5', 'https://picsum.photos/272', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 74', 'Veneno', '10', 'https://picsum.photos/273', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 75', 'Veneno', '1', 'https://picsum.photos/274', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 76', 'Veneno', '1', 'https://picsum.photos/275', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 77', 'Veneno', '8', 'https://picsum.photos/276', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 78', 'Veneno', '8', 'https://picsum.photos/277', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 79', 'Veneno', '8', 'https://picsum.photos/278', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 80', 'Veneno', '3', 'https://picsum.photos/279', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 81', 'Veneno', '5', 'https://picsum.photos/280', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 82', 'Veneno', '9', 'https://picsum.photos/281', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 83', 'Veneno', '8', 'https://picsum.photos/282', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 84', 'Veneno', '9', 'https://picsum.photos/283', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 85', 'Veneno', '7', 'https://picsum.photos/284', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 86', 'Veneno', '6', 'https://picsum.photos/285', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 87', 'Veneno', '7', 'https://picsum.photos/286', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 88', 'Veneno', '1', 'https://picsum.photos/287', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 89', 'Veneno', '11', 'https://picsum.photos/288', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 90', 'Veneno', '2', 'https://picsum.photos/289', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 91', 'Veneno', '10', 'https://picsum.photos/290', '11', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 92', 'Veneno', '1', 'https://picsum.photos/291', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 93', 'Veneno', '5', 'https://picsum.photos/292', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 94', 'Veneno', '6', 'https://picsum.photos/293', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 95', 'Veneno', '10', 'https://picsum.photos/294', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 96', 'Veneno', '2', 'https://picsum.photos/295', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 97', 'Veneno', '2', 'https://picsum.photos/296', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 98', 'Veneno', '10', 'https://picsum.photos/297', '11', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 99', 'Veneno', '5', 'https://picsum.photos/298', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 100', 'Veneno', '7', 'https://picsum.photos/299', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 101', 'Veneno', '9', 'https://picsum.photos/300', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 102', 'Veneno', '8', 'https://picsum.photos/301', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 103', 'Veneno', '10', 'https://picsum.photos/302', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 104', 'Veneno', '9', 'https://picsum.photos/303', '11', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 105', 'Veneno', '9', 'https://picsum.photos/304', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 106', 'Veneno', '2', 'https://picsum.photos/305', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 107', 'Veneno', '11', 'https://picsum.photos/306', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 108', 'Veneno', '4', 'https://picsum.photos/307', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 109', 'Veneno', '3', 'https://picsum.photos/308', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 110', 'Veneno', '6', 'https://picsum.photos/309', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 111', 'Veneno', '3', 'https://picsum.photos/310', '11', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 112', 'Veneno', '6', 'https://picsum.photos/311', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 113', 'Veneno', '6', 'https://picsum.photos/312', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 114', 'Veneno', '4', 'https://picsum.photos/313', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 115', 'Veneno', '8', 'https://picsum.photos/314', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 116', 'Veneno', '2', 'https://picsum.photos/315', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 117', 'Veneno', '1', 'https://picsum.photos/316', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 118', 'Veneno', '1', 'https://picsum.photos/317', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 119', 'Veneno', '11', 'https://picsum.photos/318', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 120', 'Veneno', '2', 'https://picsum.photos/319', '11', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 121', 'Veneno', '8', 'https://picsum.photos/320', '11', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 122', 'Veneno', '6', 'https://picsum.photos/321', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 123', 'Veneno', '6', 'https://picsum.photos/322', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 124', 'Veneno', '6', 'https://picsum.photos/323', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 125', 'Veneno', '1', 'https://picsum.photos/324', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 126', 'Veneno', '5', 'https://picsum.photos/325', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 127', 'Veneno', '4', 'https://picsum.photos/326', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 128', 'Veneno', '10', 'https://picsum.photos/327', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 129', 'Veneno', '8', 'https://picsum.photos/328', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 130', 'Veneno', '4', 'https://picsum.photos/329', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 131', 'Veneno', '4', 'https://picsum.photos/330', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 132', 'Veneno', '5', 'https://picsum.photos/331', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 133', 'Veneno', '6', 'https://picsum.photos/332', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 134', 'Veneno', '2', 'https://picsum.photos/333', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 135', 'Veneno', '11', 'https://picsum.photos/334', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 136', 'Veneno', '9', 'https://picsum.photos/335', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 137', 'Veneno', '4', 'https://picsum.photos/336', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 138', 'Veneno', '2', 'https://picsum.photos/337', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 139', 'Veneno', '3', 'https://picsum.photos/338', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 140', 'Veneno', '3', 'https://picsum.photos/339', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 141', 'Veneno', '5', 'https://picsum.photos/340', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 142', 'Veneno', '3', 'https://picsum.photos/341', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 143', 'Veneno', '1', 'https://picsum.photos/342', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 144', 'Veneno', '2', 'https://picsum.photos/343', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 145', 'Veneno', '2', 'https://picsum.photos/344', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 146', 'Veneno', '9', 'https://picsum.photos/345', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 147', 'Veneno', '7', 'https://picsum.photos/346', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 148', 'Veneno', '4', 'https://picsum.photos/347', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 149', 'Veneno', '10', 'https://picsum.photos/348', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 150', 'Veneno', '6', 'https://picsum.photos/349', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 151', 'Veneno', '9', 'https://picsum.photos/350', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 152', 'Veneno', '10', 'https://picsum.photos/351', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 153', 'Veneno', '2', 'https://picsum.photos/352', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 154', 'Veneno', '4', 'https://picsum.photos/353', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 155', 'Veneno', '7', 'https://picsum.photos/354', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 156', 'Veneno', '6', 'https://picsum.photos/355', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 157', 'Veneno', '3', 'https://picsum.photos/356', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 158', 'Veneno', '8', 'https://picsum.photos/357', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 159', 'Veneno', '4', 'https://picsum.photos/358', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 160', 'Veneno', '3', 'https://picsum.photos/359', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 161', 'Veneno', '8', 'https://picsum.photos/360', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 162', 'Veneno', '1', 'https://picsum.photos/361', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 163', 'Veneno', '6', 'https://picsum.photos/362', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 164', 'Veneno', '4', 'https://picsum.photos/363', '11', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 165', 'Veneno', '6', 'https://picsum.photos/364', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 166', 'Veneno', '10', 'https://picsum.photos/365', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 167', 'Veneno', '5', 'https://picsum.photos/366', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 168', 'Veneno', '7', 'https://picsum.photos/367', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 169', 'Veneno', '6', 'https://picsum.photos/368', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 170', 'Veneno', '9', 'https://picsum.photos/369', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 171', 'Veneno', '11', 'https://picsum.photos/370', '11', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 172', 'Veneno', '4', 'https://picsum.photos/371', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 173', 'Veneno', '6', 'https://picsum.photos/372', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 174', 'Veneno', '7', 'https://picsum.photos/373', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 175', 'Veneno', '10', 'https://picsum.photos/374', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 176', 'Veneno', '5', 'https://picsum.photos/375', '10', DEFAULT, DEFAULT)
