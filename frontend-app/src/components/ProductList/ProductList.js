@@ -1,4 +1,4 @@
-import React, {useEffect, useReducer, useState} from 'react';
+import React, {useContext, useEffect, useReducer, useState} from 'react';
 import './ProductList.css'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -8,14 +8,18 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import RegisterCart from "../RegisterCart/RegisterCart";
+import HomePageTopmenu from "../HomePageTopMenu/HomePageTopMenu";
+import StoreInfoHeader from "../StoreInfoHeader/StoreInfoHeader";
+import {User} from "../Helpers/userReducer";
 
 
 const useStyles = makeStyles({
     card: {
-        maxWidth: 345,
+        maxWidth: 150,
     },
     media: {
-        height: 140,
+        height: 80,
     },
 });
 
@@ -29,6 +33,8 @@ const initialState = {
     productData: undefined,
     error: false,
 };
+
+
 
 const productReducer = (state = initialState, action) => {
     const newState = { ...state };
@@ -51,6 +57,7 @@ function ProductList(props) {
     const history = props.history;
     const classes = useStyles();
     const [state, dispatch] = useReducer(productReducer, initialState);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -89,35 +96,50 @@ function ProductList(props) {
         return(
 
             <div>
-                <div >{state.productData.map(p =>
-                    <div className="DomingoProductContainer">
-                        <Card className={classes.card}>
-                            <CardActionArea>
-                                <CardMedia
-                                    className={classes.media}
-                                    image={p.photo}
-                                    title="Contemplative Reptile"
-                                />
-                                <CardContent>
-                                    <Typography gutterBottom variant="h5" component="h2">
-                                        {p.name}
-                                    </Typography>
-                                    <Typography variant="body2" color="textSecondary" component="p">
-                                        {p.description}
-                                    </Typography>
-                                </CardContent>
-                            </CardActionArea>
-                            <CardActions>
-                                <Button size="small" color="primary">
-                                    Añadir a cesta
-                                </Button>
-                                <Button size="small" color="primary">
-                                    {p.price} euros
-                                </Button>
-                            </CardActions>
-                        </Card>
-                    </div>)}
+                <div>
+                    <HomePageTopmenu/>
                 </div>
+
+                <div className="DomingoContainer">
+                    <div>
+                        <StoreInfoHeader/>
+                    </div>
+                    <div className="DomingoProductContainers" >{state.productData.map(p =>
+                        <div className="DomingoProductContainer">
+                            <Card className={classes.card}>
+                                <CardActionArea>
+                                    <CardMedia
+                                        className={classes.media}
+                                        image={p.photo}
+                                        title="Contemplative Reptile"
+                                    />
+                                    <CardContent>
+                                        <Typography gutterBottom variant="h6" component="h2">
+                                            {p.name}
+                                        </Typography>
+                                        <Typography variant="body2" color="textSecondary" component="p">
+                                            {p.description}
+                                        </Typography>
+                                    </CardContent>
+                                </CardActionArea>
+                                <CardActions>
+                                    <Button size="small" color="primary">
+                                        Añadir a cesta
+                                    </Button>
+                                    <Button size="small" color="primary">
+                                        {p.price} euros
+                                    </Button>
+                                </CardActions>
+                            </Card>
+                        </div>)}
+
+                    </div>
+                    <div className="DomingoRegisterCard">
+                        <RegisterCart/>
+                    </div>
+                </div>
+
+
             </div>
         );
     }
