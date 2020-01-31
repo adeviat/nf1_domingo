@@ -1,6 +1,6 @@
 import React from 'react';
 import './TopMenu.css';
-import '../HomePage/bootstrap.min.css';
+import '../../Views/HomePage/bootstrap.min.css';
 
 export default function TopMenu() {
     return (

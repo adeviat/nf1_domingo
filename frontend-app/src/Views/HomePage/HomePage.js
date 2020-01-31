@@ -1,8 +1,8 @@
 import React from 'react';
 import './HomePage.css';
 import './bootstrap.min.css';
-import HomePageTopMenu from '../HomePageTopMenu/HomePageTopMenu';
-import HomePageMainBlock from "../HomePageMainBlock/HomePageMainBlock";
+import HomePageTopMenu from '../../components/HomePageTopMenu/HomePageTopMenu';
+import HomePageMainBlock from "./HomePageMainBlock/HomePageMainBlock";
 
 
 function HomePage() {

@@ -32,16 +32,7 @@ export default function DialogEditUser({setOpenEdit, user}) {
     const [name, setName] = useState( user.name);
     const [surname, setSurname] = useState(user.surname);
     const [email, setEmail] = useState(user.email);
-    const [phone_number, setPhone_number] = useState();
-    const [currentLocation, setCurrentLocation] = useState('');
 
-   /* useEffect(()=>{
-        if(state.User){
-            setName(state.User.name);
-            setSurname(state.User.surname);
-            setEmail(state.User.email);
-        }
-    });*/
 
 
 

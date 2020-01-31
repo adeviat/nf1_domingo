@@ -10,7 +10,7 @@ class Store extends Model
     protected $table = 'stores';
 
     protected $fillable = [
-        'name', 'address', 'postcode'
+        'name', 'address', 'postcode','image_url'
     ];
 
 }

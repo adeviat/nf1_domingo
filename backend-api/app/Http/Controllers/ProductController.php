@@ -160,4 +160,19 @@ class ProductController extends Controller
 
         return response()->json($data);
     }
+    public function showProductsByStore($storeId){
+
+         $products = Product::where('store_id', $storeId)->get();
+         if($products->isEmpty()){
+        $data = array(
+            'code' => 404,
+            'message' => 'Wrong store id or no products on this store'
+        );        return response()->json($data,\Illuminate\Http\Response::HTTP_NOT_FOUND);    }
+    else{
+        $data = array(
+            'code' => 200,
+            'products' => $products
+        );        return response()->json($data,\Illuminate\Http\Response::HTTP_OK);
+    }
+    }
 }

@@ -5,6 +5,32 @@
     border-radius: 10px;
     box-shadow: 3px 3px 5px 0 rgba(0,0,0,.1);
     padding: 15px;
+
+
+}
+.DomingoRegisterCart:hover {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%, 80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%, 60% {
+        transform: translate3d(4px, 0, 0);
+    }
 }
 .DomingoRegisterCardHeader{
     font-size: 30px;
@@ -28,45 +54,11 @@
     cursor: pointer;
 
 }
-.register-btn-desktop {
-    background-color: #2abb9b;
-    color: white;
-    border: none;
-    border-radius: 100px;
-    text-transform: uppercase;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 20.7px;
-    margin-bottom: 15px;
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 15px;
-    max-width: 340px;
-    min-width: 120px;
-    min-width: 120px;
-    box-shadow: 3px 3px 5px 0 rgba(0,0,0,.1);
-    padding: 10px;
-}
 
-.register-btn-desktop:hover {
-    background-color: #00a082;
-    transition: .3s;
-}
 span{
     display: inline-block;
 }
-.search-btn-desktop {
-    background: none;
-    border: none;
-    color: #2abb9b;
-    font-size: 14px;
-    cursor: pointer;
-}
 
-.search-btn-desktop:hover {
-    opacity: 0.8;
-    transition: .3s;
-}
 .DomingoRegisterCartText{
     font-size: 12px;
     font-weight: 300;

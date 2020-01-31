@@ -12,15 +12,18 @@ import PrivacyPolicy from "./PrivacyPolicy";
 import Facebook from "./Facebook";
 import Twitter from "./Twitter";
 import Instagram from "./Instagram";
-import HomePage from "../../HomePage/HomePage";
+import HomePage from "../../../Views/HomePage/HomePage";
 import App from "../../../App";
+import StoresView from "../../../Views/StoresView/StoresView";
+import {StoresProvider} from "../../../Views/StoresView/Stores/Stores.container";
+import {ProductList, ProductListRoute} from "../../ProductList/ProductList";
 
 const Routes = () =>{
    return(
         <BrowserRouter>
           <div>
           <Switch>
-            <Route path='/Empleo' component={Job}/>
+              {/*  <Route path='/Empleo' component={Job}/>
             <Route path='/GlovoBusiness' component={GlovoBusiness} />
             <Route path= '/Establicimientosasociados' component={AssociatedEstablishments} />
             <Route path= '/Repartidores' component={Dealers} />
@@ -30,14 +33,12 @@ const Routes = () =>{
             <Route path= '/Politicadeprivacidad' component={PrivacyPolicy} />
             <Route path= '/Facebook' component={Facebook} />
             <Route path= '/Twitter' component={Twitter} />
-            <Route path= '/Instagram' component={Instagram} />
-            <Route path= '/HomePage' component={HomePage} />
-            <Route path= '/HeaderLogo' component={HomePage} />
+            <Route path= '/Instagram' component={Instagram} />*/}
+            <Route exact path= '/' component={HomePage} />
+            <Route path= '/stores/:category' component={StoresView} />
             <Route path= '/App' component={App} />
+            <Route exact path="/store/:storeId" component={ProductList} />
 
-           <Switch>
-             <Redirect from= "/" to= "/HomePage"/>
-           </Switch>
          </Switch>
 
         </div>

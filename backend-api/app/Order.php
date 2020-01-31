@@ -11,9 +11,5 @@ class Order extends Model
     protected $fillable = [
         'user_id', 'store_id'
     ];
-    public function products()
-    {
-        return $this->belongsToMany('App\Product');
-    }
 }
 
