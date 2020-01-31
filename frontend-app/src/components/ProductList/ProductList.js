@@ -12,6 +12,8 @@ import RegisterCart from "../RegisterCart/RegisterCart";
 import HomePageTopmenu from "../HomePageTopMenu/HomePageTopMenu";
 import StoreInfoHeader from "../StoreInfoHeader/StoreInfoHeader";
 import {User} from "../Helpers/userReducer";
+import {Route,
+    useParams} from "react-router-dom";
 
 
 const useStyles = makeStyles({
@@ -53,11 +55,10 @@ const productReducer = (state = initialState, action) => {
 /**
  * @return {boolean}
  */
-function ProductList(props) {
-    const history = props.history;
+export function ProductList(props) {
     const classes = useStyles();
     const [state, dispatch] = useReducer(productReducer, initialState);
-    const storeId = "";
+    const { storeId } = props.match.params;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -154,4 +155,4 @@ function ProductList(props) {
     );
 }
 
-export default ProductList;
+

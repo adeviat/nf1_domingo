@@ -10,7 +10,7 @@ function StoreInfoHeader(props) {
             <div className="store_info_header_section">
                 <span>
                     <p>home > food > restaurants ></p>
-                    <p className="store_info_header_section_store_gold"> Mc donald </p>
+                    <p className="store_info_header_section_store_gold"> Tienda sin nombre</p>
                 </span>
             </div>
             <h1 className="store_info_header_storename"> Mc Donald</h1>
