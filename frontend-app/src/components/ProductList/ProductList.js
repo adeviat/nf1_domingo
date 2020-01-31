@@ -57,11 +57,11 @@ function ProductList(props) {
     const history = props.history;
     const classes = useStyles();
     const [state, dispatch] = useReducer(productReducer, initialState);
-
+    const storeId = "";
 
     useEffect(() => {
         const fetchData = async () => {
-            const url = 'http://127.0.0.1:80/api/products';
+            const url = 'http://127.0.0.1:80/api/products/store/'+storeId;
             const options = {
                 method: 'GET',
                 headers: new Headers({
