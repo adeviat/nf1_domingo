@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect, useContext, useReducer, createContext} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Popper from '@material-ui/core/Popper';
 import './Cart.css';
@@ -15,6 +15,39 @@ import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import {ThemeProvider} from "@material-ui/styles";
 
 
+
+const initialCartState = {
+    category: "",
+    isSubmiting: false,
+    lastFetchDate: undefined,
+    cartCollection: [],
+    selectedStore: {},
+    errorMessage: "",
+    hasError: false
+};
+
+ export const cartContext =  createContext();
+
+function reducer(state = initialCartState, action) {
+    switch (action.type) {
+        case 'CART_SUBMIT':
+            return { ...state, isSubmiting: true};
+        case 'ADD_PRODUCT':
+            return { ...state, cartCollection: [...state.cartCollection, action.product]};
+        case 'DELETE_PRODUCT':
+            return { ...state, cartCollection: [...state.cartCollection.pop(action.product)] };
+        default:
+            return state;
+    }
+}
+
+export function CartProvider(props) {
+    const [state, dispatch] = useReducer(reducer, initialCartState);
+    const value = { state, dispatch };
+    return (
+        <cartContext.Provider value={value}>{props.children}</cartContext.Provider>
+    );
+}
 
 
 export default function SimplePopper() {
