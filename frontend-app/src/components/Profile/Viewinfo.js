@@ -46,6 +46,7 @@ export default function SimplePopper() {
             setName(state.User.name);
             setSurname(state.User.surname);
             setEmail(state.User.email);
+            //setCurrentLocation()
 
         }
     });
@@ -177,7 +178,7 @@ export default function SimplePopper() {
                             </div>
                             <div className="profile_box">
 
-                                <div className="profile_names">Ciudad</div>
+                                <div className="profile_names">Dirección</div>
                                 <div className="profile_request">{currentLocation}</div>
 
                             </div>

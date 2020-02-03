@@ -8,6 +8,7 @@ create table store_categories
 (
     id               integer      not null primary key auto_increment,
     name             varchar(255)  not null,
+    icon             varchar(255) default null,
     updated_at       timestamp not null default now() on update now(),
     created_at       timestamp not null default now()
 
@@ -21,13 +22,12 @@ create table stores
     address           varchar(255) not null,
     postcode          varchar(10) not null,
     image_url         varchar(255) not null,
-    delivery_area_id integer not null,
+    delivery_area_id  integer not null,
     category_id       integer not null,
     updated_at        timestamp not null default now() on update now(),
     created_at        timestamp not null default now(),
     CONSTRAINT FOREIGN KEY (category_id) REFERENCES store_categories(id)
 );
-
 
 drop table if exists users;
 create table users
@@ -50,14 +50,12 @@ drop table if exists orders;
 create table orders
 (
     id               integer      not null primary key auto_increment,
-    timestamp        timestamp  not null,
-    order_status     boolean not null,
-    is_paid          boolean not null,
-    user_raiting     integer not null,
     user_id          integer      not null,
+    store_id         integer      not null,
     updated_at       timestamp not null default now() on update now(),
     created_at       timestamp not null default now(),
-    CONSTRAINT FOREIGN KEY (user_id) REFERENCES users(id)
+    CONSTRAINT FOREIGN KEY (user_id) REFERENCES users (id),
+    CONSTRAINT FOREIGN KEY (store_id) REFERENCES stores(id)
 );
 
 
@@ -78,18 +76,17 @@ create table products
 drop table if exists orders_products;
 create table orders_products
 (
-    id              integer      not null primary key auto_increment,
-    order_id        integer not null,
-    products_id     integer not null,
-    CONSTRAINT FOREIGN KEY (products_id) REFERENCES products (id),
+    order_id       integer not null,
+    product_id     integer not null,
+    CONSTRAINT FOREIGN KEY (product_id) REFERENCES products (id),
     CONSTRAINT FOREIGN KEY (order_id) REFERENCES orders (id)
 
 );
 
 create table delivery_areas
 (
-    id              integer      not null primary key auto_increment,
-    delivery_areas   integer  not null,
+    id              integer not null primary key auto_increment,
+    delivery_areas  integer  not null,
     postcode        varchar(255) not null,
     updated_at      timestamp not null default now() on update now(),
     created_at      timestamp not null default now()
