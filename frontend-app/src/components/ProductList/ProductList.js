@@ -56,9 +56,11 @@ const productReducer = (state = initialState, action) => {
  * @return {boolean}
  */
 export function ProductList(props) {
+    const {state:cartState, dispatch: cartDispatch} = useContext(cartContext);
     const classes = useStyles();
     const [state, dispatch] = useReducer(productReducer, initialState);
-    const { storeId } = props.match.params;
+    const { storeId } = useParams();
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -126,7 +128,7 @@ export function ProductList(props) {
                                         </CardContent>
                                     </CardActionArea>
                                     <CardActions>
-                                        <Button size="small" color="primary">
+                                        <Button size="small" color="primary" onClick={() => cartDispatch({type: 'ADD_PRODUCT', product:p })}>
                                             Añadir a cesta
                                         </Button>
                                         <Button size="small" color="primary">
@@ -146,6 +148,7 @@ export function ProductList(props) {
 
 
             </div>
+
         );
     }
     return (
@@ -154,5 +157,7 @@ export function ProductList(props) {
         </div>
     );
 }
+
+export default ProductList;
 
 

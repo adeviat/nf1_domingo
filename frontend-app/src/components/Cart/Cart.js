@@ -17,13 +17,11 @@ import {ThemeProvider} from "@material-ui/styles";
 
 
 const initialCartState = {
-    category: "",
+
     isSubmiting: false,
     lastFetchDate: undefined,
     cartCollection: [],
-    selectedStore: {},
-    errorMessage: "",
-    hasError: false
+
 };
 
  export const cartContext =  createContext();
