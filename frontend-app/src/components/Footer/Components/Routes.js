@@ -38,7 +38,6 @@ const Routes = () =>{
             <Route path= '/stores/:category' component={StoresView} />
             <Route path= '/App' component={App} />
             <Route exact path="/store/:storeId" component={ProductList} />
-
          </Switch>
 
         </div>

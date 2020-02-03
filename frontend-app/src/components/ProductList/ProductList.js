@@ -12,8 +12,7 @@ import RegisterCart from "../RegisterCart/RegisterCart";
 import HomePageTopmenu from "../HomePageTopMenu/HomePageTopMenu";
 import StoreInfoHeader from "../StoreInfoHeader/StoreInfoHeader";
 import {User} from "../Helpers/userReducer";
-import {Route,
-    useParams} from "react-router-dom";
+import {Route,useParams} from "react-router-dom";
 
 
 const useStyles = makeStyles({

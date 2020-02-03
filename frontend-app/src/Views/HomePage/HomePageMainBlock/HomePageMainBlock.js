@@ -8,10 +8,9 @@ import shop from '../HomePageMainBlock/Img/shop.png';
 import supermarket from '../HomePageMainBlock/Img/supermarket.png';
 import snacks from '../HomePageMainBlock/Img/snacks.png';
 import expand from '../HomePageMainBlock/Img/expand.png';
+import {Link} from "react-router-dom";
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
-
 
 
 function HomePageMainBlock() {
@@ -33,22 +32,29 @@ function HomePageMainBlock() {
                     <div className="row d-flex justify-content-center">
                         <h2 className="main-subtitle">Recibelo en donde estés</h2>
                     </div>
+
                     <div className="row d-flex justify-content-center">
+                        <Link to={`/stores/food`}>
                         <div className="d-flex flex-column justify-content-center align-items-center category-btn">
                             <img
                                 src={courier}
                                 alt="Courier" width="65px"/><p>Paquetes</p>
                         </div>
+                        </Link>
                         <div className="d-flex flex-column justify-content-center align-items-center category-btn">
                             <img
                                 src={farmacia}
                                 alt="Pharmacy" width="65px"/><p>Farmacia</p>
                         </div>
-                        <div className="d-flex flex-column justify-content-center align-items-center category-btn">
-                            <img
-                                src={food}
-                                alt="Food" width="65px"/><p>Comida</p>
-                        </div>
+                        <Link to={`/stores/food`}>
+                            <div className="d-flex flex-column justify-content-center align-items-center category-btn">
+
+                                <img
+                                    src={food}
+                                    alt="Food" width="65px"/><p>Comida</p>
+
+                            </div>
+                        </Link>
                         <div className="d-flex flex-column justify-content-center align-items-center category-btn">
                             <img
                                 src={everything}
