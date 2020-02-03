@@ -12,8 +12,7 @@ import RegisterCart from "../RegisterCart/RegisterCart";
 import HomePageTopmenu from "../HomePageTopMenu/HomePageTopMenu";
 import StoreInfoHeader from "../StoreInfoHeader/StoreInfoHeader";
 import {User} from "../Helpers/userReducer";
-import {Route,
-    useParams} from "react-router-dom";
+import {Route,useParams} from "react-router-dom";
 
 
 const useStyles = makeStyles({
@@ -58,7 +57,7 @@ const productReducer = (state = initialState, action) => {
 export function ProductList(props) {
     const classes = useStyles();
     const [state, dispatch] = useReducer(productReducer, initialState);
-    const { storeId } = props.match.params;
+    const { storeId } = useParams();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -154,5 +153,7 @@ export function ProductList(props) {
         </div>
     );
 }
+
+export default ProductList;
 
 
