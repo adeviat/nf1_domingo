@@ -8,7 +8,7 @@ import shop from '../HomePageMainBlock/Img/shop.png';
 import supermarket from '../HomePageMainBlock/Img/supermarket.png';
 import snacks from '../HomePageMainBlock/Img/snacks.png';
 import expand from '../HomePageMainBlock/Img/expand.png';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
@@ -34,19 +34,21 @@ function HomePageMainBlock() {
                     </div>
 
                     <div className="row d-flex justify-content-center">
-                        <Link to={`/stores/food`}>
-                        <div className="d-flex flex-column justify-content-center align-items-center category-btn">
+                        <Link to="/stores/Courier">
+                            <div className="d-flex flex-column justify-content-center align-items-center category-btn">
                             <img
                                 src={courier}
                                 alt="Courier" width="65px"/><p>Paquetes</p>
-                        </div>
+                            </div>
                         </Link>
-                        <div className="d-flex flex-column justify-content-center align-items-center category-btn">
-                            <img
-                                src={farmacia}
-                                alt="Pharmacy" width="65px"/><p>Farmacia</p>
-                        </div>
-                        <Link to={`/stores/food`}>
+                        <Link to="/stores/Pharmacy">
+                            <div className="d-flex flex-column justify-content-center align-items-center category-btn">
+                                <img
+                                    src={farmacia}
+                                    alt="Pharmacy" width="65px"/><p>Farmacia</p>
+                            </div>
+                        </Link>
+                        <Link to="/stores/Food">
                             <div className="d-flex flex-column justify-content-center align-items-center category-btn">
 
                                 <img
@@ -55,26 +57,34 @@ function HomePageMainBlock() {
 
                             </div>
                         </Link>
-                        <div className="d-flex flex-column justify-content-center align-items-center category-btn">
-                            <img
-                                src={everything}
-                                alt="Anything" width="65px"/><p>Anything</p>
-                        </div>
-                        <div className="d-flex flex-column justify-content-center align-items-center category-btn">
-                            <img
-                                src={shop}
-                                alt="Shop" width="65px"/><p>Compras</p>
-                        </div>
-                        <div className="d-flex flex-column justify-content-center align-items-center category-btn">
-                            <img
-                                src={supermarket}
-                                alt="Supermarket" width="65px"/><p>Super</p>
-                        </div>
-                        <div className="d-flex flex-column justify-content-center align-items-center category-btn">
-                            <img
-                                src={snacks}
-                                alt="Breakfast & Snacks" width="65px" className="mt-4"/><p>Breakfast<br/>Snacks</p>
-                        </div>
+                        <Link to="/stores/Anything">
+                            <div className="d-flex flex-column justify-content-center align-items-center category-btn">
+                                <img
+                                    src={everything}
+                                    alt="Anything" width="65px"/><p>Anything</p>
+                            </div>
+                        </Link>
+                        <Link to="/stores/Shop">
+                            <div className="d-flex flex-column justify-content-center align-items-center category-btn">
+                                <img
+                                    src={shop}
+                                    alt="Shop" width="65px"/><p>Compras</p>
+                            </div>
+                        </Link>
+                        <Link to="/stores/Supermarket">
+                            <div className="d-flex flex-column justify-content-center align-items-center category-btn">
+                                <img
+                                    src={supermarket}
+                                    alt="Supermarket" width="65px"/><p>Super</p>
+                            </div>
+                        </Link>
+                        <Link to="/stores/Breakfast">
+                            <div className="d-flex flex-column justify-content-center align-items-center category-btn">
+                                <img
+                                    src={snacks}
+                                    alt="Breakfast & Snacks" width="65px" className="mt-4"/><p>Breakfast<br/>Snacks</p>
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -82,50 +92,67 @@ function HomePageMainBlock() {
             {/* main block mobile */}
             <div className="container-fluid d-md-none main-mobile">
                 <div className="container">
+
                     <div className="row d-flex justify-content-center align-items-center relative">
-                        <div
+                        <Link to="/stores/Anything">
+                            <div
                             className="d-flex flex-column justify-content-center align-items-center category-btn-mobile category-btn-mobile-1">
                             <img
                                 src={everything}
                                 alt="Anything" width="55px"/><p>Anything</p>
-                        </div>
+                            </div>
+                        </Link>
                         <div className="d-flex justify-content-center align-items-center relative">
+
+                        <Link to="/stores/Shop">
                             <div
                                 className="d-flex flex-column justify-content-center align-items-center category-btn-mobile category-btn-mobile-2">
                                 <img
                                     src={shop}
                                     alt="Shop" width="55px"/><p>Shop</p>
                             </div>
+                        </Link>
+                        <Link to="/stores/Supermarket">
                             <div
                                 className="d-flex flex-column justify-content-center align-items-center category-btn-mobile category-btn-mobile-3">
                                 <img
                                     src={supermarket}
                                     alt="Supermarket" width="55px"/><p>Supermarket</p>
                             </div>
+
+                        </Link>
+                        <Link to="/stores/Breakfast">
                             <div
                                 className="d-flex flex-column justify-content-center align-items-center category-btn-mobile category-btn-mobile-4">
                                 <img
                                     src={snacks}
                                     alt="Breakfast & Snacks" width="55px" className="mt-3"/><p>Breakfast<br/>Snacks</p>
                             </div>
+                        </Link>
+                        <Link to="/stores/Courier">
                             <div
                                 className="d-flex flex-column justify-content-center align-items-center category-btn-mobile category-btn-mobile-5">
                                 <img
                                     src={courier}
                                     alt="Courier" width="55px"/><p>Courier</p>
                             </div>
+                        </Link>
+                        <Link to="/stores/Pharmacy">
                             <div
                                 className="d-flex flex-column justify-content-center align-items-center category-btn-mobile category-btn-mobile-6">
                                 <img
                                     src={farmacia}
                                     alt="Pharmacy" width="55px"/><p>Pharmacy</p>
                             </div>
+                        </Link>
+                        <Link to="/stores/Food">
                             <div
                                 className="d-flex flex-column justify-content-center align-items-center category-btn-mobile category-btn-mobile-7">
                                 <img
                                     src={food}
                                     alt="Food" width="55px"/><p>Food</p>
                             </div>
+                        </Link>
                         </div>
                     </div>
                 </div>
