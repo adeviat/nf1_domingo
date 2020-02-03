@@ -1,60 +1,20 @@
-import React, {useContext, useEffect,useState} from 'react';
-import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent";
-import {User} from "../../../components/Helpers/userReducer";
-import AddressModal from "../../../components/AddressModal";
-import {get} from "../../../components/Helpers/ServerMethods";
-import { useHistory,Link } from "react-router-dom";
+import React from 'react';
+import logo from '../HomePageMainBlock/Img/logo.png';
+import courier from '../HomePageMainBlock/Img/courier.png';
+import farmacia from '../HomePageMainBlock/Img/farmacia.png';
+import everything from '../HomePageMainBlock/Img/everything.png';
+import food from '../HomePageMainBlock/Img/food.png';
+import shop from '../HomePageMainBlock/Img/shop.png';
+import supermarket from '../HomePageMainBlock/Img/supermarket.png';
+import snacks from '../HomePageMainBlock/Img/snacks.png';
+import expand from '../HomePageMainBlock/Img/expand.png';
 
-function HomePageMainBlock() {
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-
-
-    const [openAddressModal, setOpenAddressModal] = useState(false);
-    const [onClickCategory, setOnClickCategory] = useState({
-        onClick: false,
-        category: ""
-    });
-    const [postalcode, setPostalCode] = useState(false);
-    const [storesResponse, setStoresResponse] = useState([]);
-    const {state,dispatch} = useContext(User);
-    let history = useHistory();
 
 
 
-    useEffect(() => {
-        if(state.User.postcode != null)
-            setPostalCode(true);
-    },[state]);
-
-    const handleCloseAddress = () => {
-
-        setOpenAddressModal(false);
-
-    };
-
-    useEffect(() => {
-        ;
-        if(onClickCategory.onClick) {
-
-            if(!localStorage.getItem('token')) {
-                get('api/store/category/' + onClickCategory.category)
-                    .then(response => {
-
-                        history.push({pathname:'/StoresView',state:{detail: response.stores}});
-                    })
-            }
-            else {
-                postalcode ? console.log(onClickCategory.category) : setOpenAddressModal(true);
-                onClickCategory.onClick = false;
-            }
-
-
-
-        }
-    },[onClickCategory.onClick]);
-
+function HomePageMainBlock() {
     return (
         <div>
             {/* main block desktop*/}
@@ -62,62 +22,51 @@ function HomePageMainBlock() {
                 <div className="container">
                     <div className="row d-flex justify-content-center">
                         <img
-                            src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/logo_green.svg"
+                            src={logo}
                             alt="Logo de Glovo"/>
                     </div>
                     <div className="row d-flex justify-content-center mt-4">
-                        <h1>Anything in&nbsp;<span className="select-city">Barcelona <img
-                            src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/landing/dropdown.svg"
-                            alt=""/></span></h1>
+                        <h1>Lo que quieras en&nbsp;<span className="select-city">Barcelona <img
+                            src={expand}
+                            alt="" width="65px"/></span></h1>
                     </div>
                     <div className="row d-flex justify-content-center">
-                        <h2 className="main-subtitle">Delivered in minutes</h2>
+                        <h2 className="main-subtitle">Recibelo en donde estés</h2>
                     </div>
-                    <div className="row d-flex justify-content-center" >
-
-                        <Link to="/stores/Courier">
-                            <div className="d-flex flex-column justify-content-center align-items-center category-btn">
-                                <img
-                                    src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/mw7p9b345wc9ochmgfwz"
-                                    alt="Courier" width="65px"/><p>Courier</p>
-                            </div>
-                        </Link>
-
-                        <div className="d-flex flex-column justify-content-center align-items-center category-btn" onClick={() => setOnClickCategory({onClick:true, category:"Courier"})}>
+                    <div className="row d-flex justify-content-center">
+                        <div className="d-flex flex-column justify-content-center align-items-center category-btn">
                             <img
-                                src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/mw7p9b345wc9ochmgfwz"
-                                alt="Courier" width="65px"/><p>Courier</p>
+                                src={courier}
+                                alt="Courier" width="65px"/><p>Paquetes</p>
                         </div>
-                        <div className="d-flex flex-column justify-content-center align-items-center category-btn" onClick={() => setOnClickCategory({onClick:true, category:"Pharmacy"})}>
+                        <div className="d-flex flex-column justify-content-center align-items-center category-btn">
                             <img
-                                src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/caydhj0ofggm5hybmdnf"
-                                alt="Pharmacy" width="65px"/><p>Pharmacy</p>
+                                src={farmacia}
+                                alt="Pharmacy" width="65px"/><p>Farmacia</p>
                         </div>
-                        <Link to="/stores/Food">
-                            <div className="d-flex flex-column justify-content-center align-items-center category-btn" onClick={() => setOnClickCategory({onClick:true, category:"Food"})}>
-                                <img
-                                    src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/prj0mlcuvmymzfh8pqjz"
-                                    alt="Food" width="65px"/><p>Food</p>
-                            </div>
-                        </Link>
-                        <div className="d-flex flex-column justify-content-center align-items-center category-btn" onClick={() => setOnClickCategory({onClick:true, category:"Anything"})}>
+                        <div className="d-flex flex-column justify-content-center align-items-center category-btn">
                             <img
-                                src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/hhxw0ckf1kqpxuzo4eio"
+                                src={food}
+                                alt="Food" width="65px"/><p>Comida</p>
+                        </div>
+                        <div className="d-flex flex-column justify-content-center align-items-center category-btn">
+                            <img
+                                src={everything}
                                 alt="Anything" width="65px"/><p>Anything</p>
                         </div>
-                        <div className="d-flex flex-column justify-content-center align-items-center category-btn" onClick={() => setOnClickCategory({onClick:true, category:"Shop"})}>
+                        <div className="d-flex flex-column justify-content-center align-items-center category-btn">
                             <img
-                                src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/tsrfiohkwah1zbr2vkp4"
-                                alt="Shop" width="65px"/><p>Shop</p>
+                                src={shop}
+                                alt="Shop" width="65px"/><p>Compras</p>
                         </div>
-                        <div className="d-flex flex-column justify-content-center align-items-center category-btn" onClick={() => setOnClickCategory({onClick:true, category:"Supermarket"})}>
+                        <div className="d-flex flex-column justify-content-center align-items-center category-btn">
                             <img
-                                src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/ij5iep06ovnsekl4voic"
-                                alt="Supermarket" width="65px"/><p>Supermarket</p>
+                                src={supermarket}
+                                alt="Supermarket" width="65px"/><p>Super</p>
                         </div>
-                        <div className="d-flex flex-column justify-content-center align-items-center category-btn" onClick={() => setOnClickCategory({onClick:true, category:"Breakfast"})}>
+                        <div className="d-flex flex-column justify-content-center align-items-center category-btn">
                             <img
-                                src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/cxu3eazi1ajxqckcns2n"
+                                src={snacks}
                                 alt="Breakfast & Snacks" width="65px" className="mt-4"/><p>Breakfast<br/>Snacks</p>
                         </div>
                     </div>
@@ -131,69 +80,49 @@ function HomePageMainBlock() {
                         <div
                             className="d-flex flex-column justify-content-center align-items-center category-btn-mobile category-btn-mobile-1">
                             <img
-                                src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/hhxw0ckf1kqpxuzo4eio"
+                                src={everything}
                                 alt="Anything" width="55px"/><p>Anything</p>
                         </div>
                         <div className="d-flex justify-content-center align-items-center relative">
                             <div
                                 className="d-flex flex-column justify-content-center align-items-center category-btn-mobile category-btn-mobile-2">
                                 <img
-                                    src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/tsrfiohkwah1zbr2vkp4"
+                                    src={shop}
                                     alt="Shop" width="55px"/><p>Shop</p>
                             </div>
                             <div
                                 className="d-flex flex-column justify-content-center align-items-center category-btn-mobile category-btn-mobile-3">
                                 <img
-                                    src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/ij5iep06ovnsekl4voic"
+                                    src={supermarket}
                                     alt="Supermarket" width="55px"/><p>Supermarket</p>
                             </div>
                             <div
                                 className="d-flex flex-column justify-content-center align-items-center category-btn-mobile category-btn-mobile-4">
                                 <img
-                                    src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/cxu3eazi1ajxqckcns2n"
+                                    src={snacks}
                                     alt="Breakfast & Snacks" width="55px" className="mt-3"/><p>Breakfast<br/>Snacks</p>
                             </div>
                             <div
                                 className="d-flex flex-column justify-content-center align-items-center category-btn-mobile category-btn-mobile-5">
                                 <img
-                                    src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/mw7p9b345wc9ochmgfwz"
+                                    src={courier}
                                     alt="Courier" width="55px"/><p>Courier</p>
                             </div>
                             <div
                                 className="d-flex flex-column justify-content-center align-items-center category-btn-mobile category-btn-mobile-6">
                                 <img
-                                    src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/caydhj0ofggm5hybmdnf"
+                                    src={farmacia}
                                     alt="Pharmacy" width="55px"/><p>Pharmacy</p>
                             </div>
                             <div
                                 className="d-flex flex-column justify-content-center align-items-center category-btn-mobile category-btn-mobile-7">
                                 <img
-                                    src="https://res.cloudinary.com/glovoapp/w_140,h_140,c_fit,f_auto,q_auto/StoreCategories/prj0mlcuvmymzfh8pqjz"
+                                    src={food}
                                     alt="Food" width="55px"/><p>Food</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            {/* Address  Dialog */}
-            <div>
-                <Dialog open={openAddressModal} onClose={handleCloseAddress} aria-labelledby="form-dialog-title">
-                    <DialogTitle id="form-dialog-title">
-                        Add your delivery address
-                        <div className="closebtnbox">
-                            <button className="closebtn" onClick={handleCloseAddress}>
-                                <img src="https://res.cloudinary.com/glovoapp/image/fetch///https://glovoapp.com/images/close-icon.svg"/>
-                            </button>
-                        </div>
-
-                    </DialogTitle>
-                    <DialogContent >
-
-                        <AddressModal setOpenAddressModal={setOpenAddressModal}/>
-
-                    </DialogContent>
-                </Dialog>
             </div>
         </div>
     );
