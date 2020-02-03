@@ -2,3 +2,4 @@
 /.idea
 *.iml
 /frontend-app/report/jscpd-report.html
+/node_modules

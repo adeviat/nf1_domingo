@@ -35,6 +35,7 @@ Route::get('/api/users/{token}', 'UserController@showbytoken');
 
 Route::post('/api/product/create', 'ProductController@create');
 Route::get('/api/products', 'ProductController@show');
+Route::get('/api/products/store/{storeId}', 'ProductController@showProductsByStore');
 Route::get('/api/product/{id}', 'ProductController@showProductById');
 Route::put('/api/product/update', 'ProductController@update');
 Route::delete('/api/product/{id}', 'ProductController@deleteProductById');

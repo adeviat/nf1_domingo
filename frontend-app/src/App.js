@@ -15,13 +15,10 @@ function App () {
 
 
         return (
-
-                <BrowserRouter>
                     <div>
                         <Routes />
                         <Footer/>
                     </div>
-                </BrowserRouter>
 
         );
 

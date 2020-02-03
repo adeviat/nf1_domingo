@@ -16,6 +16,7 @@ import HomePage from "../../../Views/HomePage/HomePage";
 import App from "../../../App";
 import StoresView from "../../../Views/StoresView/StoresView";
 import {StoresProvider} from "../../../Views/StoresView/Stores/Stores.container";
+import {ProductList, ProductListRoute} from "../../ProductList/ProductList";
 
 const Routes = () =>{
    return(
@@ -34,10 +35,9 @@ const Routes = () =>{
             <Route path= '/Twitter' component={Twitter} />
             <Route path= '/Instagram' component={Instagram} />*/}
             <Route exact path= '/' component={HomePage} />
-            <StoresProvider>
-                <Route path= '/stores/:category' component={StoresView} />
-            </StoresProvider>
+            <Route path= '/stores/:category' component={StoresView} />
             <Route path= '/App' component={App} />
+            <Route exact path="/store/:storeId" component={ProductList} />
 
          </Switch>
 
