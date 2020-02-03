@@ -8,6 +8,7 @@ import shop from '../HomePageMainBlock/Img/shop.png';
 import supermarket from '../HomePageMainBlock/Img/supermarket.png';
 import snacks from '../HomePageMainBlock/Img/snacks.png';
 import expand from '../HomePageMainBlock/Img/expand.png';
+import { Link } from "react-router-dom";
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
@@ -33,6 +34,7 @@ function HomePageMainBlock() {
                     <div className="row d-flex justify-content-center">
                         <h2 className="main-subtitle">Recibelo en donde estés</h2>
                     </div>
+
                     <div className="row d-flex justify-content-center">
                         <div className="d-flex flex-column justify-content-center align-items-center category-btn">
                             <img
