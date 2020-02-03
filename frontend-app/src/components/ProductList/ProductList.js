@@ -12,6 +12,8 @@ import RegisterCart from "../RegisterCart/RegisterCart";
 import HomePageTopmenu from "../HomePageTopMenu/HomePageTopMenu";
 import StoreInfoHeader from "../StoreInfoHeader/StoreInfoHeader";
 import {User} from "../Helpers/userReducer";
+import {Route,
+    useParams} from "react-router-dom";
 
 
 const useStyles = makeStyles({
@@ -30,7 +32,7 @@ const SET_PRODUCT_DATA = 'SET_PRODUCT_DATA';
 const SET_ERROR = 'SET_ERROR';
 
 const initialState = {
-    productData: undefined,
+    productData: [],
     error: false,
 };
 
@@ -53,15 +55,17 @@ const productReducer = (state = initialState, action) => {
 /**
  * @return {boolean}
  */
-function ProductList(props) {
-    const history = props.history;
+export function ProductList(props) {
     const classes = useStyles();
     const [state, dispatch] = useReducer(productReducer, initialState);
-
+    const { storeId } = props.match.params;
 
     useEffect(() => {
         const fetchData = async () => {
-            const url = 'http://127.0.0.1:80/api/products';
+            if (!storeId) {
+                return;
+            }
+            const url = 'http://127.0.0.1:80/api/products/store/'+storeId;
             const options = {
                 method: 'GET',
                 headers: new Headers({
@@ -101,41 +105,42 @@ function ProductList(props) {
                 </div>
 
                 <div className="DomingoContainer">
-                    <div>
+                    <div className="DomingoProductSection">
                         <StoreInfoHeader/>
-                    </div>
-                    <div className="DomingoProductContainers" >{state.productData.map(p =>
-                        <div className="DomingoProductContainer">
-                            <Card className={classes.card}>
-                                <CardActionArea>
-                                    <CardMedia
-                                        className={classes.media}
-                                        image={p.photo}
-                                        title="Contemplative Reptile"
-                                    />
-                                    <CardContent>
-                                        <Typography gutterBottom variant="h6" component="h2">
-                                            {p.name}
-                                        </Typography>
-                                        <Typography variant="body2" color="textSecondary" component="p">
-                                            {p.description}
-                                        </Typography>
-                                    </CardContent>
-                                </CardActionArea>
-                                <CardActions>
-                                    <Button size="small" color="primary">
-                                        Añadir a cesta
-                                    </Button>
-                                    <Button size="small" color="primary">
-                                        {p.price} euros
-                                    </Button>
-                                </CardActions>
-                            </Card>
-                        </div>)}
-
-                    </div>
-                    <div className="DomingoRegisterCard">
-                        <RegisterCart/>
+                        <div className="DomingoProductContainers" >{state.productData.map(p =>
+                            <div className="DomingoProductContainer">
+                                <Card className={classes.card}>
+                                    <CardActionArea>
+                                        <CardMedia
+                                            className={classes.media}
+                                            image={p.photo}
+                                            title="Contemplative Reptile"
+                                        />
+                                        <CardContent>
+                                            <Typography gutterBottom variant="h6" component="h2">
+                                                {p.name}
+                                            </Typography>
+                                            <Typography variant="body2" color="textSecondary" component="p">
+                                                {p.description}
+                                            </Typography>
+                                        </CardContent>
+                                    </CardActionArea>
+                                    <CardActions>
+                                        <Button size="small" color="primary">
+                                            Añadir a cesta
+                                        </Button>
+                                        <Button size="small" color="primary">
+                                            {p.price} euros
+                                        </Button>
+                                    </CardActions>
+                                </Card>
+                            </div>)}
+                        </div>
+                        </div>
+                    <div className="DomingoRegisterSection">
+                        <div className="DomingoRegisterCard">
+                            <RegisterCart/>
+                        </div>
                     </div>
                 </div>
 
@@ -150,4 +155,4 @@ function ProductList(props) {
     );
 }
 
-export default ProductList;
+

@@ -2,7 +2,6 @@ import React, {createContext, useContext, useEffect, useReducer} from "react";
 import DomingoProductItem from "../../../components/DomingoProductItem/DomingoProductItem";
 import {get} from "../../../components/Helpers/ServerMethods";
 
-
 const initialStoreState = {
     category: "",
     isFetching: false,
@@ -63,7 +62,7 @@ export const StoreContainer = (props) => {
     }, [category]);
     console.log(state);
     return (
-        <div>
+        <div className="DomingoProductContainers">
             {state.storeCollection.map(store => <DomingoProductItem  key={store.name} store={store}/>)}
         </div>
     )

@@ -67,10 +67,13 @@ function RegisterCart() {
                 <span className="DomingoRegisterCardTextLogin">
                     <LoginButton/>
             </span>
-            </div>
-            <div  className="DomingoRegisterCardImg" />
+                <div  className="DomingoRegisterCardImg" />
 
-        </div>)}
+            </div>
+
+
+            </div>
+            )}
        </div>
     );
 }

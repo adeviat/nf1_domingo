@@ -8,7 +8,6 @@ create table store_categories
 (
     id               integer      not null primary key auto_increment,
     name             varchar(255)  not null,
-    icon             varchar(255) default null,
     updated_at       timestamp not null default now() on update now(),
     created_at       timestamp not null default now()
 
@@ -73,8 +72,8 @@ create table products
     CONSTRAINT FOREIGN KEY (store_id) REFERENCES stores(id)
 );
 
-drop table if exists orders_products;
-create table orders_products
+drop table if exists order_product;
+create table order_product
 (
     order_id       integer not null,
     product_id     integer not null,
@@ -149,3 +148,897 @@ INSERT INTO `domingo`.`store_categories` (`name`, `updated_at`, `created_at`) VA
 INSERT INTO `domingo`.`store_categories` (`name`, `updated_at`, `created_at`) VALUES ('Breakfast', DEFAULT, DEFAULT);
 
 
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 4', 'Calle 4', '08001', 'https://picsum.photos/200', '1', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 5', 'Calle 5', '08002', 'https://picsum.photos/201', '2', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 6', 'Calle 6', '08003', 'https://picsum.photos/202', '3', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 7', 'Calle 7', '08004', 'https://picsum.photos/203', '4', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 8', 'Calle 8', '08005', 'https://picsum.photos/204', '1', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 9', 'Calle 9', '08006', 'https://picsum.photos/205', '2', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 10', 'Calle 10', '08007', 'https://picsum.photos/206', '3', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 11', 'Calle 11', '08008', 'https://picsum.photos/207', '4', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 12', 'Calle 12', '08009', 'https://picsum.photos/208', '1', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 13', 'Calle 13', '08010', 'https://picsum.photos/209', '2', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 14', 'Calle 14', '08011', 'https://picsum.photos/210', '3', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 15', 'Calle 15', '08012', 'https://picsum.photos/211', '4', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 16', 'Calle 16', '08013', 'https://picsum.photos/212', '1', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 17', 'Calle 17', '08014', 'https://picsum.photos/213', '2', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 18', 'Calle 18', '08015', 'https://picsum.photos/214', '3', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 19', 'Calle 19', '08016', 'https://picsum.photos/215', '4', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 20', 'Calle 20', '08017', 'https://picsum.photos/216', '1', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 21', 'Calle 21', '08018', 'https://picsum.photos/217', '2', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 22', 'Calle 22', '08019', 'https://picsum.photos/218', '3', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 23', 'Calle 23', '08020', 'https://picsum.photos/219', '4', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 24', 'Calle 24', '08021', 'https://picsum.photos/220', '1', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 25', 'Calle 25', '08022', 'https://picsum.photos/221', '2', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 26', 'Calle 26', '08023', 'https://picsum.photos/222', '3', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 27', 'Calle 27', '08024', 'https://picsum.photos/223', '4', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 28', 'Calle 28', '08025', 'https://picsum.photos/224', '1', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 29', 'Calle 29', '08026', 'https://picsum.photos/225', '2', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 30', 'Calle 30', '08027', 'https://picsum.photos/226', '3', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 31', 'Calle 31', '08028', 'https://picsum.photos/227', '4', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 32', 'Calle 32', '08029', 'https://picsum.photos/228', '1', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 33', 'Calle 33', '08030', 'https://picsum.photos/229', '2', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 34', 'Calle 34', '08031', 'https://picsum.photos/230', '3', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 35', 'Calle 35', '08032', 'https://picsum.photos/231', '4', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 36', 'Calle 36', '08033', 'https://picsum.photos/232', '1', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 37', 'Calle 37', '08034', 'https://picsum.photos/233', '2', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 38', 'Calle 38', '08035', 'https://picsum.photos/234', '3', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 39', 'Calle 39', '08036', 'https://picsum.photos/235', '4', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 40', 'Calle 40', '08037', 'https://picsum.photos/236', '1', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 41', 'Calle 41', '08038', 'https://picsum.photos/237', '2', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 42', 'Calle 42', '08039', 'https://picsum.photos/238', '3', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 43', 'Calle 43', '08040', 'https://picsum.photos/239', '4', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 44', 'Calle 44', '08041', 'https://picsum.photos/240', '1', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 45', 'Calle 45', '08042', 'https://picsum.photos/241', '2', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 46', 'Calle 46', '08070', 'https://picsum.photos/242', '3', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 47', 'Calle 47', '08071', 'https://picsum.photos/243', '4', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 48', 'Calle 48', '08080', 'https://picsum.photos/244', '1', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 49', 'Calle 49', '08001', 'https://picsum.photos/245', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 50', 'Calle 50', '08002', 'https://picsum.photos/246', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 51', 'Calle 51', '08003', 'https://picsum.photos/247', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 52', 'Calle 52', '08004', 'https://picsum.photos/248', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 53', 'Calle 53', '08005', 'https://picsum.photos/249', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 54', 'Calle 54', '08006', 'https://picsum.photos/250', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 55', 'Calle 55', '08007', 'https://picsum.photos/251', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 56', 'Calle 56', '08008', 'https://picsum.photos/252', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 57', 'Calle 57', '08009', 'https://picsum.photos/253', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 58', 'Calle 58', '08010', 'https://picsum.photos/254', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 59', 'Calle 59', '08011', 'https://picsum.photos/255', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 60', 'Calle 60', '08012', 'https://picsum.photos/256', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 61', 'Calle 61', '08013', 'https://picsum.photos/257', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 62', 'Calle 62', '08014', 'https://picsum.photos/258', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 63', 'Calle 63', '08015', 'https://picsum.photos/259', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 64', 'Calle 64', '08016', 'https://picsum.photos/260', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 65', 'Calle 65', '08017', 'https://picsum.photos/261', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 66', 'Calle 66', '08018', 'https://picsum.photos/262', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 67', 'Calle 67', '08019', 'https://picsum.photos/263', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 68', 'Calle 68', '08020', 'https://picsum.photos/264', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 69', 'Calle 69', '08021', 'https://picsum.photos/265', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 70', 'Calle 70', '08022', 'https://picsum.photos/266', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 71', 'Calle 71', '08023', 'https://picsum.photos/267', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 72', 'Calle 72', '08024', 'https://picsum.photos/268', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 73', 'Calle 73', '08025', 'https://picsum.photos/269', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 74', 'Calle 74', '08026', 'https://picsum.photos/270', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 75', 'Calle 75', '08027', 'https://picsum.photos/271', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 76', 'Calle 76', '08028', 'https://picsum.photos/272', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 77', 'Calle 77', '08029', 'https://picsum.photos/273', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 78', 'Calle 78', '08030', 'https://picsum.photos/274', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 79', 'Calle 79', '08031', 'https://picsum.photos/275', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 80', 'Calle 80', '08032', 'https://picsum.photos/276', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 81', 'Calle 81', '08033', 'https://picsum.photos/277', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 82', 'Calle 82', '08034', 'https://picsum.photos/278', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 83', 'Calle 83', '08035', 'https://picsum.photos/279', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 84', 'Calle 84', '08036', 'https://picsum.photos/280', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 85', 'Calle 85', '08037', 'https://picsum.photos/281', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 86', 'Calle 86', '08038', 'https://picsum.photos/282', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 87', 'Calle 87', '08039', 'https://picsum.photos/283', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 88', 'Calle 88', '08040', 'https://picsum.photos/284', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 89', 'Calle 89', '08041', 'https://picsum.photos/285', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 90', 'Calle 90', '08042', 'https://picsum.photos/286', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 91', 'Calle 91', '08070', 'https://picsum.photos/287', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 92', 'Calle 92', '08071', 'https://picsum.photos/288', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 93', 'Calle 93', '08080', 'https://picsum.photos/289', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 94', 'Calle 94', '08001', 'https://picsum.photos/290', '1', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 95', 'Calle 95', '08002', 'https://picsum.photos/291', '2', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 96', 'Calle 96', '08003', 'https://picsum.photos/292', '3', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 97', 'Calle 97', '08004', 'https://picsum.photos/293', '4', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 98', 'Calle 98', '08005', 'https://picsum.photos/294', '1', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 99', 'Calle 99', '08006', 'https://picsum.photos/295', '2', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 100', 'Calle 100', '08007', 'https://picsum.photos/296', '3', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 101', 'Calle 101', '08008', 'https://picsum.photos/297', '4', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 102', 'Calle 102', '08009', 'https://picsum.photos/298', '1', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 103', 'Calle 103', '08010', 'https://picsum.photos/299', '2', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 104', 'Calle 104', '08011', 'https://picsum.photos/300', '3', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 105', 'Calle 105', '08012', 'https://picsum.photos/301', '4', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 106', 'Calle 106', '08013', 'https://picsum.photos/302', '1', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 107', 'Calle 107', '08014', 'https://picsum.photos/303', '2', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 108', 'Calle 108', '08015', 'https://picsum.photos/304', '3', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 109', 'Calle 109', '08016', 'https://picsum.photos/305', '4', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 110', 'Calle 110', '08017', 'https://picsum.photos/306', '1', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 111', 'Calle 111', '08018', 'https://picsum.photos/307', '2', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 112', 'Calle 112', '08019', 'https://picsum.photos/308', '3', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 113', 'Calle 113', '08020', 'https://picsum.photos/309', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 114', 'Calle 114', '08021', 'https://picsum.photos/310', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 115', 'Calle 115', '08022', 'https://picsum.photos/311', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 116', 'Calle 116', '08023', 'https://picsum.photos/312', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 117', 'Calle 117', '08024', 'https://picsum.photos/313', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 118', 'Calle 118', '08025', 'https://picsum.photos/314', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 119', 'Calle 119', '08026', 'https://picsum.photos/315', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 120', 'Calle 120', '08027', 'https://picsum.photos/316', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 121', 'Calle 121', '08028', 'https://picsum.photos/317', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 122', 'Calle 122', '08029', 'https://picsum.photos/318', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 123', 'Calle 123', '08030', 'https://picsum.photos/319', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 124', 'Calle 124', '08031', 'https://picsum.photos/320', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 125', 'Calle 125', '08032', 'https://picsum.photos/321', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 126', 'Calle 126', '08033', 'https://picsum.photos/322', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 127', 'Calle 127', '08034', 'https://picsum.photos/323', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 128', 'Calle 128', '08035', 'https://picsum.photos/324', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 129', 'Calle 129', '08036', 'https://picsum.photos/325', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 130', 'Calle 130', '08037', 'https://picsum.photos/326', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 131', 'Calle 131', '08038', 'https://picsum.photos/327', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 132', 'Calle 132', '08039', 'https://picsum.photos/328', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 133', 'Calle 133', '08040', 'https://picsum.photos/329', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 134', 'Calle 134', '08041', 'https://picsum.photos/330', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 135', 'Calle 135', '08042', 'https://picsum.photos/331', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 136', 'Calle 136', '08070', 'https://picsum.photos/332', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 137', 'Calle 137', '08071', 'https://picsum.photos/333', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 138', 'Calle 138', '08080', 'https://picsum.photos/334', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 139', 'Calle 139', '08001', 'https://picsum.photos/335', '1', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 140', 'Calle 140', '08002', 'https://picsum.photos/336', '2', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 141', 'Calle 141', '08003', 'https://picsum.photos/337', '3', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 142', 'Calle 142', '08004', 'https://picsum.photos/338', '4', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 143', 'Calle 143', '08005', 'https://picsum.photos/339', '1', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 144', 'Calle 144', '08006', 'https://picsum.photos/340', '2', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 145', 'Calle 145', '08007', 'https://picsum.photos/341', '3', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 146', 'Calle 146', '08008', 'https://picsum.photos/342', '4', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 147', 'Calle 147', '08009', 'https://picsum.photos/343', '1', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 148', 'Calle 148', '08010', 'https://picsum.photos/344', '2', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 149', 'Calle 149', '08011', 'https://picsum.photos/345', '3', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 150', 'Calle 150', '08012', 'https://picsum.photos/346', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 151', 'Calle 151', '08013', 'https://picsum.photos/347', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 152', 'Calle 152', '08014', 'https://picsum.photos/348', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 153', 'Calle 153', '08015', 'https://picsum.photos/349', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 154', 'Calle 154', '08016', 'https://picsum.photos/350', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 155', 'Calle 155', '08017', 'https://picsum.photos/351', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 156', 'Calle 156', '08018', 'https://picsum.photos/352', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 157', 'Calle 157', '08019', 'https://picsum.photos/353', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 158', 'Calle 158', '08020', 'https://picsum.photos/354', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 159', 'Calle 159', '08021', 'https://picsum.photos/355', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 160', 'Calle 160', '08022', 'https://picsum.photos/356', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 161', 'Calle 161', '08023', 'https://picsum.photos/357', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 162', 'Calle 162', '08024', 'https://picsum.photos/358', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 163', 'Calle 163', '08025', 'https://picsum.photos/359', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 164', 'Calle 164', '08026', 'https://picsum.photos/360', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 165', 'Calle 165', '08027', 'https://picsum.photos/361', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 166', 'Calle 166', '08028', 'https://picsum.photos/362', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 167', 'Calle 167', '08029', 'https://picsum.photos/363', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 168', 'Calle 168', '08030', 'https://picsum.photos/364', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 169', 'Calle 169', '08031', 'https://picsum.photos/365', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 170', 'Calle 170', '08032', 'https://picsum.photos/366', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 171', 'Calle 171', '08033', 'https://picsum.photos/367', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 172', 'Calle 172', '08034', 'https://picsum.photos/368', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 173', 'Calle 173', '08035', 'https://picsum.photos/369', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 174', 'Calle 174', '08036', 'https://picsum.photos/370', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 175', 'Calle 175', '08037', 'https://picsum.photos/371', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 176', 'Calle 176', '08038', 'https://picsum.photos/372', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 177', 'Calle 177', '08039', 'https://picsum.photos/373', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 178', 'Calle 178', '08040', 'https://picsum.photos/374', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 179', 'Calle 179', '08041', 'https://picsum.photos/375', '1', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 180', 'Calle 180', '08042', 'https://picsum.photos/376', '2', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 181', 'Calle 181', '08070', 'https://picsum.photos/377', '3', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 182', 'Calle 182', '08071', 'https://picsum.photos/378', '4', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
+                                `updated_at`, `created_at`)
+VALUES ('Tienda 183', 'Calle 183', '08080', 'https://picsum.photos/379', '1', '3', DEFAULT, DEFAULT)
+
+
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 1', 'Veneno', '4', 'https://picsum.photos/200', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 2', 'Veneno', '6', 'https://picsum.photos/201', '11', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 3', 'Veneno', '3', 'https://picsum.photos/202', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 4', 'Veneno', '5', 'https://picsum.photos/203', '11', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 5', 'Veneno', '8', 'https://picsum.photos/204', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 6', 'Veneno', '9', 'https://picsum.photos/205', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 7', 'Veneno', '7', 'https://picsum.photos/206', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 8', 'Veneno', '3', 'https://picsum.photos/207', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 9', 'Veneno', '10', 'https://picsum.photos/208', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 10', 'Veneno', '6', 'https://picsum.photos/209', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 11', 'Veneno', '7', 'https://picsum.photos/210', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 12', 'Veneno', '5', 'https://picsum.photos/211', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 13', 'Veneno', '6', 'https://picsum.photos/212', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 14', 'Veneno', '6', 'https://picsum.photos/213', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 15', 'Veneno', '9', 'https://picsum.photos/214', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 16', 'Veneno', '3', 'https://picsum.photos/215', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 17', 'Veneno', '3', 'https://picsum.photos/216', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 18', 'Veneno', '3', 'https://picsum.photos/217', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 19', 'Veneno', '5', 'https://picsum.photos/218', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 20', 'Veneno', '10', 'https://picsum.photos/219', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 21', 'Veneno', '1', 'https://picsum.photos/220', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 22', 'Veneno', '8', 'https://picsum.photos/221', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 23', 'Veneno', '8', 'https://picsum.photos/222', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 24', 'Veneno', '3', 'https://picsum.photos/223', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 25', 'Veneno', '5', 'https://picsum.photos/224', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 26', 'Veneno', '1', 'https://picsum.photos/225', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 27', 'Veneno', '5', 'https://picsum.photos/226', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 28', 'Veneno', '11', 'https://picsum.photos/227', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 29', 'Veneno', '6', 'https://picsum.photos/228', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 30', 'Veneno', '5', 'https://picsum.photos/229', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 31', 'Veneno', '3', 'https://picsum.photos/230', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 32', 'Veneno', '4', 'https://picsum.photos/231', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 33', 'Veneno', '3', 'https://picsum.photos/232', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 34', 'Veneno', '5', 'https://picsum.photos/233', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 35', 'Veneno', '5', 'https://picsum.photos/234', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 36', 'Veneno', '8', 'https://picsum.photos/235', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 37', 'Veneno', '4', 'https://picsum.photos/236', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 38', 'Veneno', '1', 'https://picsum.photos/237', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 39', 'Veneno', '7', 'https://picsum.photos/238', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 40', 'Veneno', '5', 'https://picsum.photos/239', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 41', 'Veneno', '8', 'https://picsum.photos/240', '11', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 42', 'Veneno', '7', 'https://picsum.photos/241', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 43', 'Veneno', '7', 'https://picsum.photos/242', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 44', 'Veneno', '2', 'https://picsum.photos/243', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 45', 'Veneno', '3', 'https://picsum.photos/244', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 46', 'Veneno', '7', 'https://picsum.photos/245', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 47', 'Veneno', '2', 'https://picsum.photos/246', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 48', 'Veneno', '10', 'https://picsum.photos/247', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 49', 'Veneno', '8', 'https://picsum.photos/248', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 50', 'Veneno', '4', 'https://picsum.photos/249', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 51', 'Veneno', '4', 'https://picsum.photos/250', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 52', 'Veneno', '4', 'https://picsum.photos/251', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 53', 'Veneno', '6', 'https://picsum.photos/252', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 54', 'Veneno', '3', 'https://picsum.photos/253', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 55', 'Veneno', '6', 'https://picsum.photos/254', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 56', 'Veneno', '5', 'https://picsum.photos/255', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 57', 'Veneno', '8', 'https://picsum.photos/256', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 58', 'Veneno', '4', 'https://picsum.photos/257', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 59', 'Veneno', '7', 'https://picsum.photos/258', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 60', 'Veneno', '5', 'https://picsum.photos/259', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 61', 'Veneno', '8', 'https://picsum.photos/260', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 62', 'Veneno', '4', 'https://picsum.photos/261', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 63', 'Veneno', '8', 'https://picsum.photos/262', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 64', 'Veneno', '3', 'https://picsum.photos/263', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 65', 'Veneno', '3', 'https://picsum.photos/264', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 66', 'Veneno', '1', 'https://picsum.photos/265', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 67', 'Veneno', '7', 'https://picsum.photos/266', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 68', 'Veneno', '5', 'https://picsum.photos/267', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 69', 'Veneno', '7', 'https://picsum.photos/268', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 70', 'Veneno', '4', 'https://picsum.photos/269', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 71', 'Veneno', '9', 'https://picsum.photos/270', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 72', 'Veneno', '6', 'https://picsum.photos/271', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 73', 'Veneno', '5', 'https://picsum.photos/272', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 74', 'Veneno', '10', 'https://picsum.photos/273', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 75', 'Veneno', '1', 'https://picsum.photos/274', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 76', 'Veneno', '1', 'https://picsum.photos/275', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 77', 'Veneno', '8', 'https://picsum.photos/276', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 78', 'Veneno', '8', 'https://picsum.photos/277', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 79', 'Veneno', '8', 'https://picsum.photos/278', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 80', 'Veneno', '3', 'https://picsum.photos/279', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 81', 'Veneno', '5', 'https://picsum.photos/280', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 82', 'Veneno', '9', 'https://picsum.photos/281', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 83', 'Veneno', '8', 'https://picsum.photos/282', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 84', 'Veneno', '9', 'https://picsum.photos/283', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 85', 'Veneno', '7', 'https://picsum.photos/284', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 86', 'Veneno', '6', 'https://picsum.photos/285', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 87', 'Veneno', '7', 'https://picsum.photos/286', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 88', 'Veneno', '1', 'https://picsum.photos/287', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 89', 'Veneno', '11', 'https://picsum.photos/288', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 90', 'Veneno', '2', 'https://picsum.photos/289', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 91', 'Veneno', '10', 'https://picsum.photos/290', '11', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 92', 'Veneno', '1', 'https://picsum.photos/291', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 93', 'Veneno', '5', 'https://picsum.photos/292', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 94', 'Veneno', '6', 'https://picsum.photos/293', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 95', 'Veneno', '10', 'https://picsum.photos/294', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 96', 'Veneno', '2', 'https://picsum.photos/295', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 97', 'Veneno', '2', 'https://picsum.photos/296', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 98', 'Veneno', '10', 'https://picsum.photos/297', '11', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 99', 'Veneno', '5', 'https://picsum.photos/298', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 100', 'Veneno', '7', 'https://picsum.photos/299', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 101', 'Veneno', '9', 'https://picsum.photos/300', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 102', 'Veneno', '8', 'https://picsum.photos/301', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 103', 'Veneno', '10', 'https://picsum.photos/302', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 104', 'Veneno', '9', 'https://picsum.photos/303', '11', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 105', 'Veneno', '9', 'https://picsum.photos/304', '1', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 106', 'Veneno', '2', 'https://picsum.photos/305', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 107', 'Veneno', '11', 'https://picsum.photos/306', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 108', 'Veneno', '4', 'https://picsum.photos/307', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 109', 'Veneno', '3', 'https://picsum.photos/308', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 110', 'Veneno', '6', 'https://picsum.photos/309', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 111', 'Veneno', '3', 'https://picsum.photos/310', '11', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 112', 'Veneno', '6', 'https://picsum.photos/311', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 113', 'Veneno', '6', 'https://picsum.photos/312', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 114', 'Veneno', '4', 'https://picsum.photos/313', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 115', 'Veneno', '8', 'https://picsum.photos/314', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 116', 'Veneno', '2', 'https://picsum.photos/315', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 117', 'Veneno', '1', 'https://picsum.photos/316', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 118', 'Veneno', '1', 'https://picsum.photos/317', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 119', 'Veneno', '11', 'https://picsum.photos/318', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 120', 'Veneno', '2', 'https://picsum.photos/319', '11', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 121', 'Veneno', '8', 'https://picsum.photos/320', '11', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 122', 'Veneno', '6', 'https://picsum.photos/321', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 123', 'Veneno', '6', 'https://picsum.photos/322', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 124', 'Veneno', '6', 'https://picsum.photos/323', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 125', 'Veneno', '1', 'https://picsum.photos/324', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 126', 'Veneno', '5', 'https://picsum.photos/325', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 127', 'Veneno', '4', 'https://picsum.photos/326', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 128', 'Veneno', '10', 'https://picsum.photos/327', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 129', 'Veneno', '8', 'https://picsum.photos/328', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 130', 'Veneno', '4', 'https://picsum.photos/329', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 131', 'Veneno', '4', 'https://picsum.photos/330', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 132', 'Veneno', '5', 'https://picsum.photos/331', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 133', 'Veneno', '6', 'https://picsum.photos/332', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 134', 'Veneno', '2', 'https://picsum.photos/333', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 135', 'Veneno', '11', 'https://picsum.photos/334', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 136', 'Veneno', '9', 'https://picsum.photos/335', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 137', 'Veneno', '4', 'https://picsum.photos/336', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 138', 'Veneno', '2', 'https://picsum.photos/337', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 139', 'Veneno', '3', 'https://picsum.photos/338', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 140', 'Veneno', '3', 'https://picsum.photos/339', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 141', 'Veneno', '5', 'https://picsum.photos/340', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 142', 'Veneno', '3', 'https://picsum.photos/341', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 143', 'Veneno', '1', 'https://picsum.photos/342', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 144', 'Veneno', '2', 'https://picsum.photos/343', '2', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 145', 'Veneno', '2', 'https://picsum.photos/344', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 146', 'Veneno', '9', 'https://picsum.photos/345', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 147', 'Veneno', '7', 'https://picsum.photos/346', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 148', 'Veneno', '4', 'https://picsum.photos/347', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 149', 'Veneno', '10', 'https://picsum.photos/348', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 150', 'Veneno', '6', 'https://picsum.photos/349', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 151', 'Veneno', '9', 'https://picsum.photos/350', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 152', 'Veneno', '10', 'https://picsum.photos/351', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 153', 'Veneno', '2', 'https://picsum.photos/352', '7', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 154', 'Veneno', '4', 'https://picsum.photos/353', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 155', 'Veneno', '7', 'https://picsum.photos/354', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 156', 'Veneno', '6', 'https://picsum.photos/355', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 157', 'Veneno', '3', 'https://picsum.photos/356', '3', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 158', 'Veneno', '8', 'https://picsum.photos/357', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 159', 'Veneno', '4', 'https://picsum.photos/358', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 160', 'Veneno', '3', 'https://picsum.photos/359', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 161', 'Veneno', '8', 'https://picsum.photos/360', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 162', 'Veneno', '1', 'https://picsum.photos/361', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 163', 'Veneno', '6', 'https://picsum.photos/362', '4', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 164', 'Veneno', '4', 'https://picsum.photos/363', '11', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 165', 'Veneno', '6', 'https://picsum.photos/364', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 166', 'Veneno', '10', 'https://picsum.photos/365', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 167', 'Veneno', '5', 'https://picsum.photos/366', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 168', 'Veneno', '7', 'https://picsum.photos/367', '8', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 169', 'Veneno', '6', 'https://picsum.photos/368', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 170', 'Veneno', '9', 'https://picsum.photos/369', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 171', 'Veneno', '11', 'https://picsum.photos/370', '11', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 172', 'Veneno', '4', 'https://picsum.photos/371', '5', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 173', 'Veneno', '6', 'https://picsum.photos/372', '10', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 174', 'Veneno', '7', 'https://picsum.photos/373', '9', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 175', 'Veneno', '10', 'https://picsum.photos/374', '6', DEFAULT, DEFAULT);
+INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
+VALUES ('Producto 176', 'Veneno', '5', 'https://picsum.photos/375', '10', DEFAULT, DEFAULT)
