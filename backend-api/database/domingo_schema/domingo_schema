@@ -8,6 +8,7 @@ create table store_categories
 (
     id               integer      not null primary key auto_increment,
     name             varchar(255)  not null,
+    icon             varchar(255) default null,
     updated_at       timestamp not null default now() on update now(),
     created_at       timestamp not null default now()
 
@@ -72,8 +73,8 @@ create table products
     CONSTRAINT FOREIGN KEY (store_id) REFERENCES stores(id)
 );
 
-drop table if exists order_product;
-create table order_product
+drop table if exists orders_products;
+create table orders_products
 (
     order_id       integer not null,
     product_id     integer not null,
@@ -146,7 +147,6 @@ INSERT INTO `domingo`.`store_categories` (`name`, `updated_at`, `created_at`) VA
 INSERT INTO `domingo`.`store_categories` (`name`, `updated_at`, `created_at`) VALUES ('Shop', DEFAULT, DEFAULT);
 INSERT INTO `domingo`.`store_categories` (`name`, `updated_at`, `created_at`) VALUES ('Supermarket', DEFAULT, DEFAULT);
 INSERT INTO `domingo`.`store_categories` (`name`, `updated_at`, `created_at`) VALUES ('Breakfast', DEFAULT, DEFAULT);
-
 
 INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
                                 `updated_at`, `created_at`)
@@ -687,7 +687,7 @@ INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `del
 VALUES ('Tienda 182', 'Calle 182', '08071', 'https://picsum.photos/378', '4', '1', DEFAULT, DEFAULT);
 INSERT INTO `domingo`.`stores` (`name`, `address`, `postcode`, `image_url`, `delivery_area_id`, `category_id`,
                                 `updated_at`, `created_at`)
-VALUES ('Tienda 183', 'Calle 183', '08080', 'https://picsum.photos/379', '1', '3', DEFAULT, DEFAULT)
+VALUES ('Tienda 183', 'Calle 183', '08080', 'https://picsum.photos/379', '1', '3', DEFAULT, DEFAULT);
 
 
 INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
@@ -1042,3 +1042,4 @@ INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `stor
 VALUES ('Producto 175', 'Veneno', '10', 'https://picsum.photos/374', '6', DEFAULT, DEFAULT);
 INSERT INTO `domingo`.`products` (`name`, `description`, `price`, `photo`, `store_id`, `updated_at`, `created_at`)
 VALUES ('Producto 176', 'Veneno', '5', 'https://picsum.photos/375', '10', DEFAULT, DEFAULT)
+

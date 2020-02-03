@@ -13,8 +13,7 @@ import HomePageTopmenu from "../HomePageTopMenu/HomePageTopMenu";
 import StoreInfoHeader from "../StoreInfoHeader/StoreInfoHeader";
 import {cartContext, CartProvider} from "../Cart/Cart";
 import {User} from "../Helpers/userReducer";
-import {Route,
-    useParams} from "react-router-dom";
+import {Route,useParams} from "react-router-dom";
 
 
 const useStyles = makeStyles({
@@ -60,7 +59,6 @@ export function ProductList(props) {
     const classes = useStyles();
     const [state, dispatch] = useReducer(productReducer, initialState);
     const { storeId } = props.match.params;
-    const {state: cartState, dispatch: cartDispatch} = useContext(cartContext);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -100,7 +98,7 @@ export function ProductList(props) {
     const hasData = state.productData !== undefined;
     if (hasData) {
         return(
-        <CartProvider>
+
             <div>
                 <div>
                     <HomePageTopmenu/>
@@ -128,7 +126,7 @@ export function ProductList(props) {
                                         </CardContent>
                                     </CardActionArea>
                                     <CardActions>
-                                        <Button size="small" color="primary" onClick={() => dispatch({type:'ADD_PRODUCT', product:p})}>
+                                        <Button size="small" color="primary">
                                             Añadir a cesta
                                         </Button>
                                         <Button size="small" color="primary">
@@ -148,7 +146,6 @@ export function ProductList(props) {
 
 
             </div>
-        </CartProvider>
         );
     }
     return (
