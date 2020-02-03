@@ -58,7 +58,7 @@ const productReducer = (state = initialState, action) => {
 export function ProductList(props) {
     const classes = useStyles();
     const [state, dispatch] = useReducer(productReducer, initialState);
-    const { storeId } = props.match.params;
+    const { storeId } = useParams();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -154,5 +154,7 @@ export function ProductList(props) {
         </div>
     );
 }
+
+export default ProductList;
 
 
