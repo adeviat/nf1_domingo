@@ -22,6 +22,8 @@ Route::post('api/store/create', 'StoreController@create');
 Route::put('api/store/update', 'StoreController@update');
 //Route::get('api/stores', 'StoreController@getStores');
 
+Route::post('/api/order/storeOrder', 'Ordercontroller@create');
+
 
 Route::post('/api/user/register', 'UserController@register');
 Route::post('/api/user/login', 'UserController@login');

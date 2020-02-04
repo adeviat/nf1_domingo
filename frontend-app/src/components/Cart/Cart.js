@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext, useReducer, createContext} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Popper from '@material-ui/core/Popper';
+import { Alert, AlertTitle } from '@material-ui/lab';
 import './Cart.css';
 
 
@@ -13,6 +14,8 @@ import 'typeface-roboto';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import {ThemeProvider} from "@material-ui/styles";
+import { User } from '../Helpers/userReducer';
+import { post } from '../Helpers/ServerMethods';
 
 
 
@@ -21,6 +24,7 @@ const initialCartState = {
     isSubmiting: false,
     lastFetchDate: undefined,
     cartCollection: [],
+    cartSubmited: false,
 
 };
 
@@ -34,6 +38,8 @@ function reducer(state = initialCartState, action) {
             return { ...state, cartCollection: [...state.cartCollection, action.product]};
         case 'DELETE_PRODUCT':
             return { ...state, cartCollection: [...state.cartCollection.pop(action.product)] };
+        case 'DELETE_CART':
+            return { ...state, cartCollection: [],isSubmiting : false, cartSubmited : true };
         default:
             return state;
     }
@@ -53,6 +59,24 @@ export default function SimplePopper() {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const {state, dispatch} = useContext(cartContext);
+    const {state: userState, dipatch: userDispatch} = useContext(User);
+
+    const handlePayButton = () => {
+        const data = {
+            user_id: userState.User.id,
+            store_id : state.cartCollection[0].store_id,
+            productList : state.cartCollection
+        }
+
+        post('/api/order/storeOrder',data)
+        .then(response => {
+            dispatch({
+                type : 'DELETE_CART',
+                payload : ''
+            })
+        })
+
+    }
 
 
     ////TODO Ajustar el estilo del boton
@@ -123,9 +147,13 @@ export default function SimplePopper() {
                                 <div className="cart_title">CARRITO</div>
                             </div>
                             <div>
-                                <Button variant="outlined" color="primary" onClick={() =>{}}>
+                                <Button variant="outlined" color="primary" onClick={() => handlePayButton()}>
                                     Pagar
                                 </Button>
+                                {state.cartSubmited ?  <Alert severity="success">
+                                                                <AlertTitle>Pedido realizado con exito</AlertTitle>
+                                                                    Su Domingo esta en camino
+                                                            </Alert> : undefined}
                             </div>
                         </div>
                     </div>
