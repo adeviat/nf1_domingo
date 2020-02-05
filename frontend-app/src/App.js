@@ -7,7 +7,7 @@ import Routes from "./components/Footer/Components/Routes";
 import HomePage from "./Views/HomePage/HomePage";
 import {get} from "./components/Helpers/ServerMethods";
 import {User} from "./components/Helpers/userReducer";
-import {CartProvider} from "./components/Cart/Cart";
+import {CartProvider} from "./components/CartContainer/CartContainer";
 
 
 function App () {
