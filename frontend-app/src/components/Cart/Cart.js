@@ -1,7 +1,8 @@
 import React, {useState, useEffect, useContext, useReducer, createContext} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Popper from '@material-ui/core/Popper';
-import { Alert, AlertTitle } from '@material-ui/lab';
+import  Alert from '@material-ui/lab/Alert';
+import  AlertTitle from '@material-ui/lab/AlertTitle';
 import './Cart.css';
 
 
