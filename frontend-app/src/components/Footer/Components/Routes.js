@@ -17,7 +17,7 @@ import App from "../../../App";
 import StoresView from "../../../Views/StoresView/StoresView";
 import {StoresProvider} from "../../../Views/StoresView/Stores/Stores.container";
 import {ProductList, ProductListRoute} from "../../ProductList/ProductList";
-import {CartProvider} from "../../Cart/Cart";
+import {CartProvider} from "../../CartContainer/CartContainer";
 
 const Routes = () =>{
    return(

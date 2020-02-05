@@ -1,9 +1,10 @@
 import React, {useState, useEffect, useContext, useReducer, createContext} from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import {makeStyles , useTheme} from '@material-ui/core/styles';
 import Popper from '@material-ui/core/Popper';
 import  Alert from '@material-ui/lab/Alert';
 import  AlertTitle from '@material-ui/lab/AlertTitle';
 import './Cart.css';
+import CartContainer, {cartContext} from "../CartContainer/CartContainer";
 
 
 import Fab from '@material-ui/core/Fab';
@@ -20,41 +21,6 @@ import { post } from '../Helpers/ServerMethods';
 
 
 
-const initialCartState = {
-
-    isSubmiting: false,
-    lastFetchDate: undefined,
-    cartCollection: [],
-    cartSubmited: false,
-
-};
-
- export const cartContext =  createContext();
-
-function reducer(state = initialCartState, action) {
-    switch (action.type) {
-        case 'CART_SUBMIT':
-            return { ...state, isSubmiting: true};
-        case 'ADD_PRODUCT':
-            return { ...state, cartCollection: [...state.cartCollection, action.product]};
-        case 'DELETE_PRODUCT':
-            return { ...state, cartCollection: [...state.cartCollection.pop(action.product)] };
-        case 'DELETE_CART':
-            return { ...state, cartCollection: [],isSubmiting : false, cartSubmited : true };
-        default:
-            return state;
-    }
-}
-
-export function CartProvider(props) {
-    const [state, dispatch] = useReducer(reducer, initialCartState);
-    const value = { state, dispatch };
-    return (
-        <cartContext.Provider value={value}>{props.children}</cartContext.Provider>
-    );
-}
-
-
 export default function SimplePopper() {
 
 
@@ -63,10 +29,14 @@ export default function SimplePopper() {
     const {state: userState, dipatch: userDispatch} = useContext(User);
 
     const handlePayButton = () => {
+
+
+
+
         const data = {
             user_id: userState.User.id,
             store_id : state.cartCollection[0].store_id,
-            productList : state.cartCollection
+            productList : state.cartProductsIds
         }
 
         post('/api/order/storeOrder',data)
@@ -74,7 +44,14 @@ export default function SimplePopper() {
             dispatch({
                 type : 'DELETE_CART',
                 payload : ''
-            })
+            });
+            return(
+                <Alert severity="success">
+                    <AlertTitle>Pedido realizado con exito</AlertTitle>
+                    Su Domingo esta en camino
+                </Alert>
+            );
+
         })
 
     }
@@ -122,7 +99,7 @@ export default function SimplePopper() {
 
 
     return (
-        <CartProvider>
+
 
             <div>
                 <div className={classes.fab}>
@@ -138,9 +115,7 @@ export default function SimplePopper() {
                         </div>
                     </div>
                 </div>
-                <div>
-                    {state.cartCollection.map((product => <span>{product.name}</span>))}
-                </div>
+
                 <Popper id={id} open={open} anchorEl={anchorEl}>
                     <div className="infocart">
                         <div className="container_cart">
@@ -148,20 +123,22 @@ export default function SimplePopper() {
                                 <div className="cart_title">CARRITO</div>
                             </div>
                             <div>
+                                <CartContainer/>
+                            </div>
+
+                            <div>
                                 <Button variant="outlined" color="primary" onClick={() => handlePayButton()}>
                                     Pagar
+
                                 </Button>
-                                {state.cartSubmited ?  <Alert severity="success">
-                                                                <AlertTitle>Pedido realizado con exito</AlertTitle>
-                                                                    Su Domingo esta en camino
-                                                            </Alert> : undefined}
+
                             </div>
                         </div>
                     </div>
                 </Popper>
 
             </div>
-        </CartProvider>
+
     );
 }
 

@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import RegisterCart from "../RegisterCart/RegisterCart";
 import HomePageTopmenu from "../HomePageTopMenu/HomePageTopMenu";
 import StoreInfoHeader from "../StoreInfoHeader/StoreInfoHeader";
-import {cartContext, CartProvider} from "../Cart/Cart";
+import {CartProvider, cartContext} from "../CartContainer/CartContainer";
 import {User} from "../Helpers/userReducer";
 import {Route,useParams} from "react-router-dom";
 

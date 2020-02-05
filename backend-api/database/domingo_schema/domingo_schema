@@ -74,7 +74,7 @@ create table products
 );
 
 drop table if exists orders_products;
-create table orders_products
+create table order_product
 (
     order_id       integer not null,
     product_id     integer not null,
