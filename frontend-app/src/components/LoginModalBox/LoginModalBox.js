@@ -140,7 +140,7 @@ export default function LoginModalBox({setOpenLogin}) {
                             onClick={() => setSubmit(true)}>Iniciar sesión con e-mail</button>
                 </div>
                 <div className="registerbtn" >
-                    <p>¿Eres nuevo usuario de Glovo? <a href="#">Regístrate</a></p>
+                    <p>¿Nuevo en Domingo? <a href="#">Regístrate</a></p>
                 </div>
             </div>
         </div>

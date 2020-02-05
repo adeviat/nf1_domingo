@@ -9,6 +9,7 @@ import supermarket from '../HomePageMainBlock/Img/supermarket.png';
 import snacks from '../HomePageMainBlock/Img/snacks.png';
 import expand from '../HomePageMainBlock/Img/expand.png';
 import { Link } from "react-router-dom";
+import '../HomePageMainBlock/Img/HomePageMainBlock.css';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 

@@ -70,18 +70,18 @@ export default function CartContainer() {
                             <Avatar alt="Remy Sharp" src={product.photo} />
                         </ListItemAvatar>
                         <ListItemText
-                            primary={product.name}
+                            primary={product.name }
                             secondary={
-                                <React.Fragment>
+                                <React.Fragment alignItems="space-around">
                                     <Typography
                                         component="span"
                                         variant="body2"
                                         className={classes.inline}
                                         color="textPrimary"
                                     >
-                                        Precio = {product.price} €
+                                        &nbsp; Precio = {product.price} €
                                     </Typography>
-                                    {" - xxxxxxxxxxxxxxx "}
+
                                 </React.Fragment>
                             }
                         />

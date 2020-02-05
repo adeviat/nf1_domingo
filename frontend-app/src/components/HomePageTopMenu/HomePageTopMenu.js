@@ -1,8 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import LoginButton from "../Buttons/LoginButton/LoginButton.js";
-import Viewinfo from "../Profile/Viewinfo.js";
 import RegisterButton from "../Buttons/RegisterButton/RegisterButton.js";
-import Cartp from "../Cart/Cartp";
 import UserCart from "../UserCart";
 import {User} from "../Helpers/userReducer";
 import {get} from "../Helpers/ServerMethods";
