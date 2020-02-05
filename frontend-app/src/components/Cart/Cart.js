@@ -1,7 +1,8 @@
-import React, {useState, useEffect, useContext} from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import React, {useState, useEffect, useContext, useReducer, createContext} from 'react';
+import {makeStyles , useTheme} from '@material-ui/core/styles';
 import Popper from '@material-ui/core/Popper';
 import './Cart.css';
+import CartContainer from "../CartContainer/CartContainer";
 
 
 import Fab from '@material-ui/core/Fab';
@@ -13,8 +14,6 @@ import 'typeface-roboto';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import {ThemeProvider} from "@material-ui/styles";
-
-
 
 
 export default function SimplePopper() {
@@ -66,37 +65,44 @@ export default function SimplePopper() {
 
 
     return (
-        <div>
-            <div className={classes.fab}>
-                <div aria-describedby={id}  onClick={handleClick} >
-                    <div className="col d-flex justify-content-end">
-                        <div className={classes.extendedIcon} >
-                            <ThemeProvider theme={theme}>
-                                <Fab color={'secondary'} aria-label="add" >
-                                    <ShoppingCartIcon style={{ color: "primary" }}/>
-                                </Fab>
-                            </ThemeProvider>
+
+
+            <div>
+                <div className={classes.fab}>
+                    <div aria-describedby={id}  onClick={handleClick} >
+                        <div className="col d-flex justify-content-end">
+                            <div className={classes.extendedIcon} >
+                                <ThemeProvider theme={theme}>
+                                    <Fab color={'secondary'} aria-label="add" >
+                                        <ShoppingCartIcon style={{ color: "primary" }}/>
+                                    </Fab>
+                                </ThemeProvider>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <Popper id={id} open={open} anchorEl={anchorEl}>
+                    <div className="infocart">
+                        <div className="container_cart">
+                            <div className="cart_body">
+                                <div className="cart_title">CARRITO</div>
+                            </div>
+                            <div>
+                            <CartContainer/>
+                            </div>
+
+                            <div>
+                                <Button variant="outlined" color="primary" onClick={() =>{}}>
+                                    Pagar
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                </Popper>
+
             </div>
 
-            <Popper id={id} open={open} anchorEl={anchorEl}>
-                <div className="infocart">
-                    <div className="container_cart">
-                        <div className="cart_body">
-                            <div className="cart_title">CARRITO</div>
-                        </div>
-                        <div>
-                            <Button variant="outlined" color="primary">
-                                Pagar
-                            </Button>
-                        </div>
-                    </div>
-                </div>
-            </Popper>
-
-        </div>
     );
 }
 

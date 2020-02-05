@@ -17,6 +17,7 @@ import App from "../../../App";
 import StoresView from "../../../Views/StoresView/StoresView";
 import {StoresProvider} from "../../../Views/StoresView/Stores/Stores.container";
 import {ProductList, ProductListRoute} from "../../ProductList/ProductList";
+import {CartProvider} from "../../CartContainer/CartContainer";
 
 const Routes = () =>{
    return(
@@ -37,7 +38,9 @@ const Routes = () =>{
             <Route exact path= '/' component={HomePage} />
             <Route path= '/stores/:category' component={StoresView} />
             <Route path= '/App' component={App} />
-            <Route exact path="/store/:storeId" component={ProductList} />
+            <CartProvider>
+                <Route exact path="/store/:storeId" component={ProductList} />
+            </CartProvider>
          </Switch>
 
         </div>

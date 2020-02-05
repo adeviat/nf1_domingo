@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import RegisterCart from "../RegisterCart/RegisterCart";
 import HomePageTopmenu from "../HomePageTopMenu/HomePageTopMenu";
 import StoreInfoHeader from "../StoreInfoHeader/StoreInfoHeader";
+import {CartProvider, cartContext} from "../CartContainer/CartContainer";
 import {User} from "../Helpers/userReducer";
 import {Route,useParams} from "react-router-dom";
 
@@ -55,9 +56,11 @@ const productReducer = (state = initialState, action) => {
  * @return {boolean}
  */
 export function ProductList(props) {
+    const {state:cartState, dispatch: cartDispatch} = useContext(cartContext);
     const classes = useStyles();
     const [state, dispatch] = useReducer(productReducer, initialState);
     const { storeId } = useParams();
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -125,7 +128,7 @@ export function ProductList(props) {
                                         </CardContent>
                                     </CardActionArea>
                                     <CardActions>
-                                        <Button size="small" color="primary">
+                                        <Button size="small" color="primary" onClick={() => cartDispatch({type: 'ADD_PRODUCT', product:p })}>
                                             Añadir a cesta
                                         </Button>
                                         <Button size="small" color="primary">
@@ -145,6 +148,7 @@ export function ProductList(props) {
 
 
             </div>
+
         );
     }
     return (

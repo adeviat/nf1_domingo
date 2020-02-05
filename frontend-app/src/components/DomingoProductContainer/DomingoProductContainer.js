@@ -1,5 +1,5 @@
 import React from 'react';
-import './DomingoProductContainer.css'
+import '../DomingoProductItem/DomingoProductContainer.css'
 import DomingoProductItem from "./DomingoProductItem.js";
 
 function DomingoProductContainer(props){

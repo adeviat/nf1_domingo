@@ -4,6 +4,7 @@ import './bootstrap.min.css';
 import HomePageTopMenu from '../../components/HomePageTopMenu/HomePageTopMenu';
 import HomePageMainBlock from '../HomePage/HomePageMainBlock/HomePageMainBlock';
 import ProductList from "../../components/ProductList/ProductList";
+import {CartProvider} from "../../components/Cart/Cart";
 
 
 function HomePage() {
