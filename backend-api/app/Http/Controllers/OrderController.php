@@ -43,17 +43,6 @@ class OrderController extends Controller
                 //recoger product_ids que vienen de front
                 $product_ids = $params_array['productList'];
 
-                /*foreach ($product_ids as $product_id) {
-                    $orders_products = array(
-                        'order_id' => $order->id,
-                        'product_id' => $product_id
-                    );
-                    DB::table('orders_products') -> insert(
-                        ['order_id' => $order->id, 'product_id' => $product_id]
-                    );
-                }
-*/
-
 
                 $order->products()->attach($params_array['productList']);
 
