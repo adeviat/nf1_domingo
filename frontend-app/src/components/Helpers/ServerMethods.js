@@ -74,7 +74,7 @@ export const get = async (url) => {
         mode: 'cors',
     };
 
-    const data =   await fetch('http://127.0.0.1/'+url, options)
+    const data =   await fetch('http://api.domingo-app.xyz'+url, options)
                             .then(  response => {
 
                                 if(response.status === 200) {

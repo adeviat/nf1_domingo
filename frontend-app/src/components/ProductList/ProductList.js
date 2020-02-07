@@ -67,7 +67,7 @@ export function ProductList(props) {
             if (!storeId) {
                 return;
             }
-            const url = 'http://127.0.0.1:80/api/products/store/'+storeId;
+            const url = 'http://api.domingo-app.xyz/api/products/store/'+storeId;
             const options = {
                 method: 'GET',
                 headers: new Headers({
