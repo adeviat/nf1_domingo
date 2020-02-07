@@ -192,13 +192,13 @@ class StoreController extends Controller
         $category_id = DB::table('store_categories')->where('name', $category)->value('id');
         $deliveryArea = DB::table('delivery_areas')->where('postcode', $postcode)->value('delivery_areas');
 
-        if ($category_id || $deliveryArea == null) {
+      /*  if ($category_id || $deliveryArea == null) {
             $data = array(
                 'code' => 404,
                 'message' => 'Wrong Category or PostCode'
             );
             return response()->json($data);
-        }
+        }*/
 
         $stores = DB::table('stores')->where([['category_id', $category_id], ['delivery_area_id', $deliveryArea]])->get();
 

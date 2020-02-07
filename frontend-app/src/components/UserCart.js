@@ -7,7 +7,7 @@ function userCart() {
     return(
         <div >
             <Viewinfo/>
-            <Cart/>
+            <Cart styles={{display:'flex'}}/>
         </div>
     );
 }

@@ -17,5 +17,6 @@ export default function StoresView(props) {    //const { state, dispatch } = use
             <div className={classes.DomingoContainerDiv}>
                 <StoreContainer category={category}/>
             </div>
-        </div></StoresProvider>);
+        </div>
+        </StoresProvider>);
 }

@@ -19,10 +19,12 @@ function reducer(state = initialState, action) {
     switch (action.type) {
         case 'UPDATE_USER':
             localStorage.setItem('token', action.payload.change.token);
+            localStorage.setItem('user', action.payload.change.user);
 
             return { ...state, User: action.payload.change, token: action.payload.change.token };
         case 'SET_USER':
             localStorage.setItem('token', action.payload.token);
+            localStorage.setItem('user', action.payload.user);
             return { ...state, User: action.payload.user, token: action.payload.token };
         case 'LOG_OUT':
             localStorage.clear();
