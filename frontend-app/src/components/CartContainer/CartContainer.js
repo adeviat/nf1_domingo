@@ -27,6 +27,8 @@ const initialCartState = {
     isSubmiting: false,
     lastFetchDate: undefined,
     cartCollection: [],
+    cartSubmited: false,
+    cartProductsIds: [],
 
 };
 
@@ -37,9 +39,11 @@ function reducer(state = initialCartState, action) {
         case 'CART_SUBMIT':
             return { ...state, isSubmiting: true};
         case 'ADD_PRODUCT':
-            return { ...state, cartCollection: [...state.cartCollection, action.product]};
+            return { ...state, cartCollection: [...state.cartCollection, action.product], cartProductsIds: [...state.cartProductsIds, action.product.id]};
         case 'DELETE_PRODUCT':
             return { ...state, cartCollection: [...state.cartCollection.pop(action.product)] };
+        case 'DELETE_CART':
+            return { ...state, cartCollection: [],isSubmiting : false, cartSubmited : true };
         default:
             return state;
     }

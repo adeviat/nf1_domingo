@@ -1,6 +1,8 @@
 import React, {useState, useEffect, useContext, useReducer, createContext} from 'react';
 import {makeStyles , useTheme} from '@material-ui/core/styles';
 import Popper from '@material-ui/core/Popper';
+import  Alert from '@material-ui/lab/Alert';
+import  AlertTitle from '@material-ui/lab/AlertTitle';
 import './Cart.css';
 import CartContainer, {cartContext} from "../CartContainer/CartContainer";
 
@@ -19,8 +21,6 @@ import { post } from '../Helpers/ServerMethods';
 
 
 
-
-
 export default function SimplePopper() {
 
 
@@ -29,10 +29,14 @@ export default function SimplePopper() {
     const {state: userState, dipatch: userDispatch} = useContext(User);
 
     const handlePayButton = () => {
+
+
+
+
         const data = {
             user_id: userState.User.id,
             store_id : state.cartCollection[0].store_id,
-            productList : state.cartCollection
+            productList : state.cartProductsIds
         }
 
         post('/api/order/storeOrder',data)
@@ -112,13 +116,15 @@ export default function SimplePopper() {
                                 <div className="cart_title">CARRITO</div>
                             </div>
                             <div>
-                            <CartContainer/>
+                                <CartContainer/>
                             </div>
 
                             <div>
                                 <Button variant="outlined" color="primary" onClick={() => handlePayButton()}>
                                     Pagar
+
                                 </Button>
+
                             </div>
                         </div>
                     </div>
