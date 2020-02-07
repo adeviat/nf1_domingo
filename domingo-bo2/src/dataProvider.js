@@ -2,7 +2,7 @@ import { fetchUtils } from 'react-admin';
 import { stringify } from 'query-string';
 import {get, post, put, deleteItem} from "./Server";
 
-const apiUrl = 'http://127.0.0.1:80/api';
+const apiUrl = 'http://api.domingo-app.xyz';
 const httpClient = fetchUtils.fetchJson;
 const addProduct = 'api/product/create';
 const editProduct = 'api/product/update';
