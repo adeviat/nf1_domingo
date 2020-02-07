@@ -1,5 +1,5 @@
 
-const BASE_PATH = 'http://127.0.01/'
+const BASE_PATH = 'http://api.domingo-app.xyz/'
 
 export const put = async (url,data) => {
 

@@ -60,7 +60,7 @@ export function ProductList(props) {
     const classes = useStyles();
     const [state, dispatch] = useReducer(productReducer, initialState);
     const { storeId } = useParams();
-    const BASE_PATH = 'http://127.0.01/'
+    const BASE_PATH = 'http://api.domingo-app.xyz/'
 
     useEffect(() => {
         const fetchData = async () => {
