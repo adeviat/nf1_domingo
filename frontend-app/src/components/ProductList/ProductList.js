@@ -60,14 +60,14 @@ export function ProductList(props) {
     const classes = useStyles();
     const [state, dispatch] = useReducer(productReducer, initialState);
     const { storeId } = useParams();
-
+    const BASE_PATH = 'http://127.0.01/'
 
     useEffect(() => {
         const fetchData = async () => {
             if (!storeId) {
                 return;
             }
-            const url = 'http://api.domingo-app.xyz/api/products/store/'+storeId;
+            const url = BASE_PATH+'api/products/store/'+storeId;
             const options = {
                 method: 'GET',
                 headers: new Headers({

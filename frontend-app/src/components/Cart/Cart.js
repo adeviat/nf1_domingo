@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext, useReducer, createContext} from 
 import {makeStyles , useTheme} from '@material-ui/core/styles';
 import Popper from '@material-ui/core/Popper';
 import './Cart.css';
-import CartContainer from "../CartContainer/CartContainer";
+import CartContainer, {cartContext} from "../CartContainer/CartContainer";
 
 
 import Fab from '@material-ui/core/Fab';
@@ -19,39 +19,6 @@ import { post } from '../Helpers/ServerMethods';
 
 
 
-const initialCartState = {
-
-    isSubmiting: false,
-    lastFetchDate: undefined,
-    cartCollection: [],
-    cartSubmited: false,
-
-};
-
- export const cartContext =  createContext();
-
-function reducer(state = initialCartState, action) {
-    switch (action.type) {
-        case 'CART_SUBMIT':
-            return { ...state, isSubmiting: true};
-        case 'ADD_PRODUCT':
-            return { ...state, cartCollection: [...state.cartCollection, action.product]};
-        case 'DELETE_PRODUCT':
-            return { ...state, cartCollection: [...state.cartCollection.pop(action.product)] };
-        case 'DELETE_CART':
-            return { ...state, cartCollection: [],isSubmiting : false, cartSubmited : true };
-        default:
-            return state;
-    }
-}
-
-export function CartProvider(props) {
-    const [state, dispatch] = useReducer(reducer, initialCartState);
-    const value = { state, dispatch };
-    return (
-        <cartContext.Provider value={value}>{props.children}</cartContext.Provider>
-    );
-}
 
 
 export default function SimplePopper() {
