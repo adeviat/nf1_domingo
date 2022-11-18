@@ -15,7 +15,7 @@
     "react-global-hook": "^1.1.1",
     "react-hooks": "^1.0.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0",
+    "react-scripts": "5.0.1",
     "typeface-roboto": "^0.0.75"
   },
   "scripts": {
